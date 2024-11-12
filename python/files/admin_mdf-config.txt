@@ -1,0 +1,2102 @@
+
+
+
+Building configuration...
+
+Current configuration : 55758 bytes
+!
+! Last configuration change at 16:59:51 PST Wed Jan 29 2020 by ytiadmin
+! NVRAM config last updated at 17:02:32 PST Wed Jan 29 2020 by ytiadmin
+!
+version 16.3
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime localtime
+service compress-config
+service unsupported-transceiver
+no platform punt-keepalive disable-kernel-core
+!
+hostname Admin_MDF
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+logging buffered 32768
+no logging console
+no logging monitor
+enable secret 5 $1$lSe0$dHA1YYWav2BekKVWDXJ/w0
+enable password ceres
+!
+no aaa new-model
+clock timezone PST -8 0
+clock summer-time PST recurring
+switch 1 provision ws-c3850-48p
+switch 2 provision ws-c3850-48p
+switch 3 provision ws-c3850-24s
+switch 4 provision ws-c3850-24s
+switch 5 provision ws-c3850-48p
+!
+!
+!
+!
+ip routing
+!
+!
+!
+no ip domain lookup
+ip domain name yti.com
+ip dhcp excluded-address 10.3.30.1 10.3.30.9
+ip dhcp excluded-address 10.3.30.254
+!
+!
+!
+no ip igmp snooping
+no ip igmp filter
+ipv6 mld snooping
+!
+!
+!
+!
+!
+!
+!
+!
+flow record Netflow-In
+ match ipv4 tos
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 destination address
+ match transport source-port
+ match transport destination-port
+ match interface input
+ match flow direction
+ collect interface output
+ collect counter bytes long
+ collect counter packets long
+!
+!
+flow record Netflow-Out
+ match ipv4 tos
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 destination address
+ match transport source-port
+ match transport destination-port
+ match interface output
+ match flow direction
+ collect interface input
+ collect counter bytes long
+ collect counter packets long
+!
+!
+flow exporter Netflow-to-Orion
+ destination 10.3.50.58
+ transport udp 2055
+!
+!
+flow monitor Netflow-Monitor-In
+ exporter Netflow-to-Orion
+ cache timeout inactive 10
+ cache timeout active 60
+ record Netflow-In
+!
+!
+flow monitor Netflow-Monitor-Out
+ exporter Netflow-to-Orion
+ cache timeout inactive 10
+ cache timeout active 60
+ record Netflow-Out
+!
+!
+table-map AutoQos-4.0-Trust-Cos-Table
+ default copy
+table-map policed-dscp
+ map from  0 to 8
+ map from  10 to 8
+ map from  18 to 8
+ map from  24 to 8
+ map from  46 to 8
+ default copy
+!
+!
+crypto pki trustpoint TP-self-signed-2751808693
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2751808693
+ revocation-check none
+ rsakeypair TP-self-signed-2751808693
+!
+!
+crypto pki certificate chain TP-self-signed-2751808693
+ certificate self-signed 01
+  30820245 308201AE A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32373531 38303836 3933301E 170D3134 31313139 31333539 
+  32345A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 37353138 
+  30383639 3330819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100BBD5 B3C67EC6 4A11B748 A43F7D07 1EA49C45 708E12CC FD00557D F302C133 
+  8FEBBD90 718A406D 148822CC 4D9F2421 1A4AD08C 56E442F7 9967FC23 2B07FB32 
+  C1DAB18A A35AB0C8 5778B118 FA718090 2E413605 11A07F64 634FD82E 3B5499A9 
+  62F13AB2 0B9F90F4 F1A50B78 5C9D46A9 9F2DC97E 496A31F3 D31F6527 F67E7D15 
+  08290203 010001A3 6D306B30 0F060355 1D130101 FF040530 030101FF 30180603 
+  551D1104 11300F82 0D797469 2D333835 302D636F 7265301F 0603551D 23041830 
+  168014E2 B2BA8846 998C115A 53EE9717 3A131455 8997DC30 1D060355 1D0E0416 
+  0414E2B2 BA884699 8C115A53 EE97173A 13145589 97DC300D 06092A86 4886F70D 
+  01010405 00038181 003C6357 8B6A0214 697DEC2F 1D17A5E6 E7CDAA80 BFBF787D 
+  AD731C8F 76239B80 C0F4D12E 59E04B98 55CB2B45 4F3D0342 5AD4A4D7 1631BF80 
+  708189AD 61962C15 23941ECB 34DF9EB5 1677863B FF3FD85D A6579FA3 F9678E7A 
+  B20E3D1D 61561ABD EE7FC0A9 450095D5 51497804 6C27511D 863F40FE 5A0217E4 
+  CC60EE85 CBF0B678 C0
+  	quit
+!
+no errdisable detect cause gbic-invalid
+license boot level ipservicesk9
+diagnostic bootup level minimal
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-999 priority 24576
+!
+!
+username admin privilege 15 password 0 $FDi%53#
+username ytiadmin privilege 15 secret 5 $1$PM4/$LVHmOJhsNZnd9QBUDtMCK.
+username Strategic privilege 15 secret 5 $1$PUMf$NhdrfSOTJygjVWp5n0xvP0
+username Strategic-NCM privilege 15 secret 5 $1$PUMf$NhdrfSOTJygjVWp5n0xvP0
+username Strategic-RO privilege 5 secret 5 $1$Qfig$FcJXi4Knj3oJAScTTP5q0/
+!
+redundancy
+ mode sso
+!
+hw-switch switch 1 logging onboard message
+hw-switch switch 2 logging onboard message
+hw-switch switch 3 logging onboard message
+hw-switch switch 4 logging onboard message
+!
+track 1 ip sla 1 reachability
+ delay down 30 up 15
+!
+track 2 ip sla 2 reachability
+ delay down 30 up 15
+!
+track 3 ip sla 3 reachability
+ delay down 30 up 15
+!
+track 4 ip sla 4 reachability
+ delay down 30 up 15
+!
+track 5 ip sla 5 reachability
+ delay down 30 up 15
+!
+track 6 ip sla 6 reachability
+ delay down 30 up 15
+!
+track 7 ip sla 7 reachability
+ delay down 30 up 15
+!
+track 8 ip sla 8 reachability
+ delay down 30 up 15
+!
+track 9 ip sla 9 reachability
+ delay down 30 up 15
+!
+track 10 ip sla 10 reachability
+ delay down 30 up 15
+!
+track 11 ip sla 11 reachability
+ delay down 30 up 15
+!
+!
+class-map match-any AutoQos-4.0-Output-Multimedia-Conf-Queue
+ match dscp af41  af42  af43 
+ match cos  4 
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, SGT Cache Full, LOGGING
+class-map match-any AutoQos-4.0-Output-Bulk-Data-Queue
+ match dscp af11  af12  af13 
+ match cos  1 
+class-map match-any system-cpp-default
+  description DHCP snooping, show forward and rest of traffic
+class-map match-any system-cpp-police-sys-data
+  description Learning cache ovfl, Crypto Control, Exception, EGR Exception, NFL SAMPLED DATA, Gold Pkt, RPF Failed
+class-map match-any AutoQos-4.0-Output-Priority-Queue
+ match dscp cs4  cs5  ef 
+ match cos  5 
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any AutoQos-4.0-Output-Multimedia-Strm-Queue
+ match dscp af31  af32  af33 
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any AutoQos-4.0-Voip-Data-CiscoPhone-Class
+ match cos  5 
+class-map match-any system-cpp-police-multicast
+  description Transit Traffic and MCAST Data
+class-map match-any AutoQos-4.0-Voip-Signal-CiscoPhone-Class
+ match cos  3 
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-control-low-priority
+  description ICMP redirect and general punt
+class-map match-any system-cpp-police-wireless-priority1
+  description Wireless priority 1
+class-map match-any system-cpp-police-wireless-priority2
+  description Wireless priority 2
+class-map match-any system-cpp-police-wireless-priority3-4-5
+  description Wireless priority 3,4 and 5
+class-map match-any non-client-nrt-class
+class-map match-any AutoQos-4.0-Default-Class
+ match access-group name AutoQos-4.0-Acl-Default
+class-map match-any AutoQos-4.0-Output-Trans-Data-Queue
+ match dscp af21  af22  af23 
+ match cos  2 
+class-map match-any system-cpp-police-routing-control
+  description Routing control
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+class-map match-any AutoQos-4.0-Output-Scavenger-Queue
+ match dscp cs1 
+class-map match-any AutoQos-4.0-Output-Control-Mgmt-Queue
+ match dscp cs2  cs3  cs6  cs7 
+ match cos  3 
+!
+policy-map port_child_policy
+ class non-client-nrt-class
+  bandwidth remaining ratio 10
+policy-map AutoQos-4.0-Output-Policy
+ class AutoQos-4.0-Output-Priority-Queue
+  priority level 1 percent 30
+ class AutoQos-4.0-Output-Control-Mgmt-Queue
+  bandwidth remaining percent 10 
+  queue-limit dscp cs2 percent 80
+  queue-limit dscp cs3 percent 90
+  queue-limit dscp cs6 percent 100
+  queue-limit dscp cs7 percent 100
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Multimedia-Conf-Queue
+  bandwidth remaining percent 10 
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Trans-Data-Queue
+  bandwidth remaining percent 10 
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Bulk-Data-Queue
+  bandwidth remaining percent 4 
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Scavenger-Queue
+  bandwidth remaining percent 1 
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Multimedia-Strm-Queue
+  bandwidth remaining percent 10 
+  queue-buffers ratio 10
+ class class-default
+  bandwidth remaining percent 25 
+  queue-buffers ratio 25
+policy-map AutoQos-4.0-Trust-Cos-Input-Policy
+ class class-default
+  set cos cos table AutoQos-4.0-Trust-Cos-Table
+policy-map system-cpp-policy
+ class system-cpp-police-data
+  police rate 200 pps
+ class system-cpp-police-sys-data
+  police rate 100 pps
+ class system-cpp-police-sw-forward
+  police rate 1000 pps
+ class system-cpp-police-multicast
+  police rate 500 pps
+ class system-cpp-police-multicast-end-station
+  police rate 2000 pps
+ class system-cpp-police-punt-webauth
+ class system-cpp-police-l2-control
+ class system-cpp-police-routing-control
+  police rate 1800 pps
+ class system-cpp-police-control-low-priority
+ class system-cpp-police-wireless-priority1
+ class system-cpp-police-wireless-priority2
+ class system-cpp-police-wireless-priority3-4-5
+ class system-cpp-police-topology-control
+ class system-cpp-police-dot1x-auth
+ class system-cpp-police-protocol-snooping
+ class system-cpp-police-forus
+ class system-cpp-default
+policy-map AutoQos-4.0-CiscoPhone-Input-Policy
+ class AutoQos-4.0-Voip-Data-CiscoPhone-Class
+  set dscp ef
+  police cir 128000 bc 8000
+   conform-action transmit 
+   exceed-action set-dscp-transmit dscp table policed-dscp
+ class AutoQos-4.0-Voip-Signal-CiscoPhone-Class
+  set dscp cs3
+  police cir 32000 bc 8000
+   conform-action transmit 
+   exceed-action set-dscp-transmit dscp table policed-dscp
+ class AutoQos-4.0-Default-Class
+  set dscp default
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel2
+ description link-aggregate configure key 10012
+ switchport access vlan 23
+ switchport mode access
+ switchport nonegotiate
+!
+interface Port-channel3
+ description link-aggregate configure key 10009
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface Port-channel4
+ description link-aggregate configure key 10010
+ switchport trunk allowed vlan 1,16,20,21,192
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface Port-channel18
+ description Uplink to YTI-Nexus_01 and YTI-Nexus-02
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+!
+interface Port-channel19
+ description Uplink to YTI-BKUP_Nexus_01 and YTI-BKUP_Nexus-02
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+!
+interface Port-channel20
+ description Cisco wireless controller management 1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 2,21,30,200
+ switchport mode trunk
+!
+interface Port-channel21
+ description Cisco wireless controller management 2
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 2,21,30,200
+ switchport mode trunk
+!
+interface Port-channel22
+ description Qnap Storage YTI-Storage5
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+ description Cisco wireless controller management 1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 2,21,30,200
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet1/0/2
+ description Cisco wireless controller management 2
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 2,21,30,200
+ switchport mode trunk
+ channel-group 21 mode on
+!
+interface GigabitEthernet1/0/3
+ description Direct Palo Alto management
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/4
+ description Direct Checkpoint 1 DMZ
+ switchport access vlan 192
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/5
+ description C6-7 Nexus 01 management
+ switchport access vlan 16
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/6
+ description C4-3 HyperV2 LAN
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/7
+ description C4-3 HyperV2 LAN
+ switchport access vlan 192
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/8
+ description C4-3 HyperV2 iDrac
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/9
+ description C3-9 YTI-Storage1 - LAN
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/10
+ description C3-9 YTI-Storage1 - iLO
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/11
+ description C3-18 HP Plotter 2nd Floor Lobby
+ switchport access vlan 28
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/12
+ description Direct Checkpoint 2 DMZ
+ switchport access vlan 192
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 26
+ switchport trunk native vlan 26
+ switchport trunk allowed vlan 1,16,26,96
+ switchport mode trunk
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 26
+ switchport trunk native vlan 26
+ switchport mode trunk
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/15
+ description TO VZW SIGNAL BOOSTER
+ switchport access vlan 30
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/16
+ description To Kevin Huynh
+ switchport access vlan 26
+ switchport trunk native vlan 26
+ switchport mode trunk
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/17
+ description ytip-mj-app.IP 10.3.16.10
+ switchport access vlan 16
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/18
+ description C1-9 OnSSI
+ switchport access vlan 23
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/20
+ description C1-15 IT Office
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/21
+ description C1-18 black cable at Kirk's desk
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/22
+ description Direct Checkpoint 2 WAN
+ switchport access vlan 777
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/23
+ description C1-11 Xvault camera
+ switchport access vlan 23
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/24
+ description IT office
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/25
+ description (MPLS yti-la-gwsw02 Port 23)
+ switchport trunk native vlan 2
+ switchport trunk allowed vlan 1,2,26,200,998,999
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/26
+ description Direct Checkpoint heartbeat
+ switchport access vlan 800
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/27
+ description Direct Checkpoint LAN
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/28
+ description Direct Checkpoint LAN
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/29
+ description Direct AT&T router
+ switchport access vlan 777
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/30
+ description Qnap YTI-Storage5
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ channel-group 22 mode active
+!
+interface GigabitEthernet1/0/31
+ description Checkpoint 1 WAN
+ switchport access vlan 777
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/32
+ description Direct YTI Tunnel G0/1
+ switchport access vlan 16
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/33
+ description C2-14 - IT office
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/34
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/35
+ description C2-19 IT Office wall TV
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/36
+ description C2-15 - IT office
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/37
+ description Direct Cisco 1941 Ge0/0
+ switchport access vlan 777
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/38
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/39
+ description Sflow forwarding
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/40
+ description Direct ASA VPN gateway
+ switchport access vlan 777
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/41
+ description C2-19 IT Lexmark printer
+ switchport access vlan 28
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/42
+ description Direct YTII_MQ-server
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/43
+ description Cisco Firepower eval NUC port
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/44
+ description Cisco AP 1815 - IT office
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/45
+ description YTIP12HPV01
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/46
+ description C2-13 - IT office
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/47
+ description C1-13 Camera 2nd floor Admin
+ switchport access vlan 23
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/48
+ description local LAN access
+ switchport access vlan 26
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/1/1
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+ channel-group 19 mode active
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+ ip flow monitor Netflow-Monitor-In input
+ ip flow monitor Netflow-Monitor-Out output
+!
+interface GigabitEthernet1/1/4
+!
+interface TenGigabitEthernet1/1/1
+!
+interface TenGigabitEthernet1/1/2
+!
+interface TenGigabitEthernet1/1/3
+ description (Brocade port 9/1)
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 3 mode active
+!
+interface TenGigabitEthernet1/1/4
+ description YTI-Nexus_02 Port 1/17
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+ channel-group 18 mode active
+!
+interface GigabitEthernet2/0/1
+ description YTINETAPP01 e0M
+ switchport access vlan 22
+!
+interface GigabitEthernet2/0/2
+ description YTINETAPP02 e0M
+ switchport access vlan 22
+!
+interface GigabitEthernet2/0/3
+ switchport access vlan 22
+!
+interface GigabitEthernet2/0/4
+ switchport access vlan 22
+!
+interface GigabitEthernet2/0/5
+ description YTI-Nexus_01 Port Mgmt0
+ switchport access vlan 22
+!
+interface GigabitEthernet2/0/6
+ description YTI-Nexus_02 Port Mgmt0
+ switchport access vlan 22
+!
+interface GigabitEthernet2/0/7
+ description (Brocade port 6/1)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/8
+ description (Brocade port 6/2)
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/9
+ description YTI-Storage3 10.3.21.26
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/10
+ description YTI-Storage4 10.3.21.27
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/11
+ description (Brocade port 6/5)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/12
+ description yti-la-gwsw01 F0/23 (Brocade port 6/6)
+ switchport trunk native vlan 2
+ switchport trunk allowed vlan 1,2,26,200,998,999
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/13
+ description (Brocade port 6/7)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/14
+ description (Brocade port 6/8)
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/15
+ description (Brocade port 6/9)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/16
+ description (Brocade port 6/10)
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/17
+ description (Brocade port 6/11)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/18
+ description 10.3.20.220 - ytiP12HPV01 (Brocade port 6/12)
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/19
+ description description DAP-III 001 - 10.3.21.41
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/20
+ description DAP-III 002 - 10.3.21.42
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/21
+ description (Brocade port 6/15)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/22
+ description (Brocade port 6/16)
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/23
+ description (Brocade port 6/17)
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/24
+ description UPS room temp sensor
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/25
+ description direct Checkpoint1 management
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/26
+ description C6-1 USB key server 1
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/27
+ description LotusNotes - 10.3.1.46
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/28
+ description (Brocade port 6/22)
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/29
+ description (Brocade port 6/23)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/30
+ description Qnap YTI-Storage5
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ channel-group 22 mode active
+!
+interface GigabitEthernet2/0/31
+ description EMPTY
+ switchport access vlan 20
+!
+interface GigabitEthernet2/0/32
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/33
+ description C6-2 USB key server 2
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/34
+ description C3-12 spare crane server 
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/35
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/36
+ description Checkpoint Heartbeat 2
+ switchport access vlan 800
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/37
+ description YTI-ONSSI - 10.3.20.78
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/38
+ description LS43 Comnet - 10.3.21.143 (Brocade port 7/20)
+ switchport access vlan 23
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/39
+ description rDAC - ytiP12HPV01 (Brocade port 7/21)
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/40
+ description NTP server
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/41
+ description (Brocade port 7/23)
+ switchport access vlan 22
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/42
+ description (Brocade port 7/24)
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/43
+ switchport access vlan 26
+ switchport mode access
+ switchport voice vlan 96
+ trust device cisco-phone
+ auto qos voip cisco-phone 
+ spanning-tree portfast
+ service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet2/0/44
+ description Cisco Voice Gateway
+ switchport access vlan 96
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet2/0/45
+ switchport access vlan 22
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/46
+ switchport access vlan 96
+!
+interface GigabitEthernet2/0/47
+ description yti-bkup-nexus-01
+ switchport access vlan 22
+ switchport mode access
+!
+interface GigabitEthernet2/0/48
+ description yti-bkup-nexus-02
+ switchport access vlan 22
+ switchport mode access
+!
+interface GigabitEthernet2/1/1
+!
+interface GigabitEthernet2/1/2
+!
+interface GigabitEthernet2/1/3
+ ip flow monitor Netflow-Monitor-In input
+ ip flow monitor Netflow-Monitor-Out output
+!
+interface GigabitEthernet2/1/4
+!
+interface TenGigabitEthernet2/1/1
+!
+interface TenGigabitEthernet2/1/2
+!
+interface TenGigabitEthernet2/1/3
+ description (Brocade port 9/2)
+ switchport trunk allowed vlan 1,16,20,21,192
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 4 mode active
+!
+interface TenGigabitEthernet2/1/4
+ description YTI-Nexus_02 Port 1/18
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+ channel-group 18 mode active
+!
+interface GigabitEthernet3/0/1
+ description Admin.IDF.3.1 G1/1/1 (Brocade port 1/1)
+ switchport trunk allowed vlan 1,10,16,21,23,75
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet3/0/2
+ description Admin.IDF.4.1 G1/1/1 (Brocade port 1/2)
+ switchport trunk allowed vlan 1,2,16,20,21,23,75
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet3/0/3
+ description connecetion to Marine.IDF - Gi1/1/1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 1,2,4,10-12,14,16,20,21,23,25,26,28,30-41,75,96
+ switchport trunk allowed vlan add 200
+ switchport mode trunk
+ switchport nonegotiate
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet3/0/4
+ description connection to MR.wireless - Gi1/1/1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 1,2,10-12,14,16,17,20,21,23,26,28,30-41,96,777
+ switchport trunk allowed vlan add 998,999
+ switchport mode trunk
+ switchport nonegotiate
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet3/0/5
+ description connection to Admin.IDF.3.1 - Gi1/1/1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 1,2,10,16,21,23,26,28,30,75,96,200
+ switchport mode trunk
+ switchport nonegotiate
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet3/0/6
+ description connection to Admin.IDF.4.1 - Gi1/1/1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 1,2,10,11,16,20,21,23,26,28,30,75,96,200
+ switchport mode trunk
+ switchport nonegotiate
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet3/0/7
+ description LWAPP LAP34 - 10.3.10.204 / LSensor 34 - 10.3.10.134 (Brocade port 7/1)
+ switchport trunk native vlan 21
+ switchport trunk allowed vlan 10-12,14,21-23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet3/0/8
+ description LS35 Comnet - 10.3.21.162 (Brocade port 7/2)
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10-14,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet3/0/9
+ description LWAPP LAP36 - 10.3.10.206 / LSensor 36 - 10.3.10.136 (Brocade port 7/3)
+ switchport trunk native vlan 21
+ switchport trunk allowed vlan 10-12,14,21-23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet3/0/10
+ description LS44 Comnet - 10.3.21.244 (Brocade port 7/4)
+ switchport trunk native vlan 21
+ switchport trunk allowed vlan 10-12,14,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet3/0/11
+ description LS47 Comnet - 10.3.21.247 (Brocade port 7/5)
+ switchport trunk native vlan 21
+ switchport trunk allowed vlan 10,12,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet3/0/12
+ description LS45 Comnet - 10.3.21.173 (Brocade port 7/6)
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10-12,14,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet3/0/13
+ description LWAPP LAP37 - 10.3.10.207 / LSensor 37 - 10.3.10.137 (Brocade port 7/7)
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10-12,14
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet3/0/14
+!
+interface GigabitEthernet3/0/15
+!
+interface GigabitEthernet3/0/16
+!
+interface GigabitEthernet3/0/17
+!
+interface GigabitEthernet3/0/18
+!
+interface GigabitEthernet3/0/19
+!
+interface GigabitEthernet3/0/20
+!
+interface GigabitEthernet3/0/21
+!
+interface GigabitEthernet3/0/22
+!
+interface GigabitEthernet3/0/23
+!
+interface GigabitEthernet3/0/24
+!
+interface GigabitEthernet3/1/1
+!
+interface GigabitEthernet3/1/2
+!
+interface GigabitEthernet3/1/3
+ ip flow monitor Netflow-Monitor-In input
+ ip flow monitor Netflow-Monitor-Out output
+!
+interface GigabitEthernet3/1/4
+!
+interface TenGigabitEthernet3/1/1
+!
+interface TenGigabitEthernet3/1/2
+!
+interface TenGigabitEthernet3/1/3
+ description (Brocade port 10/1)
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 3 mode active
+!
+interface TenGigabitEthernet3/1/4
+ description YTI-Nexus_01 Port 1/17
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+ channel-group 18 mode active
+!
+interface GigabitEthernet4/0/1
+ description connection to Admin.IDF.1 - Gi1/1/1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 1,2,4,10-12,14,20,21,23,26,28,30,75,96,192,200
+ switchport mode trunk
+ switchport nonegotiate
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet4/0/2
+ description Wireless controller 10.3.10.2 G0/0/1
+ switchport trunk allowed vlan 1,2,4,10-12,16,25,30,96
+ switchport mode trunk
+!
+interface GigabitEthernet4/0/3
+ description To Guard Booth 3650 Switch 10.3.21.104
+ switchport trunk allowed vlan 21,23,26,96
+ switchport mode trunk
+ switchport nonegotiate
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet4/0/4
+ description FTUi A3 to Outgate switch in pedestal lane 22
+ switchport trunk native vlan 21
+ switchport trunk allowed vlan 1,4,21,26,96
+ switchport mode trunk
+ switchport nonegotiate
+ auto qos trust 
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet4/0/5
+!
+interface GigabitEthernet4/0/6
+!
+interface GigabitEthernet4/0/7
+ description LS46 Comnet - 10.3.21.164 (Brocade port 7/8)
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10-12,14,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet4/0/8
+ description LWAPP LAP42 (Brocade port 7/9)
+ switchport trunk native vlan 21
+ switchport trunk allowed vlan 10-12,14,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet4/0/9
+ description LS43 Comnet - 10.3.21.143 (Brocade port 7/10)
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10-12,14,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet4/0/10
+ description LS41 Comnet - 10.3.21.141 (Brocade port 7/11)
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 10-12,14,21,23,200
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet4/0/11
+ description LWAPP LAP40 - 10.3.10.210 / LSensor 40 - 10.3.10.140 (Brocade port 7/12)
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10-12,14
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet4/0/12
+ description LS39 Comnet - 10.3.21.163 (Brocade port 7/13)
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10-12,14,16,21,23
+ switchport mode trunk
+ switchport nonegotiate
+ duplex full
+!
+interface GigabitEthernet4/0/13
+!
+interface GigabitEthernet4/0/14
+!
+interface GigabitEthernet4/0/15
+!
+interface GigabitEthernet4/0/16
+!
+interface GigabitEthernet4/0/17
+!
+interface GigabitEthernet4/0/18
+!
+interface GigabitEthernet4/0/19
+!
+interface GigabitEthernet4/0/20
+!
+interface GigabitEthernet4/0/21
+!
+interface GigabitEthernet4/0/22
+!
+interface GigabitEthernet4/0/23
+!
+interface GigabitEthernet4/0/24
+!
+interface GigabitEthernet4/1/1
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+ channel-group 19 mode active
+!
+interface GigabitEthernet4/1/2
+!
+interface GigabitEthernet4/1/3
+ ip flow monitor Netflow-Monitor-In input
+ ip flow monitor Netflow-Monitor-Out output
+!
+interface GigabitEthernet4/1/4
+!
+interface TenGigabitEthernet4/1/1
+!
+interface TenGigabitEthernet4/1/2
+!
+interface TenGigabitEthernet4/1/3
+ description (Brocade port 10/2)
+ switchport trunk allowed vlan 1,16,20,21,192
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 4 mode active
+!
+interface TenGigabitEthernet4/1/4
+ description YTI-Nexus_01 Port 1/18
+ switchport access vlan 18
+ switchport trunk native vlan 18
+ switchport mode trunk
+ channel-group 18 mode active
+!
+interface GigabitEthernet5/0/1
+ description Cisco wireless controller management 1
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 2,21,30,200
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet5/0/2
+ description Cisco wireless controller management 2
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 2,21,30,200
+ switchport mode trunk
+ channel-group 21 mode on
+!
+interface GigabitEthernet5/0/3
+ description TO SSS FIREWALL INSIDE 10.3.21.13
+ switchport access vlan 21
+ switchport mode access
+!
+interface GigabitEthernet5/0/4
+ description TO SSS FIREWALL OUTSIDE 12.129.159.133
+ switchport access vlan 777
+ switchport mode access
+!
+interface GigabitEthernet5/0/5
+!
+interface GigabitEthernet5/0/6
+!
+interface GigabitEthernet5/0/7
+!
+interface GigabitEthernet5/0/8
+ description C1-12 Netbotz environment monitor
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/9
+ description C2-1 YTI-Utility LAN 
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet5/0/10
+ description C2-2 YTI-Utility iLO
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/11
+ description C2-3 YTI-SolarWinds LAN
+ switchport access vlan 20
+!
+interface GigabitEthernet5/0/12
+ description C2-4 YTI-SolarWinds iLO
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/13
+ description C2-5 YTI-SolarSQL LAN
+ switchport access vlan 20
+!
+interface GigabitEthernet5/0/14
+ description C2-6 YTI-SolarSQL iLO
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/15
+ description C3-1 YTI-Utility Server LAN
+ switchport access vlan 20
+!
+interface GigabitEthernet5/0/16
+ description C3-1 YTI-Utility PC LAN
+ switchport access vlan 26
+!
+interface GigabitEthernet5/0/17
+ description C3-1 YTI-Utility iLO
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/18
+ description C3-2 YTI-Storage1 iDrac
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/19
+ description C3-3 YTI-Storage2 LAN
+ switchport access vlan 20
+!
+interface GigabitEthernet5/0/20
+ description C3-4 YTI-Storage2 iDrac
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/21
+ description C3-4 YI-Storage 2 iDrac
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/22
+!
+interface GigabitEthernet5/0/23
+ description C6-7 UCS2 Nexxus 1 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/24
+ description C6-8 UCS2 Nexxus 2 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/25
+ description direct Checkpoint2 management
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet5/0/26
+ description C6-10 UCS2 NetApp 2 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/27
+ description C3-4 MijackApp LAN
+ switchport access vlan 16
+!
+interface GigabitEthernet5/0/28
+ description C3-4 MijackApp iLO
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/29
+!
+interface GigabitEthernet5/0/30
+!
+interface GigabitEthernet5/0/31
+ description C7-7 UCS1 Nexxus 1 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/32
+ description C7-8 UCS1 Nexxus 2 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/33
+ description C7-9 UCS1 NetApp 1 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/34
+ description C7-10 UCS1 NetApp 2 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/35
+ description C7-11 UCS1 Fabric 1 management
+ switchport access vlan 22
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet5/0/36
+ description C7-12 UCS1 Fabric 2 management
+ switchport access vlan 22
+!
+interface GigabitEthernet5/0/37
+ description QuayChain NAT interface
+ switchport access vlan 29
+ logging event link-status
+ spanning-tree guard root
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/38
+ description QuayChain LAN port
+ switchport access vlan 21
+!
+interface GigabitEthernet5/0/39
+ description C10-1 YTIP-OCRGateI1 LAN
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/40
+ description C10-2 YTIP-OCRGateI1 iLO
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/41
+ description C10-3 YTIP-OCRGateI2 LAN
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/42
+ description C10-4 YTIP-OCRGateI2 iLO
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/43
+ description C10-5 YTIP-OCRGateO1 LAN
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/44
+ description C10-6 YTIP-OCRGateO1 iLO
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/45
+ description C10-7 YTIP-OCRGateO2 LAN
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/46
+ description C10-8 YTIP-OCRGateO2 iLO
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/47
+ description C10-9 YTIP-OCRGateO3 LAN
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ logging event link-status
+ spanning-tree guard root
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/0/48
+ description C10-10 YTIP-OCRGateO3 iLO
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ ip nbar protocol-discovery
+!
+interface GigabitEthernet5/1/1
+!
+interface GigabitEthernet5/1/2
+!
+interface GigabitEthernet5/1/3
+!
+interface GigabitEthernet5/1/4
+!
+interface TenGigabitEthernet5/1/1
+!
+interface TenGigabitEthernet5/1/2
+!
+interface TenGigabitEthernet5/1/3
+!
+interface TenGigabitEthernet5/1/4
+!
+interface Vlan1
+ ip address 10.3.1.1 255.255.255.0
+ no ip redirects
+!
+interface Vlan2
+ ip address 10.3.2.1 255.255.255.0
+ ip helper-address 10.3.20.5
+ ip helper-address 10.3.20.6
+ no ip redirects
+!
+interface Vlan4
+ description LA King
+ ip address 10.3.4.1 255.255.255.0
+ no ip redirects
+!
+interface Vlan10
+ ip address 10.3.10.1 255.255.255.0
+ no ip redirects
+!
+interface Vlan11
+ ip address 10.3.11.1 255.255.255.0
+ ip access-group 101 in
+!
+interface Vlan12
+ ip address 10.3.12.1 255.255.255.0
+!
+interface Vlan14
+ ip address 10.3.14.1 255.255.254.0
+ no ip redirects
+!
+interface Vlan16
+ description MiJack VLAN
+ ip address 10.3.16.1 255.255.254.0
+ no ip redirects
+!
+interface Vlan18
+ ip address 10.3.18.5 255.255.254.0
+ no ip redirects
+!
+interface Vlan20
+ ip address 10.3.20.1 255.255.255.0
+ no ip redirects
+!
+interface Vlan21
+ description Management
+ ip address 10.3.21.1 255.255.255.0
+ no ip redirects
+!
+interface Vlan22
+ ip address 10.3.22.1 255.255.255.0
+!
+interface Vlan23
+ ip address 10.3.23.1 255.255.255.0
+ no ip redirects
+!
+interface Vlan26
+ description PC network
+ ip address 10.3.26.1 255.255.254.0
+ ip helper-address 10.3.20.5
+ ip helper-address 10.3.20.6
+!
+interface Vlan28
+ ip address 10.3.28.1 255.255.255.0
+!
+interface Vlan29
+ description QuayChain NAT interface
+ ip address 10.3.29.1 255.255.255.0
+!
+interface Vlan30
+ ip address 10.3.30.1 255.255.255.0
+ ip helper-address 10.3.20.5
+ ip helper-address 10.3.20.6
+ no ip redirects
+ ip access-group 130 in
+!
+interface Vlan31
+ description CRANE1
+ ip address 10.3.31.1 255.255.255.240
+!
+interface Vlan32
+ description CRANE2
+ ip address 10.3.31.17 255.255.255.240
+!
+interface Vlan33
+ description CRANE3
+ ip address 10.3.31.33 255.255.255.240
+!
+interface Vlan34
+ description CRANE4
+ ip address 10.3.31.49 255.255.255.240
+!
+interface Vlan35
+ description CRANE5
+ ip address 10.3.31.65 255.255.255.240
+!
+interface Vlan36
+ description CRANE6
+ ip address 10.3.31.81 255.255.255.240
+!
+interface Vlan37
+ description CRANE7
+ ip address 10.3.31.97 255.255.255.240
+!
+interface Vlan38
+ description CRANE8
+ ip address 10.3.31.113 255.255.255.240
+!
+interface Vlan39
+ description CRANE9
+ ip address 10.3.31.129 255.255.255.240
+!
+interface Vlan40
+ description CRANE15
+ ip address 10.3.31.145 255.255.255.240
+!
+interface Vlan41
+ description CRANE16
+ ip address 10.3.31.161 255.255.255.240
+!
+interface Vlan42
+ description CRANE12
+ ip address 10.3.31.177 255.255.255.240
+!
+interface Vlan96
+ description Voice VLAN
+ ip address 10.3.96.1 255.255.255.0
+ ip helper-address 10.3.96.30
+!
+interface Vlan102
+ description CBRS test VLAN
+ no ip address
+ no ip redirects
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip route 10.3.31.133 255.255.255.255 Vlan39 name "Crane0 Cradlepoint Primary" track 1
+ip route 10.3.31.131 255.255.255.255 Vlan39 name "Crane0 Server Primary" track 1
+ip route 10.3.31.3 255.255.255.255 Vlan31 name "Crane1 Cradlepoint Primary" track 2
+ip route 10.3.31.5 255.255.255.255 Vlan31 name "Crane1 Server Primary" track 2
+ip route 10.3.31.19 255.255.255.255 Vlan32 name "Crane2 Server Primary" track 3
+ip route 10.3.31.21 255.255.255.255 Vlan32 name "Crane2 Cradlepoint Primary" track 3
+ip route 10.3.31.35 255.255.255.255 Vlan33 name "Crane3 Server Primary" track 4
+ip route 10.3.31.37 255.255.255.255 Vlan33 name "Crane3 Cradlepoint Primary" track 4
+ip route 10.3.31.51 255.255.255.255 Vlan34 name "Crane4 Server Primary" track 5
+ip route 10.3.31.53 255.255.255.255 Vlan34 name "Crane4 Cradlepoint Primary" track 5
+ip route 10.3.31.149 255.255.255.255 Vlan40 name "Crane5 Cradlepoint Primary" track 6
+ip route 10.3.31.147 255.255.255.255 Vlan40 name "Crane5 Server Primary" track 6
+ip route 10.3.31.165 255.255.255.255 Vlan41 name "Crane6 Cradlepoint Primary" track 7
+ip route 10.3.31.163 255.255.255.255 Vlan41 name "Crane6 Server Primary" track 7
+ip route 10.3.31.67 255.255.255.255 Vlan35 name "Crane7 Server Primary" track 8
+ip route 10.3.31.69 255.255.255.255 Vlan35 name "Crane7 Cradlepoint Primary" track 8
+ip route 10.3.31.83 255.255.255.255 Vlan36 name "Crane8 Server Primary" track 9
+ip route 10.3.31.86 255.255.255.255 Vlan36 name "Crane8 Cradlepoint Primary" track 9
+ip route 10.3.31.99 255.255.255.255 Vlan37 name "Crane9 Server Primary" track 10
+ip route 10.3.31.101 255.255.255.255 Vlan37 name "Crane9 Cradlepoint Primary" track 10
+ip route 10.3.31.115 255.255.255.255 Vlan38 name "Crane10 Server Primary" track 11
+ip route 10.3.31.117 255.255.255.255 Vlan38 name "Crane10 Cradlepoint Primary" track 11
+ip route 0.0.0.0 0.0.0.0 10.3.1.3
+ip route 10.3.5.0 255.255.255.0 10.3.21.6
+ip route 10.3.11.15 255.255.255.255 10.3.1.254 250
+ip route 10.3.11.16 255.255.255.255 10.3.1.254 250
+ip route 10.3.11.53 255.255.255.255 10.3.1.254
+ip route 10.3.11.82 255.255.255.255 10.3.1.254
+ip route 10.3.11.83 255.255.255.255 10.3.1.254
+ip route 10.3.11.84 255.255.255.255 10.3.1.254 name CP_Truck2
+ip route 10.3.11.85 255.255.255.255 10.3.1.254 name LXE_Truck2
+ip route 10.3.11.86 255.255.255.255 10.3.1.254 name CP_Truck3
+ip route 10.3.11.87 255.255.255.255 10.3.1.254 name LXE_Truck3
+ip route 10.3.11.88 255.255.255.255 10.3.1.254 name CP_Truck4
+ip route 10.3.11.89 255.255.255.255 10.3.1.254 name LXE_Truck4
+ip route 10.3.11.96 255.255.255.255 10.3.1.254 name CP_Truck5
+ip route 10.3.11.97 255.255.255.255 10.3.1.254 name LXE_Truck5
+ip route 10.3.11.165 255.255.255.255 10.3.1.254
+ip route 10.3.31.3 255.255.255.255 10.3.1.254 250 name "Crane1 Server Secondary"
+ip route 10.3.31.5 255.255.255.255 10.3.1.254 250 name "Crane1 Cradlepoint Secondary"
+ip route 10.3.31.19 255.255.255.255 10.3.1.254 250 name "Crane2 Server Secondary"
+ip route 10.3.31.21 255.255.255.255 10.3.1.254 250 name "Crane2 Cradlepoint Secondary"
+ip route 10.3.31.35 255.255.255.255 10.3.1.254 250 name "Crane3 Server Secondary"
+ip route 10.3.31.37 255.255.255.255 10.3.1.254 250 name "Crane3 Cradlepoint Secondary"
+ip route 10.3.31.51 255.255.255.255 10.3.1.254 250 name "Crane4 Server Secondary"
+ip route 10.3.31.53 255.255.255.255 10.3.1.254 250 name "Crane4 Cradlepoint Secondary"
+ip route 10.3.31.67 255.255.255.255 10.3.1.254 250 name "Crane7 Server Secondary"
+ip route 10.3.31.69 255.255.255.255 10.3.1.254 250 name "Crane7 Cradlepoint Secondary"
+ip route 10.3.31.83 255.255.255.255 10.3.1.254 250 name "Crane8 Server Secondary"
+ip route 10.3.31.86 255.255.255.255 10.3.1.254 250 name "Crane8 Cradlepoint Secondary"
+ip route 10.3.31.99 255.255.255.255 10.3.1.254 250 name "Crane9 Server Secondary"
+ip route 10.3.31.101 255.255.255.255 10.3.1.254 250 name "Crane9 Cradlepoint Secondary"
+ip route 10.3.31.115 255.255.255.255 10.3.1.254 250 name "Crane10 Server Secondary"
+ip route 10.3.31.117 255.255.255.255 10.3.1.254 250 name "Crane10 Cradlepoint Secondary"
+ip route 10.3.31.131 255.255.255.255 10.3.1.254 250 name "Crane0 Server Secondary"
+ip route 10.3.31.133 255.255.255.255 10.3.1.254 250 name "Crane0 Cradlepoint Secondary"
+ip route 10.3.31.147 255.255.255.255 10.3.1.254 250 name "Crane5 Server Secondary"
+ip route 10.3.31.149 255.255.255.255 10.3.1.254 250 name "Crane5 Cradlepoint Secondary"
+ip route 10.3.31.163 255.255.255.255 10.3.1.254 250 name "Crane6 Server Secondary"
+ip route 10.3.31.165 255.255.255.255 10.3.1.254 250 name "Crane6 Cradlepoint Secondary"
+ip route 10.3.98.0 255.255.255.0 10.3.1.254
+ip route 10.3.99.0 255.255.255.0 10.3.1.12
+ip route 10.3.130.0 255.255.255.0 10.3.1.254
+ip route 10.7.0.0 255.255.0.0 10.3.21.13
+ip route 10.21.0.0 255.255.0.0 10.3.1.254
+ip route 10.40.0.0 255.255.0.0 10.3.1.254
+ip route 10.103.6.0 255.255.255.0 10.3.1.254
+ip route 10.254.29.252 255.255.255.255 10.3.1.254
+ip route 10.255.255.0 255.255.255.0 10.3.1.254
+ip route 96.60.119.192 255.255.255.224 10.3.1.28
+ip route 167.144.0.0 255.255.0.0 10.3.20.253
+ip route 192.168.1.0 255.255.255.0 10.3.1.254
+ip route 192.168.123.0 255.255.255.0 10.3.1.5
+ip route 192.168.192.0 255.255.252.0 10.3.1.254
+ip ssh version 2
+ip ssh client algorithm kex diffie-hellman-group14-sha1
+!
+!
+ip access-list standard Crane4SLA
+ permit 10.3.31.52
+ permit 10.3.31.53
+ permit 10.3.31.51
+!
+ip access-list extended AutoQos-4.0-Acl-Default
+ permit ip any any
+ip access-list extended AutoQos-4.0-wlan-Acl-Bulk-Data
+ permit tcp any any eq 22
+ permit tcp any any eq 465
+ permit tcp any any eq 143
+ permit tcp any any eq 993
+ permit tcp any any eq 995
+ permit tcp any any eq 1914
+ permit tcp any any eq ftp
+ permit tcp any any eq ftp-data
+ permit tcp any any eq smtp
+ permit tcp any any eq pop3
+ip access-list extended AutoQos-4.0-wlan-Acl-MultiEnhanced-Conf
+ permit udp any any range 16384 32767
+ permit tcp any any range 50000 59999
+ip access-list extended AutoQos-4.0-wlan-Acl-Scavanger
+ permit tcp any any range 2300 2400
+ permit udp any any range 2300 2400
+ permit tcp any any range 6881 6999
+ permit tcp any any range 28800 29100
+ permit tcp any any eq 1214
+ permit udp any any eq 1214
+ permit tcp any any eq 3689
+ permit udp any any eq 3689
+ permit tcp any any eq 11999
+ip access-list extended AutoQos-4.0-wlan-Acl-Signaling
+ permit tcp any any range 2000 2002
+ permit tcp any any range 5060 5061
+ permit udp any any range 5060 5061
+ip access-list extended AutoQos-4.0-wlan-Acl-Transactional-Data
+ permit tcp any any eq 443
+ permit tcp any any eq 1521
+ permit udp any any eq 1521
+ permit tcp any any eq 1526
+ permit udp any any eq 1526
+ permit tcp any any eq 1575
+ permit udp any any eq 1575
+ permit tcp any any eq 1630
+ permit udp any any eq 1630
+ permit tcp any any eq 1527
+ permit tcp any any eq 6200
+ permit tcp any any eq 3389
+ permit tcp any any eq 5985
+ permit tcp any any eq 8080
+ip access-list extended Trusted-Subnet
+ remark Bastion Hosts
+ permit ip 10.0.0.0 0.255.255.255 any
+ deny   ip any any log
+ remark Bastion Hosts
+!
+ip sla 1
+ icmp-echo 10.3.14.93 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 1 life forever start-time now
+ip sla 2
+ icmp-echo 10.3.14.13 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 2 life forever start-time now
+ip sla 3
+ icmp-echo 10.3.14.23 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 3 life forever start-time now
+ip sla 4
+ icmp-echo 10.3.14.33 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 4 life forever start-time now
+ip sla 5
+ icmp-echo 10.3.14.43 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 5 life forever start-time now
+ip sla 6
+ icmp-echo 10.3.14.123 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 6 life forever start-time now
+ip sla 7
+ icmp-echo 10.3.14.113 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 7 life forever start-time now
+ip sla 8
+ icmp-echo 10.3.14.53 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 8 life forever start-time now
+ip sla 9
+ icmp-echo 10.3.14.63 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 9 life forever start-time now
+ip sla 10
+ icmp-echo 10.3.14.73 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 10 life forever start-time now
+ip sla 11
+ icmp-echo 10.3.14.83 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 11 life forever start-time now
+ip sla 15
+ icmp-echo 10.3.14.123 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 15 life forever start-time now
+ip sla 16
+ icmp-echo 10.3.14.113 source-ip 10.3.14.1
+ frequency 5
+ip sla schedule 16 life forever start-time now
+logging trap notifications
+logging source-interface Vlan1
+logging host 10.3.20.19
+logging host 10.3.20.222
+access-list 22 permit 10.0.0.0 0.255.255.255
+access-list 23 permit 10.0.0.0 0.255.255.255
+access-list 61 permit 10.3.20.70
+access-list 61 permit 10.255.255.105
+access-list 101 permit ip any any
+access-list 101 permit ip any any dscp default
+access-list 130 permit udp any any range bootps bootpc
+access-list 130 remark GUEST_Internet
+access-list 130 deny   ip any 192.168.0.0 0.0.255.255
+access-list 130 deny   ip any 172.16.0.0 0.15.255.255
+access-list 130 deny   ip any 10.0.0.0 0.255.255.255
+access-list 130 permit ip any any
+!
+snmp-server community insight RO
+snmp-server community vector_mon RO
+snmp-server community yti_reader RO
+snmp-server community Strategic@YTI RO
+snmp-server location YTI Los Angeles
+snmp-server contact CSS
+!
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+privilege exec level 5 ping
+!
+line con 0
+ password H3lpd3sk
+ login
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 15 0
+ password $FDi%53#
+ login local
+ transport preferred ssh
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ exec-timeout 15 0
+ password $FDi%53#
+ login
+ transport input ssh
+!
+ntp source Vlan96
+ntp master
+ntp server 10.3.21.5
+!
+wsma agent exec
+ profile httplistener
+ profile httpslistener
+!
+wsma agent config
+ profile httplistener
+ profile httpslistener
+!
+wsma agent filesys
+ profile httplistener
+ profile httpslistener
+!
+wsma agent notify
+ profile httplistener
+ profile httpslistener
+!
+!
+wsma profile listener httplistener
+ transport http
+!
+wsma profile listener httpslistener
+ transport https
+!
+ap dot11 airtime-fairness policy-name Default 0
+ap group default-group
+ap hyperlocation ble-beacon 0
+ap hyperlocation ble-beacon 1
+ap hyperlocation ble-beacon 2
+ap hyperlocation ble-beacon 3
+ap hyperlocation ble-beacon 4
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Admin_MDF tty2 is now available
+
+
+
+
+
+Press RETURN to get started.
+

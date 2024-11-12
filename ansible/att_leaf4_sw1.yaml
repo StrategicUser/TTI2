@@ -1,0 +1,7 @@
+---
+- hosts: att_leaf4_sw1
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: att_leaf4_sw1

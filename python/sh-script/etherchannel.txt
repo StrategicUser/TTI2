@@ -1,0 +1,43 @@
+ttilgb-6513a#sh etherchannel sum
+Flags:  D - down        P - bundled in port-channel
+        I - stand-alone s - suspended
+        H - Hot-standby (LACP only)
+        R - Layer3      S - Layer2
+        U - in use      f - failed to allocate aggregator
+
+        M - not in use, minimum links not met
+        u - unsuitable for bundling
+        w - waiting to be aggregated
+        d - default port
+
+        A - formed by Auto LAG
+
+
+Number of channel-groups in use: 1
+Number of aggregators:           1
+
+Group  Port-channel  Protocol    Ports
+------+-------------+-----------+-----------------------------------------------
+1      Po1(SU)         LACP      Gi1/0/23(P) Gi1/0/24(P)
+2      Po4(SU)         LACP      Gi1/0/47(P) Gi1/0/48(P)
+10     Po10(SU)         -        Gi1/2/1(D)  Gi1/2/2(D)  Gi2/2/2(P)  Gi2/2/3(D)  
+20     Po20(SU)         -        Gi1/2/5(P)  Gi1/2/6(P)  Gi1/2/7(P)  
+                                 Gi2/2/5(P)  Gi2/2/6(P)  Gi2/2/7(P)  
+30     Po30(SU)         -        Gi1/2/9(P)  Gi1/2/10(P) Gi1/2/11(P) 
+                                 Gi2/2/9(P)  Gi2/2/10(P) Gi2/2/11(P) 
+40     Po40(SU)         -        Gi1/2/13(P) Gi2/2/13(P) 
+41     Po41(SU)         -        Gi1/2/14(P) Gi1/2/15(P) Gi2/2/14(P) Gi2/2/15(P) 
+42     Po42(SU)         -        Gi1/2/16(P) Gi1/2/17(P) Gi2/2/16(P) Gi2/2/17(P) 
+43     Po43(SU)         -        Gi1/2/18(P) Gi2/2/18(P) 
+44     Po44(SU)         -        Gi1/2/19(P) Gi2/2/19(P) 
+48     Po48(RD)         -        
+50     Po50(SU)         -        Gi1/1/9(D)  Gi1/1/10(P) Gi2/1/9(D) Gi2/1/10(P) 
+51     Po51(SU)         -        Gi1/1/11(D) Gi1/1/12(P) Gi2/1/11(P) Gi2/1/12(P) 
+100    Po100(SU)       LACP      Gi1/2/30(P) Gi2/2/30(P) 
+101    Po101(SU)        -        Gi1/2/29(P) Gi2/2/29(P) 
+140    Po140(SU)        -        Gi1/1/1(P)  Gi2/1/1(P)  
+141    Po141(SU)        -        Gi1/1/2(P)  Gi2/1/2(P)  
+142    Po142(SU)        -        Gi1/1/3(P)  Gi2/1/3(P)  
+143    Po143(SU)        -        Gi1/1/4(P)  Gi2/1/4(P)  
+200    Po200(SU)        -        Te1/3/1(P)  Te1/3/2(P)  
+210    Po210(SU)        -        Te2/3/1(P)  Te2/3/2(P)

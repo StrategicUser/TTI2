@@ -1,0 +1,18 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define SSS Office Switch
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: Office Switch Core Configuration Update
+    ios_config:
+      timeout: 60
+      #lines: hostname Test1
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "/home/strategic/TTI/ansible/roles/sss-sw1/files/sss-sw1-config1.cfg"

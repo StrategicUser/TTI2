@@ -1,0 +1,475 @@
+6416.7f64.af9d
+description X2765
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+00c0.4e1d.00ff
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+6416.7f1c.1b6d
+description X2660
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+00c0.4e08.0261
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+58ac.783a.64c1
+description 7/32 LF14
+switchport
+switchport access vlan 115
+switchport mode access
+!
+0025.9098.6026
+description link to HTS dummy switch on rack
+switchport
+switchport access vlan 9
+switchport mode access
+spanning-tree portfast
+!
+0008.e106.0a27
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+ecb1.d760.9247
+description X2663
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0018.8503.c494
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+0010.4057.9a40
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+8cdc.d436.66f7
+description X2832
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0018.8503.c670
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+ecb1.d740.8b97
+description X2669
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0012.d97d.bfc1
+description 3/46 Catalyst2950-XseriesRack
+switchport
+switchport access vlan 144
+switchport mode access
+spanning-tree portfast
+!
+0008.e107.7aac
+description To_3560c
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+6416.7f64.9979
+description X2831
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+cc5a.5396.26c0
+switchport
+switchport access vlan 124
+switchport mode access
+no cdp enable
+spanning-tree portfast
+!
+0025.9018.99cd
+switchport
+switchport access vlan 7
+switchport mode access
+spanning-tree portfast
+channel-group 75 mode active
+!
+0008.e107.7a6f
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+d485.6412.b21e
+description bldg L
+switchport
+switchport access vlan 101
+switchport voice vlan 123
+!
+0008.e106.879a
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+f01f.afce.621d
+switchport
+switchport access vlan 7
+switchport mode access
+spanning-tree portfast
+channel-group 78 mode active
+!
+0008.e107.7e31
+switchport
+switchport access vlan 201
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f64.9596
+description X2725
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0040.8cba.7584
+switchport
+switchport access vlan 4
+spanning-tree portfast
+!
+0018.8503.c729
+switchport
+switchport access vlan 4
+switchport mode access
+spanning-tree portfast
+!
+0018.8503.c6b4
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+0008.e107.7e2d
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+6416.7f1c.15b9
+description DAN BERGMAN_2760
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+2829.860d.02f1
+description TTILGB-DC-UPS-110.23
+switchport
+switchport access vlan 110
+switchport mode access
+spanning-tree portfast
+!
+0018.8503.c55c
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+0018.8503.c23f
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+0008.e107.c0b4
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+0015.9909.0de4
+description OCU_Printer
+switchport
+switchport access vlan 51
+switchport mode access
+spanning-tree portfast
+!
+6416.7f64.0bf8
+description X2784
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f65.0026
+description X2655
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+accc.8e86.6963
+description LC15_Camera4K
+switchport
+switchport access vlan 4
+switchport mode access
+load-interval 30
+!
+00c0.4e08.2602
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+d485.6413.6ce1
+description X2743
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0018.8503.c66e
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+6416.7f64.075c
+description X2695
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0008.e106.0a06
+description LAKing Device
+switchport
+switchport access vlan 201
+switchport mode access
+spanning-tree portfast
+!
+6416.7f64.9609
+description X2691
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0009.5be1.b722
+description GUEST-FW-PC
+switchport
+switchport access vlan 16
+switchport mode access
+spanning-tree portfast
+!
+6416.7f64.9bb5
+description X2653
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0008.e106.09f5
+description LAKing Device
+switchport
+switchport access vlan 201
+switchport mode access
+spanning-tree portfast
+!
+f01f.afce.56f5
+switchport
+switchport access vlan 7
+switchport mode access
+spanning-tree portfast
+channel-group 72 mode active
+!
+0008.e106.8772
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+58ac.7822.c611
+description 7/33 LF08
+switchport
+switchport access vlan 115
+switchport mode access
+!
+40b0.341b.5061
+description X2677
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+90b1.1c2c.d420
+switchport
+switchport access vlan 7
+switchport mode access
+spanning-tree portfast
+channel-group 80 mode active
+!
+90b1.1c2a.baac
+switchport
+switchport access vlan 7
+switchport mode access
+spanning-tree portfast
+!
+f8b1.56cd.cfc8
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 120
+power inline auto max 16800
+spanning-tree portfast
+!
+6416.7f64.058c
+description jenniferJenning
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f64.8e13
+description X2745
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+241c.040c.defd
+description MarlinDsply_YLBrkRM
+switchport
+switchport access vlan 110
+switchport mode access
+spanning-tree portfast
+!
+0040.8c7f.61fb
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+000e.c501.219a
+switchport
+switchport access vlan 4
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast
+!
+ecb1.d756.91c9
+description X2657
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0008.e107.c101
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+44a8.4220.056c
+switchport
+switchport access vlan 7
+switchport mode access
+spanning-tree portfast
+!
+0008.e106.8764
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!
+0018.8503.c64f
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+000f.e502.6c51
+switchport
+switchport access vlan 104
+switchport mode access
+spanning-tree portfast
+!
+8038.969f.718e
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 120
+power inline auto max 16800
+spanning-tree portfast
+!
+000f.e502.6c3d
+switchport
+switchport access vlan 104
+switchport mode access
+spanning-tree portfast
+!
+0008.e105.b9c8
+description LAKing Device
+switchport
+switchport access vlan 201
+switchport mode access
+spanning-tree portfast
+!
+0008.e106.098b
+description LAKing Device
+switchport
+switchport access vlan 201
+switchport mode access
+spanning-tree portfast
+!
+0008.e107.7aea
+switchport
+switchport access vlan 201
+spanning-tree portfast
+!

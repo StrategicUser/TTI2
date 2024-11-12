@@ -1,0 +1,27 @@
+34db.fd9c.5386
+switchport mode trunk
+!
+48bf.7418.3bf8
+switchport access vlan 7
+switchport mode trunk
+!
+0009.184f.b36e
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.220c.74b7
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.220c.74c7
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.223c.ab3e
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.223c.ab5b
+switchport access vlan 23
+spanning-tree portfast edge
+!

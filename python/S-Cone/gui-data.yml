@@ -1,0 +1,43 @@
+scones:
+  H242:
+    dev0:
+      devId: IP Display
+      devIp: 192.168.2.40
+      dev1WebPort: 8080
+      dev1WebPortForward: 80
+      ping: 
+    dev1: 
+      devId: Mi-Jack
+      dev2Ip: 192.168.2.30
+      ping: 
+    sconeIp: 10.3.17.61
+  H253:
+    dev0:
+      devId: IP Display
+      devIp: 192.168.2.40
+      dev1WebPort: 8080
+      dev1WebPortForward: 80
+    dev1: 
+      devId: Mi-Jack
+      dev2Ip: 192.168.2.30
+    sconeIp: 10.3.17.151
+  H254:
+    dev0:
+      devId: IP Display
+      devIp: 192.168.2.40
+      dev1WebPort: 8080
+      dev1WebPortForward: 80
+    dev1: 
+      devId: Mi-Jack
+      dev2Ip: 192.168.2.30
+    sconeIp: 10.3.17.11
+  Googz:
+    dev0:
+      devId: IP Display
+      devIp: 192.168.2.40
+      dev1WebPort: 8080
+      dev1WebPortForward: 80
+    dev1: 
+      devId: Mi-Jack
+      dev2Ip: 192.168.2.30
+    sconeIp: 8.8.8.8

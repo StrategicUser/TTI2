@@ -1,0 +1,18 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define pcmcagrswitch
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: pcmcagrswitch Configuration Update
+    ios_config:
+      timeout: 60
+      #lines: hostname Test1
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "/home/strategic/TTI/ansible/roles/pcmcagrswitch/files/pcmcagrswitch-config.cfg"

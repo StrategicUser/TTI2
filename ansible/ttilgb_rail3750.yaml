@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb_rail3750
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb_rail3750

@@ -1,0 +1,5 @@
+snmp-server trap-source Vlan45
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps mac-notification change move threshold
+snmp-server community ytiread RO
+snmp-server community ytienable RW

@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - /home/strategic/TTI/ansible/roles/ttilgb_secmainbuild

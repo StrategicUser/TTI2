@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb_bunker_edge_2960_a
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb_bunker_edge_2960_a

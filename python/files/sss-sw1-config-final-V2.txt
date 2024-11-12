@@ -1,0 +1,25 @@
+5006.04cb.6fa4
+description Link-to-WLC-EMS-Lap-WLC
+switchport trunk encapsulation dot1q
+switchport mode trunk
+!
+001f.9e02.ecb3
+description Link-to-Firewall-dk-sd1
+switchport access vlan 45
+switchport trunk native vlan 45
+srr-queue bandwidth share 1 30 35 5
+queue-set 2
+priority-queue out
+mls qos trust cos
+auto qos trust
+!
+0800.279a.73c5
+description Alienware-Laptop-Port
+switchport access vlan 45
+switchport mode access
+srr-queue bandwidth share 1 30 35 5
+queue-set 2
+priority-queue out
+auto qos trust
+spanning-tree portfast edge
+!

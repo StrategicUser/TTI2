@@ -1,0 +1,7 @@
+---
+- hosts: att_spine1_sw1
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: att_spine1_sw1

@@ -1,0 +1,1589 @@
+
+Building configuration...
+
+Current configuration : 38822 bytes
+!
+! Last configuration change at 14:30:45 DST Fri May 13 2022 by leroyadmin
+!
+version 16.10
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime localtime
+! Call-home is enabled by Smart-Licensing.
+service call-home
+no platform punt-keepalive disable-kernel-core
+!
+hostname TTILGB_DC_9400A
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+logging buffered 50000
+enable secret 9 $9$y91ZFep4gyUQ2U$xw99iMCStSK8fwxqUclQtZykxKIjDlTERPzEMALlQXU
+enable password 1forall
+!
+aaa new-model
+!
+!
+aaa group server radius Windows
+ server name winrad
+ ip vrf forwarding Mgmt-vrf
+!
+aaa authentication login default group Windows local
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone PST -8 0
+clock summer-time DST recurring
+boot system bootflash:packages.conf
+power redundancy-mode combined
+no power supply autoLC shutdown
+power supply autoLC priority 1 2 3 4 7 8 9 10
+!
+!
+!
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+  no destination transport-method email
+!
+!
+!
+!
+!
+ip domain name tti.com
+!
+!
+!
+ip dhcp snooping vlan 100-103,110,115,120,123-124,140,142,150,215,220
+no ip dhcp snooping information option
+ip dhcp snooping
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+no device-tracking logging theft
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-2236159811
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2236159811
+ revocation-check none
+ rsakeypair TP-self-signed-2236159811
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+crypto pki certificate chain TP-self-signed-2236159811
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32323336 31353938 3131301E 170D3230 30353036 32313439 
+  33355A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 32333631 
+  35393831 31308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100B5F4 0DE36E26 253789EA 21E65E75 9D071089 973537AF ABB46A12 
+  E3E48E7F 2BD7DD39 A3FA9887 4670FCF0 DCEAFA40 D8DE2A81 099D6094 E5736190 
+  3A04A1DC 55597F4A 153D0AB9 7AE79405 E3E02D34 ACD21568 67814896 37FAE342 
+  42198173 6F344A0B B6B91BBA 964518CA 82F8B275 52439AA6 36DA83D4 902A3757 
+  E328B48B BD38684A D55107FD F592C4C9 7F8353CC AEA9DCD8 FABCE0F1 F5421E37 
+  2CF503A0 669D472A 95DDD272 575E5337 B27CC742 EF07C57B 88E8E14F 1D82423B 
+  E87AE0FA C9C68FC0 383AA370 37792A55 52A876F5 A9BAD354 A0857AB6 D68904A2 
+  FCC42D77 84D96DEE 2E9460C5 117DC8CD 6E3EB79B 04936B31 F9EE2627 05DACD8C 
+  014B253A 684D0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14A06AE5 9142AE9D A4DD7DA3 FA73BC00 F4C10B0C 
+  99301D06 03551D0E 04160414 A06AE591 42AE9DA4 DD7DA3FA 73BC00F4 C10B0C99 
+  300D0609 2A864886 F70D0101 05050003 82010100 6C5583B0 3CDE5473 C89922C4 
+  667D56BB 9C2ECA90 C7BCAD64 BE23D989 DF0552A7 81413C70 0DC4A485 E60C4E5D 
+  0C867619 2C8DD6D6 030CF561 8DAEC496 070DB7F6 CB9E7346 D6DCFEDB 183CEAFF 
+  9DBB3223 2804C6C6 BB749FBA F34919F7 23B5B790 EB15479E 6765973A C643091E 
+  5E94685D 6591B357 2FF77A10 9AD80C6A 24A45C9A 3E345883 358CE0B6 5EC7CD91 
+  AB1A13D7 160E830F 12AB92E6 D4CA9105 8E2DB217 D34094A3 2A6B3551 5661C1D2 
+  CD3C2EEB 6FE18EC5 9D414068 2D1ABC82 9C778BCB 069D5875 7A706C22 8F75A41C 
+  75EF2D5A EBD63C2F 486BEEA1 BD91717F 118BF6A5 6ED20D04 29E90C78 32F41A98 
+  E16DA81E B89C0F1F 399705FF 3AA271C0 DA0F984A
+  	quit
+!
+license boot level network-advantage addon dna-advantage
+!
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-1000 priority 40960
+!
+!
+username lake2lake privilege 15 password 0 tti2lake
+username admin privilege 15 password 0 TTI.cisc0
+username ttiadmin privilege 15 password 0 TTI.cisc0
+!
+redundancy
+ mode sso
+!
+!
+!
+!
+!
+!
+class-map match-any system-cpp-police-ewlc-control
+  description EWLC Control 
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, L2 LVX data packets, LOGGING, Transit Traffic
+class-map match-any system-cpp-default
+  description EWLC Data, Inter FED Traffic 
+class-map match-any system-cpp-police-sys-data
+  description Openflow, Exception, EGR Exception, NFL Sampled Data, RPF Failed
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any system-cpp-police-l2lvx-control
+  description L2 LVX control packets
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any system-cpp-police-high-rate-app
+  description High Rate Applications 
+class-map match-any system-cpp-police-multicast
+  description MCAST Data
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP redirect, ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-stackwise-virt-control
+  description Stackwise Virtual OOB
+class-map match-any non-client-nrt-class
+class-map match-any system-cpp-police-routing-control
+  description Routing control and Low Latency
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+class-map match-any system-cpp-police-dhcp-snooping
+  description DHCP snooping
+class-map match-any system-cpp-police-ios-routing
+  description L2 control, Topology control, Routing control, Low Latency
+class-map match-any system-cpp-police-system-critical
+  description System Critical and Gold Pkt
+class-map match-any system-cpp-police-ios-feature
+  description ICMPGEN,BROADCAST,ICMP,L2LVXCntrl,ProtoSnoop,PuntWebauth,MCASTData,Transit,DOT1XAuth,Swfwd,LOGGING,L2LVXData,ForusTraffic,ForusARP,McastEndStn,Openflow,Exception,EGRExcption,NflSampled,RpfFailed
+!
+policy-map system-cpp-policy
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel40
+ description Port-Channel Link to TTILGB_CORE_9500
+ switchport mode trunk
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ ip address 10.200.101.168 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+ description TWA-X2742
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/3
+ description Admin_2nd_TC
+ switchport access vlan 115
+ switchport mode access
+ switchport voice vlan 124
+ power inline consumption 16900
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/4
+ description X2743
+ switchport access vlan 210
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/5
+ description X2739
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/7
+ description X2725
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/9
+ description X2842
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/10
+ description Call Center Phone
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/11
+ description X2715
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/12
+ description X2872
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/13
+ description X2691
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/14
+ description X2866
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/15
+ description X2722
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 100
+ switchport mode access
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/17
+ description MarlinDsply_YLBrkRM
+ switchport access vlan 110
+ switchport mode access
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/18
+ description X2765
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 100
+ switchport mode access
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/21
+ description X2664
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/22
+ description X2663
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/23
+ description PHONE
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/24
+ description X2679
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet1/0/25
+ description 2F-Printer
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/26
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/27
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/28
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/29
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/30
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/31
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/32
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/33
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/34
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/35
+ power inline auto max 16800
+!
+interface GigabitEthernet1/0/36
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/37
+ description Call Center Phone
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/38
+ description Call Center Phone
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/39
+ description Call Center Phone
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/40
+ description Call Center Phone
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/41
+ power inline auto max 16800
+!
+interface GigabitEthernet1/0/42
+ no switchport
+ no ip address
+ power inline auto max 16800
+!
+interface GigabitEthernet1/0/43
+ power inline auto max 16800
+!
+interface GigabitEthernet1/0/44
+ power inline auto max 16800
+!
+interface GigabitEthernet1/0/45
+ switchport trunk allowed vlan 102,210
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/46
+ power inline auto max 16800
+!
+interface GigabitEthernet1/0/47
+ description CBP router 10.200.2.254
+ switchport access vlan 6
+ switchport mode access
+!
+interface GigabitEthernet1/0/48
+ description EPS-GPS at roof
+ switchport access vlan 223
+ switchport mode access
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/1
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/2
+ description X2875
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/3
+ description X2732
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/4
+ description X2714
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/5
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/6
+ description X2683
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/7
+ description X2745
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/8
+ description X2726
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet2/0/9
+ description X2726
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/10
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet2/0/11
+ description X2731
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/12
+ description X2738
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/13
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/14
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/15
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/16
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/17
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/18
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/19
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/20
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/21
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/22
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/23
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/24
+ switchport access vlan 115
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/25
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/26
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/27
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/28
+ description SUE
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/29
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/30
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/31
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/32
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/33
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet2/0/34
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/35
+ power inline auto max 16800
+!
+interface GigabitEthernet2/0/36
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet2/0/37
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet2/0/38
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/39
+ description I.K.Kim[OCU]
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/40
+ description RichardKim[OCU]
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/41
+ switchport access vlan 110
+ switchport mode access
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/42
+ description Meraki2FConf
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/43
+ description GeneYi[OCU]
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/44
+ switchport access vlan 100
+ switchport mode access
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/45
+ description X2832
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/46
+ description X2784
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/47
+ description TOD
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/48
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/1
+ switchport access vlan 201
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/2
+ description X2648
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/3
+ description X2660
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/4
+ description X2743
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/5
+ description X2739
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/6
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/7
+ description X2725
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/8
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/9
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/10
+ description X2655
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/11
+ description X2657
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/12
+ description X2665
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/13
+ description X2656
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/14
+ description X2654
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/15
+ description X2653
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/16
+ description X2862
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/17
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/18
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/19
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/20
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 120
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/21
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/22
+ switchport access vlan 100
+ switchport mode access
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/23
+ description Meraki_1stFlr
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/24
+ description FAX line
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/25
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/26
+ description Blue 229
+ switchport access vlan 201
+ power inline auto max 16800
+!
+interface GigabitEthernet3/0/27
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/28
+ description X2668
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/29
+ switchport access vlan 201
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/30
+ switchport access vlan 201
+ power inline auto max 16800
+!
+interface GigabitEthernet3/0/31
+ description Polycom VVX411
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/32
+ description Call Center Phone
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/33
+ description Polycom VVX411
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/34
+ switchport access vlan 201
+ power inline auto max 16800
+!
+interface GigabitEthernet3/0/35
+ switchport access vlan 201
+ power inline auto max 16800
+!
+interface GigabitEthernet3/0/36
+ description X2671
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/37
+ description OCU_Printer
+ switchport access vlan 51
+ power inline auto max 16800
+!
+interface GigabitEthernet3/0/38
+ description X2669
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/39
+ description X2666
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/40
+ switchport access vlan 201
+ switchport mode access
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/41
+ switchport access vlan 201
+ power inline auto max 16800
+!
+interface GigabitEthernet3/0/42
+ switchport access vlan 201
+ power inline auto max 16800
+!
+interface GigabitEthernet3/0/43
+ description ASA Sec
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/44
+ description X2618-T
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ no cdp enable
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet3/0/45
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet3/0/46
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/47
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/48
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface TenGigabitEthernet5/0/1
+!
+interface TenGigabitEthernet5/0/2
+!
+interface TenGigabitEthernet5/0/3
+!
+interface TenGigabitEthernet5/0/4
+!
+interface TenGigabitEthernet5/0/5
+!
+interface TenGigabitEthernet5/0/6
+!
+interface TenGigabitEthernet5/0/7
+!
+interface TenGigabitEthernet5/0/8
+!
+interface FortyGigabitEthernet5/0/9
+!
+interface FortyGigabitEthernet5/0/10
+!
+interface TwentyFiveGigE5/0/1
+!
+interface TwentyFiveGigE5/0/5
+!
+interface TenGigabitEthernet6/0/1
+!
+interface TenGigabitEthernet6/0/2
+!
+interface TenGigabitEthernet6/0/3
+!
+interface TenGigabitEthernet6/0/4
+!
+interface TenGigabitEthernet6/0/5
+!
+interface TenGigabitEthernet6/0/6
+!
+interface TenGigabitEthernet6/0/7
+!
+interface TenGigabitEthernet6/0/8
+!
+interface FortyGigabitEthernet6/0/9
+!
+interface FortyGigabitEthernet6/0/10
+!
+interface TwentyFiveGigE6/0/1
+!
+interface TwentyFiveGigE6/0/5
+!
+interface GigabitEthernet7/0/1
+ description LAKings
+ switchport access vlan 201
+ switchport mode access
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/2
+ description LAKings
+ switchport access vlan 201
+ switchport mode access
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/3
+ description LAKings
+ switchport access vlan 201
+ switchport mode access
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/4
+ description LAKings
+ switchport access vlan 201
+ switchport mode access
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/5
+ description LAKings
+ switchport access vlan 201
+ switchport mode access
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/6
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ power inline auto max 16800
+ spanning-tree portfast
+!
+interface GigabitEthernet7/0/7
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/8
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/9
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/10
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/11
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/12
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/13
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/14
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/15
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/16
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/17
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/18
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/19
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/20
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/21
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/22
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/23
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/24
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/25
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/26
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/27
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/28
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/29
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/30
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/31
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/32
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/33
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/34
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/35
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/36
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/37
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/38
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/39
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/40
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/41
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/42
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/43
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/44
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/45
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/46
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/47
+ power inline auto max 16800
+!
+interface GigabitEthernet7/0/48
+ power inline auto max 16800
+!
+interface TenGigabitEthernet8/0/1
+ description 9500_Tw1/0/15
+ switchport mode trunk
+ channel-group 40 mode active
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/2
+ description 9500_Tw1/0/16
+ switchport mode trunk
+ channel-group 40 mode active
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/3
+ description 9500_Tw1/0/17
+ switchport mode trunk
+ channel-group 40 mode active
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/4
+ description 9500_Tw2/0/15
+ switchport mode trunk
+ channel-group 40 mode active
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/5
+ description 9500_Tw2/0/16
+ switchport mode trunk
+ channel-group 40 mode active
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/6
+ description 9500_Tw2/0/17
+ switchport mode trunk
+ channel-group 40 mode active
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/7
+!
+interface TenGigabitEthernet8/0/8
+!
+interface TenGigabitEthernet8/0/9
+ description TTILGB_MR_B_panel1_K5+6
+ switchport trunk allowed vlan 2,4,5,22,88,100,101,104,110,115,123,124
+ switchport mode trunk
+!
+interface TenGigabitEthernet8/0/10
+ description TTILGB_Marine3750_panel3_E1+2
+ switchport trunk allowed vlan 2,4,5,12,22,88,100-102,104,110,115,123,124,126
+ switchport mode trunk
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/11
+ description BunkerAgrSwitch_panel2_A5+6
+ switchport mode trunk
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/12
+ description PCMCAgrSwitch_panel1_D1+2
+ switchport trunk allowed vlan 2,4,5,22,100-102,104,110,115,123,124
+ switchport mode trunk
+ ip dhcp snooping trust
+!
+interface TenGigabitEthernet8/0/13
+!
+interface TenGigabitEthernet8/0/14
+!
+interface TenGigabitEthernet8/0/15
+!
+interface TenGigabitEthernet8/0/16
+!
+interface TenGigabitEthernet8/0/17
+!
+interface TenGigabitEthernet8/0/18
+!
+interface TenGigabitEthernet8/0/19
+!
+interface TenGigabitEthernet8/0/20
+!
+interface TenGigabitEthernet8/0/21
+!
+interface TenGigabitEthernet8/0/22
+!
+interface TenGigabitEthernet8/0/23
+!
+interface TenGigabitEthernet8/0/24
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan208
+ no ip address
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip route vrf Mgmt-vrf 0.0.0.0 0.0.0.0 10.200.101.10
+!
+!
+ip radius source-interface GigabitEthernet0/0 
+ip radius source-interface GigabitEthernet0/0 vrf Mgmt-vrf
+!
+logging trap notifications
+logging host 10.200.130.51
+!
+snmp-server community DPSNMPG3T! RO
+snmp-server host 10.200.100.102 version 2c DPSNMPG3T! 
+snmp-server host 10.200.100.49 version 2c DPSNMPG3T! 
+!
+!
+!
+radius server winrad
+ address ipv4 10.200.130.32 auth-port 1645 acct-port 1646
+ key ttilgb.network.1020
+!
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+!
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ privilege level 15
+line vty 5 15
+!
+ntp server 10.200.130.32
+!
+mac address-table notification mac-move
+!
+!
+!
+!
+!
+end

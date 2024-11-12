@@ -1,0 +1,2484 @@
+
+
+TTILGB_Admin_6513_A#terminal length 0
+TTILGB_Admin_6513_A#show run
+Building configuration...
+
+Current configuration : 66656 bytes
+!
+! Last configuration change at 06:11:41 PDT Mon Jul 20 2020 by admin
+! NVRAM config last updated at 11:38:36 PDT Thu Jul 16 2020 by admin
+!
+upgrade fpd auto
+version 12.2
+no service pad
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+service counters max age 5
+!
+hostname TTILGB_Admin_6513_A
+!
+boot-start-marker
+boot system flash sup-bootdisk:
+boot-end-marker
+!
+logging buffered 10000 debugging
+enable secret 5 $1$qJ8/$nRPN7z0XMMMkZwrFJP6gJ1
+!
+username Lake2Lake privilege 15 password 7 071B35451C05180E12
+aaa new-model
+aaa authentication login default group tacacs+ local
+aaa authentication enable default group tacacs+ enable
+aaa authorization exec default group tacacs+ if-authenticated 
+aaa authorization commands 15 default group tacacs+ if-authenticated 
+!
+aaa session-id common
+clock timezone PST -8
+clock summer-time PDT recurring
+ip subnet-zero
+!
+!
+no ip domain-lookup
+ip multicast-routing 
+ip dhcp excluded-address 10.200.101.1 10.200.101.20
+ip dhcp excluded-address 10.200.10.1 10.200.10.20
+ip dhcp excluded-address 10.200.115.1 10.200.115.20
+ip dhcp excluded-address 10.200.220.1 10.200.220.130
+ip dhcp excluded-address 10.200.121.1 10.200.121.20
+ip dhcp excluded-address 10.200.123.1 10.200.123.20
+ip dhcp excluded-address 10.200.124.1 10.200.124.100
+ip dhcp excluded-address 10.200.101.142
+ip dhcp excluded-address 10.200.101.164 10.200.101.215
+ip dhcp excluded-address 10.200.102.1 10.200.102.30
+ip dhcp excluded-address 10.200.102.41 10.200.102.254
+ip dhcp excluded-address 10.200.101.71
+!
+ip dhcp pool TTI-Users
+   network 10.200.101.0 255.255.255.0
+   default-router 10.200.101.10 
+   dns-server 10.200.81.58 10.200.81.59 
+   domain-name ttius.local
+   lease 0 4
+!
+ip dhcp pool AP-Pool1
+   network 10.200.220.0 255.255.255.0
+   default-router 10.200.220.10 
+   option 43 hex f110.0ac8.dc64.0ac8.dc6a.0ac8.dc66.0ac8.dc68
+!
+ip dhcp pool voice
+   network 10.200.123.0 255.255.255.0
+   default-router 10.200.123.10 
+   option 150 ip 10.200.122.60 
+!
+ip dhcp pool CraneTest
+   network 10.200.102.0 255.255.255.0
+   default-router 10.200.102.10 
+   dns-server 10.200.81.58 10.200.81.59 
+!
+ip flow-cache timeout active 1
+ip flow ingress layer2-switched vlan 101
+vtp domain TTI
+vtp mode transparent
+call-home
+ alert-group configuration
+ alert-group diagnostic
+ alert-group environment
+ alert-group inventory
+ alert-group syslog
+ profile "CiscoTAC-1"
+  no active
+  no destination transport-method http
+  destination transport-method email
+  destination address email callhome@cisco.com
+  destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+  subscribe-to-alert-group diagnostic severity minor 
+  subscribe-to-alert-group environment severity minor 
+  subscribe-to-alert-group syslog severity major pattern ".*"
+  subscribe-to-alert-group configuration periodic monthly 2 14:56
+  subscribe-to-alert-group inventory periodic monthly 2 14:41
+mls qos map cos-dscp 0 8 16 24 32 46 48 56
+mls qos
+mls netflow interface
+mls flow ip interface-destination-source
+no mls flow ipv6
+mls nde sender version 5
+mls ip slb purge global
+mls cef error action reset
+!
+!
+fabric timer 15
+diagnostic cns publish cisco.cns.device.diag_results
+diagnostic cns subscribe cisco.cns.device.diag_commands
+!
+redundancy
+ keepalive-enable
+ mode sso
+ main-cpu
+  auto-sync running-config
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-2,4-5,22,50,72,79,101-102,123 priority 24576
+spanning-tree vlan 12,15-16,51,124,220,224 priority 61440
+spanning-tree vlan 100 priority 57344
+!
+macro name EgressQoS-6500-10Gig
+mls qos trust dscp
+wrr-queue queue-limit 10 25 10 10 10 10 10
+wrr-queue bandwidth 1 25 4 10 10 10 10
+priority-queue queue-limit 15
+wrr-queue random-detect 1
+wrr-queue random-detect 2
+wrr-queue random-detect 3
+wrr-queue random-detect 4
+wrr-queue random-detect 5
+wrr-queue random-detect 6
+wrr-queue random-detect 7
+wrr-queue random-detect max-threshold 1 100 100 100 100
+wrr-queue random-detect min-threshold 1 80 100 100 100
+wrr-queue random-detect max-threshold 2 100 100 100 100
+wrr-queue random-detect min-threshold 2 80 100 100 100
+wrr-queue random-detect max-threshold 3 80 90 100 100
+wrr-queue random-detect min-threshold 3 70 80 90 100
+wrr-queue random-detect min-threshold 4 70 80 90 100
+wrr-queue random-detect max-threshold 4 80 90 100 100
+wrr-queue random-detect min-threshold 5 70 80 90 100
+wrr-queue random-detect max-threshold 5 80 90 100 100
+wrr-queue random-detect min-threshold 6 70 80 90 100
+wrr-queue random-detect max-threshold 6 80 90 100 100
+wrr-queue random-detect min-threshold 7 60 70 80 90
+wrr-queue random-detect max-threshold 7 70 80 90 100
+mls qos queue-mode mode-dscp
+wrr-queue dscp-map 1 1 8
+wrr-queue dscp-map 2 1 0
+wrr-queue dscp-map 3 1 14
+wrr-queue dscp-map 3 2 12
+wrr-queue dscp-map 3 3 10
+wrr-queue dscp-map 4 1 22
+wrr-queue dscp-map 4 2 20
+wrr-queue dscp-map 4 3 18
+wrr-queue dscp-map 5 1 30
+wrr-queue dscp-map 5 2 28
+wrr-queue dscp-map 5 3 26
+wrr-queue dscp-map 6 1 38
+wrr-queue dscp-map 6 2 36
+wrr-queue dscp-map 6 3 34
+wrr-queue dscp-map 7 1 16
+wrr-queue dscp-map 7 2 24
+wrr-queue dscp-map 7 3 48
+wrr-queue dscp-map 7 4 56
+priority-queue dscp-map 1 32 40 46
+@
+macro name EgressQoS-6500-Gig
+mls qos trust dscp
+wrr-queue queue-limit 20 25 40
+priority-queue queue-limit 15
+wrr-queue bandwidth 5 25 40
+wrr-queue random-detect 1
+wrr-queue random-detect 2
+wrr-queue random-detect 3
+wrr-queue random-detect max-threshold 1 100 100 100 100 100 100 100 100
+wrr-queue random-detect min-threshold 1 80 100 100 100 100 100 100 100
+wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100
+wrr-queue random-detect min-threshold 2 80 100 100 100 100 100 100 100
+wrr-queue random-detect max-threshold 3 70 80 90 100 100 100 100 100
+wrr-queue random-detect min-threshold 3 60 70 80 90 100 100 100 100
+wrr-queue cos-map 1 1 1
+wrr-queue cos-map 2 1 0
+wrr-queue cos-map 3 1 2
+wrr-queue cos-map 3 2 3
+wrr-queue cos-map 3 3 6
+wrr-queue cos-map 3 4 7
+priority-queue cos-map 1 4 5
+@
+!
+wism service-vlan 10
+!
+vlan internal allocation policy ascending
+vlan access-log ratelimit 2000
+!
+vlan 2
+ name Management-Vlan
+!
+vlan 4
+ name Encoder-Decoder-Port-Vlan
+!
+vlan 5
+ name Encoder-Decoder-Port-Vlan2
+!
+vlan 9
+ name OCR_78
+!
+vlan 10
+ name WISM-Service-Vlan
+!
+vlan 12
+ name Jupiter
+!
+vlan 15
+ name Corp-SSID
+!
+vlan 16
+ name Guest-SSID
+!
+vlan 22
+ name IP-Readers-Servers-Vlan
+!
+vlan 50
+ name TTI-Domain-Vlan
+!
+vlan 51
+ name OCU
+!
+vlan 60
+ name Radio_System
+!
+vlan 72
+ name Video-Application-Vlan
+!
+vlan 79
+ name Now_Solution
+!
+vlan 88
+ remote-span
+!
+vlan 99
+ name Internet-Vlan
+!
+vlan 100
+ name TTI-Data
+!
+vlan 101
+ name TTI-Data-Vlan
+!
+vlan 102
+ name Crane-Video-Vlan
+!
+vlan 104
+ name IP-Readers2-Vlan
+!
+vlan 110
+ name TTIDataVlan
+!
+vlan 115
+ name Wireless-AP-Vlan
+!
+vlan 123
+ name Voice
+!
+vlan 124
+ name TTIXOVoice
+!
+vlan 215
+ name MONITORSERVER
+!
+vlan 216
+ name 24WTEST
+!
+vlan 220
+ name WISM-Management-Vlan
+!
+vlan 223
+ name WhereNet_RFID
+!
+vlan 224
+ name EPS
+!
+vlan 240
+ name DMZ
+!
+vlan 300
+ name test
+!
+vlan 600
+ name LTE-M-tunnel
+!
+class-map match-all VoIP-Signaling-Class
+  match ip dscp cs3 
+class-map match-all Video-Class
+  match ip dscp cs5 
+class-map match-any Video
+  match access-group name Video-Traffic
+class-map match-any VIDEO
+  match ip dscp af31 
+  match ip dscp af41 
+class-map match-all SNMP-Class
+  match access-group name SNMP-Traffic
+!
+!
+policy-map Switch-QoS
+  class VoIP-Signaling-Class
+   set ip dscp af31
+  class Video-Class
+   set ip dscp af32
+  class SNMP-Class
+   set ip dscp af22
+  class class-default
+    trust dscp
+!
+!
+!
+interface Loopback0
+ ip address 10.200.250.254 255.255.255.255
+ ip pim sparse-dense-mode
+!
+interface Port-channel20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface Port-channel100
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,220
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface Port-channel101
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,220
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface Port-channel102
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,220
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface Port-channel103
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,220
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface GigabitEthernet1/1
+ description Point-to-Point subnet to PA network
+ ip address 10.200.250.2 255.255.255.252
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/3
+ description Connect2-LB05-Pole
+ switchport
+ switchport access vlan 5
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/6
+ description Rail_Turnstile
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/16
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/17
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+!
+interface GigabitEthernet1/21
+ description 9500_TW1/0/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+ channel-group 20 mode active
+!
+interface GigabitEthernet1/22
+ description 9500_TW1/0/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+ channel-group 20 mode active
+!
+interface GigabitEthernet1/23
+ description 9500_TW2/0/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ wrr-queue bandwidth 5 25 10 
+ priority-queue queue-limit 20 
+ wrr-queue queue-limit 5 25 10 
+ wrr-queue random-detect min-threshold 1 60 70 80 90 100 100 100 100 
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 1 70 80 90 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 100 100 100 100 
+ mls qos trust dscp
+ channel-group 20 mode active
+!
+interface GigabitEthernet1/24
+ description 9500_TW2/0/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+ channel-group 20 mode active
+!
+interface GigabitEthernet2/1
+ description MPLS link to riverbed TTI-admin-2921-A
+ switchport
+ switchport access vlan 2
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/2
+ description Meraki_1stFlr
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet2/3
+ description ASA Sec
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/4
+ description EPS-GPS at roof
+ switchport
+ switchport access vlan 223
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/5
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/6
+ description TWA-X2742
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/7
+ description X2671
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/8
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/9
+ description SUE
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/10
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/11
+ description P2P to 9500_TW1/0/47
+ ip address 10.200.251.34 255.255.255.252
+ ip ospf network point-to-point
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/12
+ description X2866
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/13
+ description X2862
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/14
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/15
+ switchport
+ switchport mode trunk
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/16
+ switchport
+ switchport access vlan 101
+ switchport mode access
+!
+interface GigabitEthernet2/17
+ description EPS-GPS G4 at roof
+ switchport
+ switchport access vlan 223
+ switchport voice vlan 123
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/18
+ description Meraki_TTILGBAdmin2Flr
+ switchport
+ switchport access vlan 100
+ switchport voice vlan 123
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/19
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/20
+ switchport
+ switchport access vlan 223
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/21
+ description X2628
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/22
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/23
+ description wireless bridge LC07
+ switchport
+ switchport access vlan 102
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/24
+ description wireless bridge LC09
+ switchport
+ switchport access vlan 102
+ switchport mode access
+ shutdown
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/25
+ description Connection to Pole LH10
+ switchport
+ switchport access vlan 4
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/26
+ description Connection to Pole LH08
+ switchport
+ switchport access vlan 5
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/27
+ switchport
+ switchport access vlan 5
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/28
+ description Connection to Pole LH06
+ switchport
+ switchport access vlan 5
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/29
+ description Bad port
+ switchport
+ switchport access vlan 223
+ switchport mode access
+ shutdown
+ speed 1000
+ duplex full
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/30
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/31
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/32
+ description X2740
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/33
+ ip address 10.200.250.6 255.255.255.252
+ ip pim sparse-dense-mode
+ ip ospf network broadcast
+ shutdown
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet2/34
+ switchport
+ switchport access vlan 51
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/35
+ description TOWOFFICE-Printer
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/36
+ switchport
+ switchport access vlan 115
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/37
+ description X2739
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/38
+ description Primary ASA Outside Interface
+ switchport
+ switchport access vlan 99
+ switchport mode access
+ shutdown
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/39
+ description Secondary ASA Outside Interface
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/40
+ description CBP2921
+ switchport
+ switchport access vlan 99
+ switchport mode access
+ speed 100
+ duplex full
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/41
+ description FerasPC
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/42
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/43
+ switchport
+ switchport access vlan 16
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/44
+ description SPANPC_101.212
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet2/45
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/46
+ switchport
+ switchport access vlan 140
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet2/47
+ description X2648
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet2/48
+ description CEDRIC-GROUP
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet6/1
+ description LTE-JuniperSwitch
+ switchport
+ switchport mode trunk
+!
+interface GigabitEthernet6/2
+ description X2672
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+!
+interface GigabitEthernet6/3
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+!
+interface GigabitEthernet6/4
+ description X2872
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/5
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+!
+interface GigabitEthernet6/6
+ description HTS gate server
+ switchport
+ switchport access vlan 9
+ switchport mode access
+ switchport voice vlan 123
+!
+interface GigabitEthernet6/7
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+!
+interface GigabitEthernet6/8
+ description 6/8 2nd flr conf phone
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/9
+ description X2727
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+!
+interface GigabitEthernet6/10
+ description X2715
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/11
+ description Meraki_TTILGBAdmin3Flr
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet6/12
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+!
+interface GigabitEthernet6/13
+ description 6/13 Booth/Lane 16
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+!
+interface GigabitEthernet6/14
+ description MSC_PH_2F
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+!
+interface GigabitEthernet6/15
+ description X2670
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/16
+ description HTS gate server
+ switchport
+ switchport access vlan 9
+ switchport mode access
+ switchport voice vlan 123
+!
+interface GigabitEthernet6/17
+ description X2668
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+!
+interface GigabitEthernet6/18
+ description MSC_PH_2F
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+!
+interface GigabitEthernet6/19
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/20
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/21
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet6/22
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet6/23
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet6/24
+ description X2731
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/25
+ description Meraki2FConf
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet6/26
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/27
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+!
+interface GigabitEthernet6/28
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/29
+ description X2654
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/30
+ description 6/30 LS2
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/31
+ description DMZ server
+ switchport
+ switchport access vlan 240
+ switchport mode access
+!
+interface GigabitEthernet6/32
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/33
+ description Meraki3FConference
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet6/34
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/35
+ description X2664
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet6/36
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/37
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/38
+ description swport to 6509A vlan 223
+ switchport
+ switchport access vlan 223
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet6/39
+ description 6/39 LS19
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/40
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/41
+ description LS31(LC15)
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/42
+ switchport
+ switchport access vlan 223
+ switchport mode access
+!
+interface GigabitEthernet6/43
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ spanning-tree portfast
+!
+interface GigabitEthernet6/44
+ description X2849
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/45
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+!
+interface GigabitEthernet6/46
+ description Test Labtop Connection
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+!
+interface GigabitEthernet6/47
+ description X2710
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet6/48
+ description XOPHONE-FIRM
+ switchport
+ switchport mode trunk
+!
+interface GigabitEthernet7/1
+ no ip address
+ shutdown
+!
+interface GigabitEthernet7/2
+ no ip address
+ shutdown
+!
+interface GigabitEthernet7/3
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet7/4
+ description OSPF_Link_CORE6509A
+ ip address 10.200.250.10 255.255.255.252
+ ip pim sparse-dense-mode
+ ip ospf network point-to-point
+ shutdown
+!
+interface TenGigabitEthernet7/5
+ description 10Gig trunk to 6509_B
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2,4,5,9,12,15,16,22,50,51,60,72,79,88,99-102,104
+ switchport trunk allowed vlan add 110,123,124,140,215,220,224,240,300,600
+ switchport mode trunk
+ shutdown
+!
+interface TenGigabitEthernet9/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface TenGigabitEthernet9/2
+ description PCMC_3560_A
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface TenGigabitEthernet9/3
+ description 10Gig Uplink to TTIMR-3650-A moved to t11/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface TenGigabitEthernet9/4
+ description 10Gig Uplink to TTI-Marine-3650-A moved to t11/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface TenGigabitEthernet9/5
+ description 10Gig Uplink to TTIRail-3650-A moved to t11/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface TenGigabitEthernet9/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface TenGigabitEthernet9/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface TenGigabitEthernet9/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ mls qos trust dscp
+!
+interface GigabitEthernet10/1
+ description X2726
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/2
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/3
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/4
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/5
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/6
+ description PRINTER
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/7
+ description Meraki_1stFlr
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ logging event link-status
+ spanning-tree portfast
+!
+interface GigabitEthernet10/8
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/9
+ description X2741
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/10
+ description DMZ server
+ switchport
+ switchport access vlan 240
+ switchport mode access
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/11
+ description X2887
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/12
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/13
+ description X2752
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ logging event link-status
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/14
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/15
+ description X2728
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/16
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/17
+ description X2769
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/18
+ description TOD
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/19
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/20
+ description RICBAR-Office
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/21
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/22
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/23
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/24
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/25
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/26
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/27
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/28
+ description X2738
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/29
+ description X2603
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/30
+ description X2679
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/31
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/32
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/33
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/34
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/35
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/36
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/37
+ description PHONE
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/38
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/39
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast
+!
+interface GigabitEthernet10/40
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/41
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/42
+ description ITROOM_Switch
+ switchport
+ switchport mode trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/43
+ description X2618-T
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/44
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/45
+ description X2884
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/46
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 123
+ shutdown
+ spanning-tree portfast trunk
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/47
+ switchport
+ switchport access vlan 115
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface GigabitEthernet10/48
+ description X2847
+ switchport
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ logging event link-status
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+ service-policy input Switch-QoS
+!
+interface TenGigabitEthernet11/1
+ description TemWLC-Pri
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet11/2
+ description TemWLC-Sec
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet11/3
+ description TemWLC-Sec
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet11/4
+ description TemWLC-Sec
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet11/5
+ description 10Gig Uplink to TTIRail-3650-A
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 1 25 4 10 10 10 10 
+ wrr-queue queue-limit 10 25 10 10 10 10 10 
+ wrr-queue random-detect min-threshold 1 80 100 100 100 
+ wrr-queue random-detect min-threshold 2 80 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 
+ wrr-queue random-detect min-threshold 4 70 80 90 100 
+ wrr-queue random-detect min-threshold 5 70 80 90 100 
+ wrr-queue random-detect min-threshold 6 70 80 90 100 
+ wrr-queue random-detect min-threshold 7 60 70 80 90 
+ wrr-queue random-detect max-threshold 1 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 
+ wrr-queue random-detect max-threshold 4 80 90 100 100 
+ wrr-queue random-detect max-threshold 5 80 90 100 100 
+ wrr-queue random-detect max-threshold 6 80 90 100 100 
+ wrr-queue random-detect max-threshold 7 70 80 90 100 
+ wrr-queue random-detect 4 
+ wrr-queue random-detect 5 
+ wrr-queue random-detect 6 
+ wrr-queue random-detect 7 
+ wrr-queue dscp-map 1 1 1 2 3 4 5 6 7 8 
+ wrr-queue dscp-map 1 1 9 11 13 15 17 19 21 23 
+ wrr-queue dscp-map 1 1 25 27 29 31 33 39 41 42 
+ wrr-queue dscp-map 1 1 43 44 45 47 
+ wrr-queue dscp-map 2 1 0 
+ wrr-queue dscp-map 3 1 14 
+ wrr-queue dscp-map 3 2 12 
+ wrr-queue dscp-map 3 3 10 
+ wrr-queue dscp-map 4 1 22 
+ wrr-queue dscp-map 4 2 20 
+ wrr-queue dscp-map 4 3 18 
+ wrr-queue dscp-map 5 1 30 35 37 
+ wrr-queue dscp-map 5 2 28 
+ wrr-queue dscp-map 5 3 26 
+ wrr-queue dscp-map 6 1 38 49 50 51 52 53 54 55 
+ wrr-queue dscp-map 6 1 57 58 59 60 61 62 63 
+ wrr-queue dscp-map 6 2 36 
+ wrr-queue dscp-map 6 3 34 
+ wrr-queue dscp-map 7 1 16 
+ wrr-queue dscp-map 7 2 24 
+ wrr-queue dscp-map 7 3 48 
+ wrr-queue dscp-map 7 4 56 
+ priority-queue dscp-map 1 32 40 46 
+ mls qos queue-mode mode-dscp
+ mls qos trust dscp
+ macro description EgressQoS-6500-10Gig
+!
+interface TenGigabitEthernet11/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 1 25 4 10 10 10 10 
+ wrr-queue queue-limit 10 25 10 10 10 10 10 
+ wrr-queue random-detect min-threshold 1 80 100 100 100 
+ wrr-queue random-detect min-threshold 2 80 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 
+ wrr-queue random-detect min-threshold 4 70 80 90 100 
+ wrr-queue random-detect min-threshold 5 70 80 90 100 
+ wrr-queue random-detect min-threshold 6 70 80 90 100 
+ wrr-queue random-detect min-threshold 7 60 70 80 90 
+ wrr-queue random-detect max-threshold 1 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 
+ wrr-queue random-detect max-threshold 4 80 90 100 100 
+ wrr-queue random-detect max-threshold 5 80 90 100 100 
+ wrr-queue random-detect max-threshold 6 80 90 100 100 
+ wrr-queue random-detect max-threshold 7 70 80 90 100 
+ wrr-queue random-detect 4 
+ wrr-queue random-detect 5 
+ wrr-queue random-detect 6 
+ wrr-queue random-detect 7 
+ wrr-queue dscp-map 1 1 1 2 3 4 5 6 7 8 
+ wrr-queue dscp-map 1 1 9 11 13 15 17 19 21 23 
+ wrr-queue dscp-map 1 1 25 27 29 31 33 39 41 42 
+ wrr-queue dscp-map 1 1 43 44 45 47 
+ wrr-queue dscp-map 2 1 0 
+ wrr-queue dscp-map 3 1 14 
+ wrr-queue dscp-map 3 2 12 
+ wrr-queue dscp-map 3 3 10 
+ wrr-queue dscp-map 4 1 22 
+ wrr-queue dscp-map 4 2 20 
+ wrr-queue dscp-map 4 3 18 
+ wrr-queue dscp-map 5 1 30 35 37 
+ wrr-queue dscp-map 5 2 28 
+ wrr-queue dscp-map 5 3 26 
+ wrr-queue dscp-map 6 1 38 49 50 51 52 53 54 55 
+ wrr-queue dscp-map 6 1 57 58 59 60 61 62 63 
+ wrr-queue dscp-map 6 2 36 
+ wrr-queue dscp-map 6 3 34 
+ wrr-queue dscp-map 7 1 16 
+ wrr-queue dscp-map 7 2 24 
+ wrr-queue dscp-map 7 3 48 
+ wrr-queue dscp-map 7 4 56 
+ priority-queue dscp-map 1 32 40 46 
+ mls qos queue-mode mode-dscp
+ mls qos trust dscp
+ macro description EgressQoS-6500-10Gig
+!
+interface TenGigabitEthernet11/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+ wrr-queue bandwidth 1 25 4 10 10 10 10 
+ wrr-queue queue-limit 10 25 10 10 10 10 10 
+ wrr-queue random-detect min-threshold 1 80 100 100 100 
+ wrr-queue random-detect min-threshold 2 80 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 
+ wrr-queue random-detect min-threshold 4 70 80 90 100 
+ wrr-queue random-detect min-threshold 5 70 80 90 100 
+ wrr-queue random-detect min-threshold 6 70 80 90 100 
+ wrr-queue random-detect min-threshold 7 60 70 80 90 
+ wrr-queue random-detect max-threshold 1 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 
+ wrr-queue random-detect max-threshold 4 80 90 100 100 
+ wrr-queue random-detect max-threshold 5 80 90 100 100 
+ wrr-queue random-detect max-threshold 6 80 90 100 100 
+ wrr-queue random-detect max-threshold 7 70 80 90 100 
+ wrr-queue random-detect 4 
+ wrr-queue random-detect 5 
+ wrr-queue random-detect 6 
+ wrr-queue random-detect 7 
+ wrr-queue dscp-map 1 1 1 2 3 4 5 6 7 8 
+ wrr-queue dscp-map 1 1 9 11 13 15 17 19 21 23 
+ wrr-queue dscp-map 1 1 25 27 29 31 33 39 41 42 
+ wrr-queue dscp-map 1 1 43 44 45 47 
+ wrr-queue dscp-map 2 1 0 
+ wrr-queue dscp-map 3 1 14 
+ wrr-queue dscp-map 3 2 12 
+ wrr-queue dscp-map 3 3 10 
+ wrr-queue dscp-map 4 1 22 
+ wrr-queue dscp-map 4 2 20 
+ wrr-queue dscp-map 4 3 18 
+ wrr-queue dscp-map 5 1 30 35 37 
+ wrr-queue dscp-map 5 2 28 
+ wrr-queue dscp-map 5 3 26 
+ wrr-queue dscp-map 6 1 38 49 50 51 52 53 54 55 
+ wrr-queue dscp-map 6 1 57 58 59 60 61 62 63 
+ wrr-queue dscp-map 6 2 36 
+ wrr-queue dscp-map 6 3 34 
+ wrr-queue dscp-map 7 1 16 
+ wrr-queue dscp-map 7 2 24 
+ wrr-queue dscp-map 7 3 48 
+ wrr-queue dscp-map 7 4 56 
+ priority-queue dscp-map 1 32 40 46 
+ mls qos queue-mode mode-dscp
+ mls qos trust dscp
+ macro description EgressQoS-6500-10Gig | EgressQoS-6500-10Gig
+!
+interface TenGigabitEthernet11/8
+ no ip address
+ wrr-queue bandwidth 1 25 4 10 10 10 10 
+ wrr-queue queue-limit 10 25 10 10 10 10 10 
+ wrr-queue random-detect min-threshold 1 80 100 100 100 
+ wrr-queue random-detect min-threshold 2 80 100 100 100 
+ wrr-queue random-detect min-threshold 3 70 80 90 100 
+ wrr-queue random-detect min-threshold 4 70 80 90 100 
+ wrr-queue random-detect min-threshold 5 70 80 90 100 
+ wrr-queue random-detect min-threshold 6 70 80 90 100 
+ wrr-queue random-detect min-threshold 7 60 70 80 90 
+ wrr-queue random-detect max-threshold 1 100 100 100 100 
+ wrr-queue random-detect max-threshold 2 100 100 100 100 
+ wrr-queue random-detect max-threshold 3 80 90 100 100 
+ wrr-queue random-detect max-threshold 4 80 90 100 100 
+ wrr-queue random-detect max-threshold 5 80 90 100 100 
+ wrr-queue random-detect max-threshold 6 80 90 100 100 
+ wrr-queue random-detect max-threshold 7 70 80 90 100 
+ wrr-queue random-detect 4 
+ wrr-queue random-detect 5 
+ wrr-queue random-detect 6 
+ wrr-queue random-detect 7 
+ wrr-queue dscp-map 1 1 1 2 3 4 5 6 7 8 
+ wrr-queue dscp-map 1 1 9 11 13 15 17 19 21 23 
+ wrr-queue dscp-map 1 1 25 27 29 31 33 39 41 42 
+ wrr-queue dscp-map 1 1 43 44 45 47 
+ wrr-queue dscp-map 2 1 0 
+ wrr-queue dscp-map 3 1 14 
+ wrr-queue dscp-map 3 2 12 
+ wrr-queue dscp-map 3 3 10 
+ wrr-queue dscp-map 4 1 22 
+ wrr-queue dscp-map 4 2 20 
+ wrr-queue dscp-map 4 3 18 
+ wrr-queue dscp-map 5 1 30 35 37 
+ wrr-queue dscp-map 5 2 28 
+ wrr-queue dscp-map 5 3 26 
+ wrr-queue dscp-map 6 1 38 49 50 51 52 53 54 55 
+ wrr-queue dscp-map 6 1 57 58 59 60 61 62 63 
+ wrr-queue dscp-map 6 2 36 
+ wrr-queue dscp-map 6 3 34 
+ wrr-queue dscp-map 7 1 16 
+ wrr-queue dscp-map 7 2 24 
+ wrr-queue dscp-map 7 3 48 
+ wrr-queue dscp-map 7 4 56 
+ priority-queue dscp-map 1 32 40 46 
+ mls qos queue-mode mode-dscp
+ mls qos trust dscp
+ macro description EgressQoS-6500-10Gig
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ ip address 10.200.1.10 255.255.255.0
+ ip pim sparse-dense-mode
+ ip flow ingress
+ shutdown
+!
+interface Vlan4
+ ip address 10.200.4.254 255.255.255.0
+ ip pim sparse-dense-mode
+ shutdown
+!
+interface Vlan5
+ ip address 10.200.5.254 255.255.255.0
+ ip pim sparse-dense-mode
+ shutdown
+!
+interface Vlan9
+ description HTC&OCR
+ ip address 192.168.78.10 255.255.255.0
+ shutdown
+!
+interface Vlan22
+ ip address 10.200.72.10 255.255.255.0
+ ip pim sparse-dense-mode
+ shutdown
+!
+interface Vlan50
+ ip address 10.200.50.10 255.255.255.0
+ ip pim sparse-dense-mode
+ shutdown
+!
+interface Vlan72
+ ip address 192.168.72.10 255.255.255.0
+ ip pim sparse-dense-mode
+ shutdown
+!
+interface Vlan79
+ ip address 192.168.79.10 255.255.255.0
+ shutdown
+!
+interface Vlan89
+ ip address 10.200.89.10 255.255.255.0
+ shutdown
+!
+interface Vlan99
+ no ip address
+ ip accounting output-packets
+ shutdown
+!
+interface Vlan101
+ ip address 10.200.101.10 255.255.255.0
+ ip accounting output-packets
+ ip flow ingress
+ shutdown
+!
+interface Vlan102
+ ip address 10.200.102.10 255.255.255.0
+ shutdown
+!
+interface Vlan121
+ no ip address
+ shutdown
+!
+interface Vlan123
+ ip address 10.200.123.10 255.255.255.0
+ shutdown
+!
+interface Vlan124
+ no ip address
+ shutdown
+!
+interface Vlan216
+ no ip address
+ shutdown
+!
+interface Vlan220
+ no ip address
+ shutdown
+!
+interface Vlan240
+ no ip address
+ shutdown
+!
+interface Vlan300
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ auto-cost reference-bandwidth 10000
+ redistribute static subnets
+ passive-interface Vlan2
+ passive-interface Vlan4
+ passive-interface Vlan5
+ passive-interface Vlan9
+ passive-interface Vlan22
+ passive-interface Vlan50
+ passive-interface Vlan72
+ passive-interface Vlan79
+ passive-interface Vlan101
+ passive-interface Vlan102
+ passive-interface Vlan121
+ passive-interface Loopback0
+ network 10.200.1.0 0.0.0.255 area 0
+ network 10.200.4.0 0.0.0.255 area 0
+ network 10.200.5.0 0.0.0.255 area 0
+ network 10.200.50.0 0.0.0.255 area 0
+ network 10.200.72.0 0.0.0.255 area 0
+ network 10.200.101.0 0.0.0.255 area 0
+ network 10.200.102.0 0.0.0.255 area 0
+ network 10.200.110.0 0.0.0.255 area 0
+ network 10.200.123.0 0.0.0.255 area 0
+ network 10.200.250.4 0.0.0.3 area 0
+ network 10.200.250.8 0.0.0.3 area 0
+ network 10.200.250.12 0.0.0.3 area 0
+ network 10.200.250.254 0.0.0.0 area 0
+ network 10.200.251.32 0.0.0.3 area 0
+ network 192.168.72.0 0.0.0.255 area 0
+ network 192.168.78.0 0.0.0.255 area 0
+ network 192.168.79.0 0.0.0.255 area 0
+!
+ip classless
+ip route 169.254.0.0 255.255.0.0 Null0
+ip route 172.18.0.0 255.255.0.0 10.200.102.20
+!
+ip pim send-rp-announce Loopback0 scope 16
+ip pim send-rp-discovery Loopback0 scope 16
+ip flow-export source Loopback0
+ip flow-export destination 10.200.100.205 7795
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip access-list extended SNMP-Traffic
+ permit udp any any eq snmp
+ip access-list extended WEB-Traffic
+ permit tcp any any eq www
+ permit tcp any any eq 443
+ permit tcp any eq www any
+ permit tcp any eq 443 any
+logging trap notifications
+logging source-interface Loopback0
+logging 10.200.100.205
+access-list 10 permit 10.200.4.253
+access-list 10 permit 10.200.100.205
+access-list 10 permit 10.200.1.100
+access-list 10 permit 192.168.116.0 0.0.0.255
+access-list 100 permit ip 10.50.0.0 0.0.255.255 10.200.0.0 0.0.255.255
+access-list 100 permit ip 192.168.67.0 0.0.0.255 any
+access-list 100 deny   ip any any
+access-list 110 deny   ip host 10.200.101.130 any log
+access-list 110 permit ip any any
+snmp-server community lake RO
+snmp-server community DPSNMPG3T! RO
+snmp-server location TTI Long Beach, CA
+snmp-server ip dscp 18
+snmp-server contact LakeSystems
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps chassis
+snmp-server enable traps module
+snmp-server enable traps transceiver all
+snmp-server enable traps ds1
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps tty
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps fru-ctrl ps-output-change status
+snmp-server enable traps entity
+snmp-server enable traps c6kxbar intbus-crcexcd intbus-crcrcvrd swbus
+snmp-server enable traps slb real virtual csrp
+snmp-server enable traps rtr
+snmp-server enable traps flash insertion removal
+snmp-server enable traps flex-links status
+snmp-server enable traps dot1x no-guest-vlan no-auth-fail-vlan
+snmp-server enable traps vswitch vsl
+snmp-server enable traps syslog
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps srp
+snmp-server enable traps atm subif
+snmp-server enable traps rsvp
+snmp-server enable traps port-security
+snmp-server enable traps cpu threshold
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps ipmulticast
+snmp-server enable traps power-ethernet group 1-48
+snmp-server enable traps module-auto-shutdown sys-action
+snmp-server enable traps MAC-Notification change move threshold
+snmp-server enable traps l2tc threshold
+snmp-server enable traps hsrp
+snmp-server enable traps event-manager
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps sonet
+snmp-server enable traps csg agent quota-server database
+snmp-server enable traps config
+snmp-server enable traps config-copy
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps vlan-mac-limit
+snmp-server host 10.200.100.49 version 2c DPSNMPG3T! 
+snmp-server host 10.200.100.205 lake 
+tacacs-server host 10.200.101.211
+tacacs-server directed-request
+tacacs-server key 7 001501120A5E1F54
+radius-server source-ports 1645-1646
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ privilege level 15
+ logging synchronous
+line vty 5 15
+ exec-timeout 0 0
+!
+exception core-file 
+mac-address-table aging-time 480
+ntp clock-period 17569919
+ntp server 128.138.140.44
+ntp server 64.113.32.5
+ntp server 96.47.67.105
+no event manager policy Mandatory.go_switchbus.tcl type system
+!
+end
+
+TTILGB_Admin_6513_A#

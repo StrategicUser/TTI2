@@ -1,0 +1,970 @@
+Legend: 
+	* - primary entry, G - Gateway MAC, (R) - Routed MAC, O - Overlay MAC
+	age - seconds since last seen,+ - primary entry using vPC Peer-Link,
+	(T) - True, (F) - False, C - ControlPlane MAC
+   VLAN     MAC Address      Type      age     Secure NTFY Ports
+---------+-----------------+--------+---------+------+----+------------------
++    7     000c.2901.4d61   dynamic  0         F      F    Po11
++    7     000c.2919.261b   dynamic  0         F      F    Po11
++    7     000c.292a.579e   dynamic  0         F      F    Po11
++    7     000c.2954.c87d   dynamic  0         F      F    Po12
++    7     000c.29b4.637f   dynamic  0         F      F    Po11
++    7     000c.29c5.12d5   dynamic  0         F      F    Po11
+*    7     0025.9018.99cd   dynamic  0         F      F    Eth1/5
++    7     00de.fb04.469e   dynamic  0         F      F    Po11
+*    7     44a8.4220.056c   dynamic  0         F      F    Eth1/5
++    7     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*    7     90b1.1c2a.baac   dynamic  0         F      F    Eth1/5
+*    7     90b1.1c2c.d420   dynamic  0         F      F    Eth1/5
+*    7     a8b1.d432.19c0   dynamic  0         F      F    Eth1/5
+*    7     f01f.afce.56f5   dynamic  0         F      F    Eth1/5
+*    7     f01f.afce.621d   dynamic  0         F      F    Eth1/5
+*    9     0017.a499.a075   dynamic  0         F      F    Eth1/5
+*    9     0025.84d9.6fc0   dynamic  0         F      F    Eth1/5
+*    9     0025.906b.187a   dynamic  0         F      F    Eth1/5
+*    9     0025.906b.1886   dynamic  0         F      F    Eth1/5
+*    9     0025.906b.18b6   dynamic  0         F      F    Eth1/5
+*    9     0025.906b.1a74   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.1144   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.12de   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.6006   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.6026   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.602e   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.6046   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.6048   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.6062   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.6066   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.60da   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.60de   dynamic  0         F      F    Eth1/5
+*    9     0025.9098.60e1   dynamic  0         F      F    Eth1/5
+*    9     0040.2b3c.38e2   dynamic  0         F      F    Eth1/5
++    9     0050.56a2.a136   dynamic  0         F      F    Po11
++    9     00de.fb04.469e   dynamic  0         F      F    Po11
+*    9     2046.a104.a8c5   dynamic  0         F      F    Eth1/5
+*    9     2046.a104.a8e6   dynamic  0         F      F    Eth1/5
+*    9     2046.a104.a946   dynamic  0         F      F    Eth1/5
+*    9     f8bc.1238.9095   dynamic  0         F      F    Eth1/5
++   55     0050.56a2.7111   dynamic  0         F      F    Po11
++   55     00de.fb04.469e   dynamic  0         F      F    Po11
++   81     000c.2912.6eb6   dynamic  0         F      F    Po11
++   81     0050.56a2.4092   dynamic  0         F      F    Po12
++   81     0050.56a2.9210   dynamic  0         F      F    Po12
++   81     0050.56a2.9be2   dynamic  0         F      F    Po12
++   81     0050.56a2.cbe6   dynamic  0         F      F    Po12
++   81     0050.56a2.db60   dynamic  0         F      F    Po12
+*   81     0060.167a.0538   dynamic  0         F      F    Eth1/11
+*   81     0062.ecfe.b2a0   dynamic  0         F      F    Eth101/1/4
+*   81     0081.c4d1.b88a   dynamic  0         F      F    Eth101/1/6
+*   81     00cc.fcdc.ca39   dynamic  0         F      F    Eth101/1/44
+*   81     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*   81     00f6.634f.137b   dynamic  0         F      F    Eth1/6
+*   81     f415.6374.ce00   dynamic  0         F      F    Eth1/6
+*   81     f415.6374.ce02   dynamic  0         F      F    Eth1/6
+*   82     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*   82     00f6.634f.137b   dynamic  0         F      F    Eth1/6
+*   82     8c60.4fe7.1c81   dynamic  0         F      F    Eth101/1/5
++   83     0025.b51a.0004   dynamic  0         F      F    Po12
++   83     0025.b51a.0008   dynamic  0         F      F    Po12
++   83     0025.b51b.0008   dynamic  0         F      F    Po12
++   83     0050.5661.8f72   dynamic  0         F      F    Po12
++   83     0050.5663.b774   dynamic  0         F      F    Po12
++   83     0050.5665.2afa   dynamic  0         F      F    Po12
++   83     0050.5665.5be7   dynamic  0         F      F    Po12
++   83     0050.5665.bc6f   dynamic  0         F      F    Po12
++   83     0050.5669.ff86   dynamic  0         F      F    Po12
++   83     0050.566f.a2d2   dynamic  0         F      F    Po12
++   83     0050.56a2.b6c3   dynamic  0         F      F    Po11
++   83     0050.56a2.c866   dynamic  0         F      F    Po12
+*   83     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*   83     00f6.634f.137b   dynamic  0         F      F    Eth1/6
++   83     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*  100     0018.0a23.a168   dynamic  0         F      F    Eth1/5
+*  100     0018.0a23.aa64   dynamic  0         F      F    Eth1/5
+*  100     0018.0a23.b0e2   dynamic  0         F      F    Eth1/5
+*  100     0023.2418.62df   dynamic  0         F      F    Eth1/5
+*  100     0040.8cbc.b8e2   dynamic  0         F      F    Eth1/5
++  100     0050.56a2.00f3   dynamic  0         F      F    Po11
+*  100     0050.56a2.036b   dynamic  0         F      F    Po11
++  100     0050.56a2.07ea   dynamic  0         F      F    Po11
++  100     0050.56a2.123e   dynamic  0         F      F    Po11
+*  100     0050.56a2.1900   dynamic  0         F      F    Po12
+*  100     0050.56a2.1da7   dynamic  0         F      F    Po11
+*  100     0050.56a2.28a5   dynamic  0         F      F    Eth1/6
+*  100     0050.56a2.2e8f   dynamic  0         F      F    Po12
++  100     0050.56a2.33b1   dynamic  0         F      F    Po12
++  100     0050.56a2.3524   dynamic  0         F      F    Po12
++  100     0050.56a2.359e   dynamic  0         F      F    Po12
+*  100     0050.56a2.3747   dynamic  0         F      F    Eth1/6
++  100     0050.56a2.3b81   dynamic  0         F      F    Po12
++  100     0050.56a2.3ee2   dynamic  0         F      F    Po11
++  100     0050.56a2.40b8   dynamic  0         F      F    Po11
++  100     0050.56a2.42ff   dynamic  0         F      F    Po11
+*  100     0050.56a2.45fa   dynamic  0         F      F    Po12
++  100     0050.56a2.4710   dynamic  0         F      F    Po11
+*  100     0050.56a2.4f7f   dynamic  0         F      F    Eth1/6
+*  100     0050.56a2.5557   dynamic  0         F      F    Po11
++  100     0050.56a2.555e   dynamic  0         F      F    Po11
++  100     0050.56a2.58be   dynamic  0         F      F    Po12
++  100     0050.56a2.59ca   dynamic  0         F      F    Po12
+*  100     0050.56a2.5a1f   dynamic  0         F      F    Eth1/6
++  100     0050.56a2.5aad   dynamic  0         F      F    Po12
++  100     0050.56a2.6df0   dynamic  0         F      F    Po12
++  100     0050.56a2.6ed6   dynamic  0         F      F    Po11
++  100     0050.56a2.7208   dynamic  0         F      F    Po11
++  100     0050.56a2.77d0   dynamic  0         F      F    Po11
++  100     0050.56a2.7977   dynamic  0         F      F    Po11
++  100     0050.56a2.8061   dynamic  0         F      F    Po12
++  100     0050.56a2.87ec   dynamic  0         F      F    Po11
++  100     0050.56a2.8e1c   dynamic  0         F      F    Po11
++  100     0050.56a2.98df   dynamic  0         F      F    Po12
+*  100     0050.56a2.99b1   dynamic  0         F      F    Po11
+*  100     0050.56a2.a7e6   dynamic  0         F      F    Po12
++  100     0050.56a2.ac9a   dynamic  0         F      F    Po12
++  100     0050.56a2.aee5   dynamic  0         F      F    Po12
++  100     0050.56a2.b1d9   dynamic  0         F      F    Po12
++  100     0050.56a2.bad3   dynamic  0         F      F    Po11
++  100     0050.56a2.c2af   dynamic  0         F      F    Po12
++  100     0050.56a2.c524   dynamic  0         F      F    Po12
++  100     0050.56a2.c569   dynamic  0         F      F    Po11
++  100     0050.56a2.d1dd   dynamic  0         F      F    Po12
+*  100     0050.56a2.d2fa   dynamic  0         F      F    Eth1/6
++  100     0050.56a2.d709   dynamic  0         F      F    Po11
++  100     0050.56a2.d794   dynamic  0         F      F    Po11
++  100     0050.56a2.d955   dynamic  0         F      F    Po11
++  100     0050.56a2.d9ed   dynamic  0         F      F    Po11
++  100     0050.56a2.dbe2   dynamic  0         F      F    Po12
+*  100     0050.56a2.e528   dynamic  0         F      F    Po12
++  100     0050.56a2.ea7a   dynamic  0         F      F    Po11
++  100     0050.56a2.ebfa   dynamic  0         F      F    Po12
++  100     0050.56a2.ee42   dynamic  0         F      F    Po11
++  100     0050.56a2.f3de   dynamic  0         F      F    Po12
++  100     0050.56a2.f7b2   dynamic  0         F      F    Po12
++  100     0050.56a2.f801   dynamic  0         F      F    Po11
++  100     0050.56a2.fabf   dynamic  0         F      F    Po12
++  100     00de.fb04.469e   dynamic  0         F      F    Po11
+*  100     2431.8477.62ea   dynamic  0         F      F    Eth1/5
+*  100     28d2.4427.e71b   dynamic  0         F      F    Eth1/5
+*  100     40b0.3419.58bd   dynamic  0         F      F    Eth1/5
+*  100     40b0.341b.5061   dynamic  0         F      F    Eth1/5
+*  100     5065.f346.5267   dynamic  0         F      F    Eth1/5
+*  100     6c3b.e504.71e8   dynamic  0         F      F    Eth1/5
+*  100     8038.969f.718e   dynamic  0         F      F    Eth1/5
++  100     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*  100     8c60.4ff2.091f   dynamic  0         F      F    Eth1/6
+*  100     8c60.4ff7.491e   dynamic  0         F      F    Eth1/6
+*  100     8cdc.d433.7a2c   dynamic  0         F      F    Eth1/5
+*  100     a8b1.d432.19c0   dynamic  0         F      F    Eth1/5
+*  100     ac17.c8a3.bcca   dynamic  0         F      F    Eth1/5
+*  100     c434.6b50.c196   dynamic  0         F      F    Eth1/5
+*  100     d485.6413.6ce1   dynamic  0         F      F    Eth1/5
+*  100     d485.64a6.ba22   dynamic  0         F      F    Eth1/5
+*  100     dc4a.3e7d.4c15   dynamic  0         F      F    Eth1/5
+*  100     ecb1.d740.8b97   dynamic  0         F      F    Eth1/5
+*  100     ecb1.d756.91c9   dynamic  0         F      F    Eth1/5
+*  100     ecb1.d760.9247   dynamic  0         F      F    Eth1/5
+*  102     0003.a300.01e5   dynamic  0         F      F    Eth1/5
+*  102     0003.a300.133d   dynamic  0         F      F    Eth1/5
+*  102     0003.a300.1395   dynamic  0         F      F    Eth1/5
+*  102     0003.a300.13d5   dynamic  0         F      F    Eth1/5
+*  102     0003.a300.13db   dynamic  0         F      F    Eth1/5
+*  102     0003.a300.16d2   dynamic  0         F      F    Eth1/5
+*  102     0007.5fa2.ad3e   dynamic  0         F      F    Eth1/5
+*  102     0025.84d9.6fc0   dynamic  0         F      F    Eth1/5
+*  102     0040.8caa.7472   dynamic  0         F      F    Eth1/5
+*  102     0040.8caa.7473   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.67ea   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.67eb   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acb6   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acb7   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acb8   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acb9   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acbc   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acbd   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acd0   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.acd1   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.f579   dynamic  0         F      F    Eth1/5
+*  102     0040.8cac.f57a   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9a34   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9a3f   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9a40   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9a45   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9a46   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9a47   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9a48   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9bd9   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9bda   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9bdb   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9bdc   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9c03   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9c04   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9c0a   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9c0b   dynamic  0         F      F    Eth1/5
+*  102     0040.8cb0.9c0c   dynamic  0         F      F    Eth1/5
++  102     0050.56a2.7351   dynamic  0         F      F    Po11
+*  102     0090.fb63.2cea   dynamic  0         F      F    Eth1/5
+*  102     0090.fb66.6a41   dynamic  0         F      F    Eth1/5
+*  102     0090.fb66.6a45   dynamic  0         F      F    Eth1/5
+*  102     00a3.8e08.b241   dynamic  0         F      F    Eth1/5
+*  102     00c1.b1cf.f841   dynamic  0         F      F    Eth1/5
+*  102     00de.fb04.469e   dynamic  0         F      F    Po11
+*  102     00fe.c891.a844   dynamic  0         F      F    Eth1/5
+*  102     04f0.2133.e2d4   dynamic  0         F      F    Eth1/5
+*  102     04f0.2133.e42c   dynamic  0         F      F    Eth1/5
+*  102     0cc4.7ab3.8be6   dynamic  0         F      F    Eth1/5
+*  102     0cc4.7ab3.8d3e   dynamic  0         F      F    Eth1/5
+*  102     1ce8.5d78.5441   dynamic  0         F      F    Eth1/5
+*  102     1ce8.5d78.5b42   dynamic  0         F      F    Eth1/5
+*  102     1ce8.5d78.5f41   dynamic  0         F      F    Eth1/5
+*  102     1ce8.5da4.c041   dynamic  0         F      F    Eth1/5
+*  102     2c0b.e998.42c1   dynamic  0         F      F    Eth1/5
+*  102     84b2.61b0.51d0   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7c.a145   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7c.a16b   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7c.a175   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7c.a17d   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7c.a185   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7c.a18b   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7c.a18f   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7d.b76b   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7d.b81d   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7d.b8cf   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7d.ba79   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7d.babd   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7d.bae7   dynamic  0         F      F    Eth1/5
+*  102     ac1f.6b7d.bae9   dynamic  0         F      F    Eth1/5
+*  102     b827.ebc3.1f10   dynamic  0         F      F    Eth1/5
+*  102     cc46.d646.de80   dynamic  0         F      F    Eth1/5
+*  102     cc46.d6fb.d764   dynamic  0         F      F    Eth1/5
+*  102     cc98.9108.a3c1   dynamic  0         F      F    Eth1/5
+*  104     0000.0c07.ac00   dynamic  0         F      F    Eth1/5
+*  104     000b.7708.10e6   dynamic  0         F      F    Eth1/5
+*  104     000b.7708.10ea   dynamic  0         F      F    Eth1/5
+*  104     000b.7708.10f1   dynamic  0         F      F    Eth1/5
+*  104     000b.7708.1108   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.6c3b   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.6c3c   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.6c3d   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.6c50   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.6c51   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.6c52   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.6c53   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.79d1   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c11   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c13   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c18   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c19   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c1a   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c1d   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c1f   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c20   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c21   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c24   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c25   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c27   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c2a   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.8c2c   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.a2c1   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.a2c2   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.a2c3   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.a337   dynamic  0         F      F    Eth1/5
+*  104     000f.e502.a338   dynamic  0         F      F    Eth1/5
+*  104     0013.cb02.1756   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.24ad   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2722   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2f60   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2f65   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2f72   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2faf   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fb1   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fb9   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fbf   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fc5   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fca   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fd2   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fd9   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2fe8   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.2ff1   dynamic  0         F      F    Eth1/5
+*  104     0013.cb06.3007   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c3b   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c3d   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c46   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c55   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c66   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c71   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c7a   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c83   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c8a   dynamic  0         F      F    Eth1/5
+*  104     0022.3b03.8c96   dynamic  0         F      F    Eth1/5
+*  104     0040.8c9e.e6b5   dynamic  0         F      F    Eth1/5
++  104     0050.56a2.25f3   dynamic  0         F      F    Po12
++  104     0050.56a2.77cf   dynamic  0         F      F    Po12
++  104     0050.56a2.9a72   dynamic  0         F      F    Po12
++  104     0050.56a2.9f5c   dynamic  0         F      F    Po12
++  104     0050.56a2.aa9a   dynamic  0         F      F    Po11
++  104     00de.fb04.469e   dynamic  0         F      F    Po11
+*  104     2046.a104.a931   dynamic  0         F      F    Eth1/5
+*  104     2046.a104.f243   dynamic  0         F      F    Eth1/5
+*  104     2046.a104.f267   dynamic  0         F      F    Eth1/5
+*  104     5cf9.ddf8.d956   dynamic  0         F      F    Eth1/5
++  104     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*  104     a8b1.d432.1900   dynamic  0         F      F    Eth1/5
+*  104     a8b1.d432.19c0   dynamic  0         F      F    Eth1/5
+*  104     f8bc.123b.385f   dynamic  0         F      F    Eth1/5
+*  130     0009.0fa0.0001   dynamic  0         F      F    Eth1/6
++  130     0050.56a2.12ac   dynamic  0         F      F    Po12
+*  130     0050.56a2.1a0c   dynamic  0         F      F    Eth1/6
++  130     0050.56a2.213d   dynamic  0         F      F    Po12
++  130     0050.56a2.2803   dynamic  0         F      F    Po11
+*  130     0050.56a2.28a3   dynamic  0         F      F    Eth1/6
++  130     0050.56a2.2a01   dynamic  0         F      F    Po11
++  130     0050.56a2.2cc4   dynamic  0         F      F    Po12
+*  130     0050.56a2.3169   dynamic  0         F      F    Eth1/6
++  130     0050.56a2.552f   dynamic  0         F      F    Po12
+*  130     0050.56a2.58d6   dynamic  0         F      F    Eth1/6
+*  130     0050.56a2.59a5   dynamic  0         F      F    Eth1/6
++  130     0050.56a2.5e39   dynamic  0         F      F    Po12
++  130     0050.56a2.73f8   dynamic  0         F      F    Po12
+*  130     0050.56a2.9306   dynamic  0         F      F    Eth1/6
+*  130     0050.56a2.a497   dynamic  0         F      F    Eth1/6
++  130     0050.56a2.a739   dynamic  0         F      F    Po12
+*  130     0050.56a2.bd99   dynamic  0         F      F    Eth1/6
+*  130     0050.56a2.d3e4   dynamic  0         F      F    Eth1/6
+*  130     0050.56a2.ddfd   dynamic  0         F      F    Eth1/6
+*  130     0050.56a2.e9a2   dynamic  0         F      F    Eth1/6
++  130     0050.56a2.efa5   dynamic  0         F      F    Po11
+*  130     0050.56a2.f756   dynamic  0         F      F    Po11
+*  130     0050.56a2.fc1a   dynamic  0         F      F    Eth1/6
++  130     00de.fb04.469e   dynamic  0         F      F    Po11
+*  130     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  130     00f6.634f.137b   dynamic  0         F      F    Eth1/6
++  130     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*  130     8c60.4ff2.091f   dynamic  0         F      F    Eth1/6
+*  130     8c60.4ff7.491e   dynamic  0         F      F    Eth1/6
+*  140     0009.0fa0.0003   dynamic  0         F      F    Eth1/6
++  140     0050.56a2.0464   dynamic  0         F      F    Po12
++  140     0050.56a2.1763   dynamic  0         F      F    Po12
++  140     0050.56a2.29eb   dynamic  0         F      F    Po11
++  140     0050.56a2.30a9   dynamic  0         F      F    Po11
+*  140     0050.56a2.3b00   dynamic  0         F      F    Eth1/6
++  140     0050.56a2.4a9a   dynamic  0         F      F    Po11
++  140     0050.56a2.4b73   dynamic  0         F      F    Po12
++  140     0050.56a2.4e32   dynamic  0         F      F    Po12
+*  140     0050.56a2.52f4   dynamic  0         F      F    Eth1/6
++  140     0050.56a2.6f94   dynamic  0         F      F    Po12
++  140     0050.56a2.795e   dynamic  0         F      F    Po11
+*  140     0050.56a2.7e67   dynamic  0         F      F    Eth1/6
++  140     0050.56a2.9daf   dynamic  0         F      F    Po11
+*  140     0050.56a2.a79d   dynamic  0         F      F    Eth1/6
++  140     0050.56a2.afab   dynamic  0         F      F    Po12
+*  140     0050.56a2.affe   dynamic  0         F      F    Eth1/6
++  140     0050.56a2.b116   dynamic  0         F      F    Po11
+*  140     0050.56a2.bfc3   dynamic  0         F      F    Eth1/6
+*  140     0050.56a2.c48f   dynamic  0         F      F    Eth1/6
+*  140     0050.56a2.c786   dynamic  0         F      F    Eth1/6
++  140     0050.56a2.cb7d   dynamic  0         F      F    Po11
++  140     0050.56a2.cf8d   dynamic  0         F      F    Po11
++  140     0050.56a2.ddef   dynamic  0         F      F    Po11
+*  140     0050.56a2.f3b4   dynamic  0         F      F    Eth1/6
+*  140     0050.56a2.f966   dynamic  0         F      F    Eth1/6
+*  140     00a0.b86e.2fc8   dynamic  0         F      F    Eth1/5
++  140     00de.fb04.469e   dynamic  0         F      F    Po11
++  140     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*  140     e41f.1345.a2f4   dynamic  0         F      F    Eth1/5
+*  140     e41f.1345.a554   dynamic  0         F      F    Eth1/5
+*  140     e41f.1364.0e4e   dynamic  0         F      F    Eth1/5
+*  140     e41f.136b.2e84   dynamic  0         F      F    Eth1/5
+*  140     e41f.13e5.395c   dynamic  0         F      F    Eth1/5
++  140     f415.6373.e005   dynamic  0         F      F    Po15
+*  140     f415.6374.ce05   dynamic  0         F      F    Eth1/6
+*  141     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  141     00f6.634f.137b   dynamic  0         F      F    Eth1/6
+*  141     f415.6374.ce06   dynamic  0         F      F    Eth1/6
+*  142     0050.56a2.5216   dynamic  0         F      F    Eth1/6
++  142     0050.56a2.7562   dynamic  0         F      F    Po11
++  142     00de.fb04.469e   dynamic  0         F      F    Po11
+*  142     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  142     00f6.634f.137b   dynamic  0         F      F    Eth1/6
+*  142     8c60.4ff2.091f   dynamic  0         F      F    Eth1/6
+*  144     0000.0c07.ac00   dynamic  0         F      F    Eth1/5
+*  144     0010.187f.b294   dynamic  0         F      F    Eth1/5
+*  144     0010.187f.b295   dynamic  0         F      F    Eth1/5
+*  144     0015.5d90.2201   dynamic  0         F      F    Eth1/5
+*  144     0015.5d90.2203   dynamic  0         F      F    Eth1/5
+*  144     0021.9b95.a7cb   dynamic  0         F      F    Eth1/5
+*  144     a8b1.d432.1900   dynamic  0         F      F    Eth1/5
+*  144     a8b1.d432.19c0   dynamic  0         F      F    Eth1/5
+*  144     e41f.136b.24cc   dynamic  0         F      F    Eth1/5
+*  144     f8bc.1238.9094   dynamic  0         F      F    Eth1/5
+*  151     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  151     00f6.634f.137b   dynamic  0         F      F    Eth1/6
++  151     f415.6373.e003   dynamic  0         F      F    Po15
+*  151     f415.6374.ce03   dynamic  0         F      F    Eth1/6
+*  181     0062.ecfe.b0d0   dynamic  0         F      F    Eth1/6
+*  181     009e.1eb3.d539   dynamic  0         F      F    Eth1/6
+*  181     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  181     00f6.634f.137b   dynamic  0         F      F    Eth1/6
+*  181     0800.1bff.35a2   dynamic  0         F      F    Eth1/6
+*  181     6805.ca09.8c46   dynamic  0         F      F    Eth1/6
+*  181     cc16.7e52.5f10   dynamic  0         F      F    Eth1/6
+*  181     cc16.7e91.e54b   dynamic  0         F      F    Eth1/6
+*  181     cc16.7e91.e998   dynamic  0         F      F    Eth1/6
+*  182     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  182     00f6.634f.137b   dynamic  0         F      F    Eth1/6
+*  182     8c60.4ff2.0901   dynamic  0         F      F    Eth1/6
+*  182     8c60.4ff7.4901   dynamic  0         F      F    Eth1/6
+*  183     0025.b52b.001c   dynamic  0         F      F    Eth1/6
+*  183     0050.5660.7159   dynamic  0         F      F    Eth1/6
+*  183     0050.5661.48cc   dynamic  0         F      F    Eth1/6
+*  183     0050.5667.635d   dynamic  0         F      F    Eth1/6
+*  183     0050.5667.cdf1   dynamic  0         F      F    Eth1/6
+*  183     0050.5668.cf40   dynamic  0         F      F    Eth1/6
+*  183     0050.5668.fddc   dynamic  0         F      F    Eth1/6
+*  183     0050.566d.9efb   dynamic  0         F      F    Eth1/6
+*  183     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  183     00f6.634f.137b   dynamic  0         F      F    Eth1/6
++  201     0050.56a2.918c   dynamic  0         F      F    Po11
++  201     00de.fb04.469e   dynamic  0         F      F    Po11
+*  223     0004.f16a.c870   dynamic  0         F      F    Eth1/5
+*  223     0004.f16a.c878   dynamic  0         F      F    Eth1/5
+*  223     0004.f16a.c8f8   dynamic  0         F      F    Eth1/5
+*  223     0004.f173.27fc   dynamic  0         F      F    Eth1/5
+*  223     0004.f19f.8f20   dynamic  0         F      F    Eth1/5
+*  223     0004.f19f.8f38   dynamic  0         F      F    Eth1/5
+*  223     0004.f19f.8f54   dynamic  0         F      F    Eth1/5
+*  223     0004.f19f.8f5c   dynamic  0         F      F    Eth1/5
+*  223     0004.f19f.8fb8   dynamic  0         F      F    Eth1/5
+*  223     0004.f1c1.28c0   dynamic  0         F      F    Eth1/5
+*  223     0005.2100.7476   dynamic  0         F      F    Eth1/5
+*  223     0007.4d30.b35f   dynamic  0         F      F    Eth1/5
++  223     0050.56a2.2313   dynamic  0         F      F    Po11
++  223     0050.56a2.6f87   dynamic  0         F      F    Po12
++  223     0050.56a2.df02   dynamic  0         F      F    Po12
++  223     00de.fb04.469e   dynamic  0         F      F    Po11
+*  223     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  223     00f6.634f.137b   dynamic  0         F      F    Eth1/6
++  223     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
++  224     0050.56a2.4a5c   dynamic  0         F      F    Po11
++  224     0050.56a2.4de3   dynamic  0         F      F    Po12
++  224     0050.56a2.66c1   dynamic  0         F      F    Po12
++  224     0050.56a2.70b1   dynamic  0         F      F    Po12
++  224     0050.56a2.d949   dynamic  0         F      F    Po11
++  224     00de.fb04.469e   dynamic  0         F      F    Po11
+*  224     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  224     00f6.634f.137b   dynamic  0         F      F    Eth1/6
++  224     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*  240     0009.0fa0.0002   dynamic  0         F      F    Eth1/6
++  240     0050.56a2.2641   dynamic  0         F      F    Po12
+*  240     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  240     00f6.634f.137b   dynamic  0         F      F    Eth1/6
+*  240     8c60.4fe7.1c9f   dynamic  0         F      F    Po12
+*  240     f01f.afce.621e   dynamic  0         F      F    Eth1/5
++  400     f415.6373.e004   dynamic  0         F      F    Po15
+*  400     f415.6374.ce04   dynamic  0         F      F    Eth1/6
+*  600     b42e.9935.5153   dynamic  0         F      F    Eth1/6
+*  971     0e00.0ac8.fa31   dynamic  0         F      F    Eth1/51
+*  971     0e00.0ac8.fa33   dynamic  0         F      F    Eth1/51
+*  971     0e00.0ac8.fa34   dynamic  0         F      F    Eth1/6
+*  972     0e00.0ac8.fa39   dynamic  0         F      F    Eth1/51
+*  972     0e00.0ac8.fa3b   dynamic  0         F      F    Eth1/51
+*  972     0e00.0ac8.fa3c   dynamic  0         F      F    Eth1/6
+*  980     0081.c4d1.b88d   dynamic  0         F      F    Eth1/47
+*  980     0081.c4d1.be13   dynamic  0         F      F    Eth1/51
+*  980     0e00.0ac8.fa43   dynamic  0         F      F    Eth1/51
+*  980     a8b1.d432.1900   dynamic  0         F      F    Eth1/51
+*  980     a8b1.d432.19c0   dynamic  0         F      F    Eth1/51
+*  981     0081.c4d1.b892   dynamic  0         F      F    Eth1/48
+*  981     0081.c4d1.be18   dynamic  0         F      F    Eth1/51
+*  981     0e00.0ac8.fa53   dynamic  0         F      F    Eth1/51
+*  990     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  990     00f6.634f.137b   dynamic  0         F      F    Eth1/51
+*  990     cc16.7e91.e54e   dynamic  0         F      F    Eth1/51
+*  990     cc16.7e91.e99b   dynamic  0         F      F    Eth1/6
+*  991     00f6.634f.0f5d   dynamic  0         F      F    Eth1/6
+*  991     00f6.634f.137b   dynamic  0         F      F    Eth1/51
+*  991     cc16.7e91.e553   dynamic  0         F      F    Eth1/51
+*  991     cc16.7e91.e9a0   dynamic  0         F      F    Eth1/6
++    1     7829.ed3b.d884   dynamic  0         F      F    vPC Peer-Link
++    7     0000.0c07.ac00   dynamic  0         F      F    vPC Peer-Link
++    7     a8b1.d432.1900   dynamic  0         F      F    vPC Peer-Link
++   55     0007.af02.3e90   dynamic  0         F      F    vPC Peer-Link
++   55     0007.aff4.ed50   dynamic  0         F      F    vPC Peer-Link
++   55     0007.aff5.84a0   dynamic  0         F      F    vPC Peer-Link
++   55     0007.aff5.f920   dynamic  0         F      F    vPC Peer-Link
++   55     0007.aff5.f950   dynamic  0         F      F    vPC Peer-Link
++   55     0007.aff5.f960   dynamic  0         F      F    vPC Peer-Link
++   55     0007.aff5.f970   dynamic  0         F      F    vPC Peer-Link
++   55     0007.aff6.13e0   dynamic  0         F      F    vPC Peer-Link
++   55     001a.d300.6a49   dynamic  0         F      F    vPC Peer-Link
++   55     001a.d300.7fc1   dynamic  0         F      F    vPC Peer-Link
++   55     0060.e052.ec2a   dynamic  0         F      F    vPC Peer-Link
++   55     0060.e052.ecd0   dynamic  0         F      F    vPC Peer-Link
++   55     0060.e053.c071   dynamic  0         F      F    vPC Peer-Link
++   55     0060.e054.8ebe   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6781.e3fe   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.2012   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.2031   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.e4b4   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.e779   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.e7f7   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.e7fc   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.e800   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.e81a   dynamic  0         F      F    vPC Peer-Link
++   55     0080.6782.e915   dynamic  0         F      F    vPC Peer-Link
++   55     0080.67fd.04fb   dynamic  0         F      F    vPC Peer-Link
++   55     0080.67fd.05b3   dynamic  0         F      F    vPC Peer-Link
++   55     0080.67fd.09fe   dynamic  0         F      F    vPC Peer-Link
++   55     0080.67fd.124a   dynamic  0         F      F    vPC Peer-Link
++   55     0080.f409.9809   dynamic  0         F      F    vPC Peer-Link
++   55     0080.f409.d183   dynamic  0         F      F    vPC Peer-Link
++   55     0080.f409.eea1   dynamic  0         F      F    vPC Peer-Link
++   55     0080.f40f.3c23   dynamic  0         F      F    vPC Peer-Link
++   81     000c.29c2.108f   dynamic  0         F      F    vPC Peer-Link
++   81     0062.eceb.5960   dynamic  0         F      F    vPC Peer-Link
++   81     0081.c4d1.be10   dynamic  0         F      F    vPC Peer-Link
++   81     009e.1eb3.8cb9   dynamic  0         F      F    vPC Peer-Link
++   81     0800.1bff.24c7   dynamic  0         F      F    vPC Peer-Link
++   81     6805.ca07.52bc   dynamic  0         F      F    vPC Peer-Link
++   81     f415.6373.e000   dynamic  0         F      F    vPC Peer-Link
++   81     f415.6373.e002   dynamic  0         F      F    vPC Peer-Link
++   82     00de.fb04.4681   dynamic  0         F      F    vPC Peer-Link
++   83     d050.99c1.0a11   dynamic  0         F      F    vPC Peer-Link
++   83     d050.99e0.b1f8   dynamic  0         F      F    vPC Peer-Link
++  100     0000.0c07.ac00   dynamic  0         F      F    vPC Peer-Link
++  100     0018.0a23.a3e0   dynamic  0         F      F    vPC Peer-Link
++  100     0040.9db1.cc0d   dynamic  0         F      F    vPC Peer-Link
++  100     2431.8457.f516   dynamic  0         F      F    vPC Peer-Link
++  100     2431.8469.24d9   dynamic  0         F      F    vPC Peer-Link
++  100     2431.8477.64b3   dynamic  0         F      F    vPC Peer-Link
++  100     24be.050f.244c   dynamic  0         F      F    vPC Peer-Link
++  100     5065.f346.6c8a   dynamic  0         F      F    vPC Peer-Link
++  100     5065.f349.5bbe   dynamic  0         F      F    vPC Peer-Link
++  100     6400.6a7d.e161   dynamic  0         F      F    vPC Peer-Link
++  100     6451.063c.6b46   dynamic  0         F      F    vPC Peer-Link
++  100     6c3b.e502.b840   dynamic  0         F      F    vPC Peer-Link
++  100     6c3b.e536.d7b2   dynamic  0         F      F    vPC Peer-Link
++  100     6c3b.e536.d935   dynamic  0         F      F    vPC Peer-Link
++  100     8038.96cb.1463   dynamic  0         F      F    vPC Peer-Link
++  100     80ce.625b.0121   dynamic  0         F      F    vPC Peer-Link
++  100     a8b1.d432.1900   dynamic  0         F      F    vPC Peer-Link
++  100     d0bf.9cba.58dc   dynamic  0         F      F    vPC Peer-Link
++  100     d485.6413.6c16   dynamic  0         F      F    vPC Peer-Link
++  100     ecb1.d73f.0aec   dynamic  0         F      F    vPC Peer-Link
++  100     ecb1.d742.0a4f   dynamic  0         F      F    vPC Peer-Link
++  100     ecb1.d751.23bc   dynamic  0         F      F    vPC Peer-Link
++  100     ecb1.d760.60fa   dynamic  0         F      F    vPC Peer-Link
++  100     f430.b970.1be4   dynamic  0         F      F    vPC Peer-Link
++  102     000c.29d1.6943   dynamic  0         F      F    vPC Peer-Link
++  140     0010.186e.b56c   dynamic  0         F      F    vPC Peer-Link
++  140     0010.187f.b330   dynamic  0         F      F    vPC Peer-Link
++  140     0010.187f.b331   dynamic  0         F      F    vPC Peer-Link
++  140     00a0.b86e.2e0a   dynamic  0         F      F    vPC Peer-Link
++  140     3cd9.2beb.7efc   dynamic  0         F      F    vPC Peer-Link
++  140     e41f.1366.a5ca   dynamic  0         F      F    vPC Peer-Link
++  201     0000.0c07.ac00   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e105.b9c8   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e105.bb40   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e105.bb4d   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.098b   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.0992   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.09a3   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.09f5   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.0a06   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.0a0b   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.0a0c   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.0a0e   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.0a0f   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.0a16   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.8724   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.8742   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.874a   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.8764   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.8772   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.8787   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.879a   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.87bf   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e106.92aa   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a28   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a53   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a63   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a6e   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a6f   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a76   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a77   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7a78   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7aac   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7aad   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7abe   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7ac8   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7ad7   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7aea   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7b14   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7b26   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7b43   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7b4d   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7c79   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7dfd   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7dfe   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7e04   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7e05   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7e1b   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7e2c   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7e2d   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7e31   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.7ecf   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0b4   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0b8   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0b9   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0cd   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0cf   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0d1   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0d6   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c0da   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c101   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c110   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c128   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c910   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.c929   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.cc70   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.cfae   dynamic  0         F      F    vPC Peer-Link
++  201     0008.e107.cfaf   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4030.fc9e   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4031.1de6   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4031.1deb   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4031.1f1f   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c003   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c1ee   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c3c9   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c3cc   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c3d0   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c3d5   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c40b   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c485   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c56e   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c708   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c709   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c70c   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c70d   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c710   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c71b   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c9fe   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.c9ff   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d55d   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d58d   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d5ad   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d603   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d60a   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d60c   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d610   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d613   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d615   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d663   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d666   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d690   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d697   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4035.d699   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4040.eecd   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4040.f034   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4046.e333   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4057.9604   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4057.9609   dynamic  0         F      F    vPC Peer-Link
++  201     0010.4057.9a40   dynamic  0         F      F    vPC Peer-Link
++  201     0010.40b6.a71a   dynamic  0         F      F    vPC Peer-Link
++  201     0010.40b6.aa25   dynamic  0         F      F    vPC Peer-Link
++  201     0010.40b6.aa3d   dynamic  0         F      F    vPC Peer-Link
++  201     0010.40b6.aa4c   dynamic  0         F      F    vPC Peer-Link
++  201     0010.40b6.ad26   dynamic  0         F      F    vPC Peer-Link
++  201     0010.40b6.adb6   dynamic  0         F      F    vPC Peer-Link
++  201     0040.8c7f.61fb   dynamic  0         F      F    vPC Peer-Link
++  201     00c0.4e08.0261   dynamic  0         F      F    vPC Peer-Link
++  201     00c0.4e08.2602   dynamic  0         F      F    vPC Peer-Link
++  201     00c0.4e08.4f7d   dynamic  0         F      F    vPC Peer-Link
++  201     00c0.4e08.5219   dynamic  0         F      F    vPC Peer-Link
++  201     00c0.4e1d.00ff   dynamic  0         F      F    vPC Peer-Link
++  201     00c0.4e1d.07c3   dynamic  0         F      F    vPC Peer-Link
++  201     8c3b.ad1f.0664   dynamic  0         F      F    vPC Peer-Link
++  201     8c3b.ad1f.0810   dynamic  0         F      F    vPC Peer-Link
++  201     a8b1.d432.1900   dynamic  0         F      F    vPC Peer-Link
++  201     a8b1.d432.19c0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f149.32f0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c860   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c864   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c868   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c880   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c884   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c898   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8ac   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8b8   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8c0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8d0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8d4   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8d8   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8e0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8e4   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8e8   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8ec   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c8f4   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c900   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c904   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c910   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c914   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c918   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c91c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c920   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c924   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c92c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c940   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c944   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c948   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c94c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c950   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c958   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c96c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c970   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f16a.c974   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f173.2648   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f173.2790   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f24   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f30   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f34   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f44   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f48   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f4c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f58   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f60   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f64   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f68   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f74   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f78   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f7c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f88   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f8c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f90   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8f98   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fa0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fb0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fc0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fc4   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fc8   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fd0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fd4   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fe0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8fec   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8ff0   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8ff4   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.8ff8   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.9000   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.9004   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.9008   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f19f.900c   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1c1.2694   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1ca.bea8   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1ec.150a   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1ec.1f8e   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1ec.1fb6   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1ec.57f2   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1f4.1864   dynamic  0         F      F    vPC Peer-Link
++  223     0004.f1f4.1960   dynamic  0         F      F    vPC Peer-Link
++  223     0005.2100.741e   dynamic  0         F      F    vPC Peer-Link
++  223     0019.85e0.1f05   dynamic  0         F      F    vPC Peer-Link
++  223     0027.01ff.e685   dynamic  0         F      F    vPC Peer-Link
++  223     0040.8ca6.2fa4   dynamic  0         F      F    vPC Peer-Link
++  223     8c1c.da50.51fd   dynamic  0         F      F    vPC Peer-Link
++  223     c062.6b78.6342   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2122.9e2d   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.10a9   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.10aa   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.10ab   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.10fd   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1106   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11b7   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11e0   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11ec   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11ef   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11f2   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11f5   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11f7   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11f8   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11f9   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11fc   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.11fe   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1200   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1203   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1204   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1205   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1207   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1209   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.120b   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.120e   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.1223   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2123.126b   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e2cd   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e2d5   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e2db   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e2e4   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e2ea   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e3c8   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e3e1   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e414   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e42d   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.2133.e462   dynamic  0         F      F    vPC Peer-Link
++  224     04f0.214f.fd2b   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e754.b743   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e754.bc4a   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7a0.553d   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7a0.555c   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7a0.5585   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7a0.55a9   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7a0.569e   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7a0.57b0   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2959   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2968   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.296a   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.298c   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.29c8   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.29d6   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2a13   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2a7d   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2b30   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2b87   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2daf   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2dbf   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2e39   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2f03   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7aa.2f4e   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7b0.8d28   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7b0.8d38   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7c0.121e   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7c0.1559   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7c0.156c   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7c0.1579   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7c8.35bd   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8952   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8956   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.896c   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.897c   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.899e   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8a70   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8abb   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8abe   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8ac5   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8ad5   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8ae0   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8b4b   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8bf2   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8c06   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8cc3   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8d12   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8d1b   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7d0.8dfb   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b1e1   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b1ea   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b1ee   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b1f0   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b230   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b2a4   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b2d6   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b302   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b30b   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b311   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b315   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b32f   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b338   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b363   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b3ec   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b3ed   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b3f7   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b425   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b440   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b441   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b453   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b4b8   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b4dd   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b50d   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b52e   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b531   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b552   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b57e   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b584   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b586   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b5a8   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7da.b5b3   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7de.6c8f   dynamic  0         F      F    vPC Peer-Link
++  224     44d9.e7de.6d3b   dynamic  0         F      F    vPC Peer-Link
++  224     70e4.22c4.708b   dynamic  0         F      F    vPC Peer-Link
++  224     788a.206a.bae7   dynamic  0         F      F    vPC Peer-Link
++  224     788a.206a.bb98   dynamic  0         F      F    vPC Peer-Link
++  224     788a.206a.bbad   dynamic  0         F      F    vPC Peer-Link
++  224     788a.206a.bc0c   dynamic  0         F      F    vPC Peer-Link
++  224     788a.206a.bc95   dynamic  0         F      F    vPC Peer-Link
++  224     788a.20a2.b10d   dynamic  0         F      F    vPC Peer-Link
++  224     788a.20a2.b20b   dynamic  0         F      F    vPC Peer-Link
++  224     788a.20a2.b2a9   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c5c5   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c6eb   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c6f3   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c6f4   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c759   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c75c   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c7f0   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c806   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c877   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c8d8   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c931   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c99e   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c9c2   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a83e.c9eb   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a8fc.1fc2   dynamic  0         F      F    vPC Peer-Link
++  224     802a.a8fc.2257   dynamic  0         F      F    vPC Peer-Link
++  224     fcec.da6a.c888   dynamic  0         F      F    vPC Peer-Link
++  224     fcec.da6a.c8ab   dynamic  0         F      F    vPC Peer-Link
++  224     fcec.da6a.c900   dynamic  0         F      F    vPC Peer-Link
++  224     fcec.da6a.c908   dynamic  0         F      F    vPC Peer-Link
++  240     0010.dbff.1001   dynamic  0         F      F    vPC Peer-Link
++  600     b42e.9935.50c3   dynamic  0         F      F    vPC Peer-Link
+G  240     0000.0c07.acf0   static   -         F      F    vPC Peer-Link(R)
+G   81     0000.0c9f.f051   static   -         F      F    vPC Peer-Link(R)
+G   82     0000.0c9f.f052   static   -         F      F    vPC Peer-Link(R)
+G   83     0000.0c9f.f053   static   -         F      F    vPC Peer-Link(R)
+G   85     0000.0c9f.f055   static   -         F      F    vPC Peer-Link(R)
+G  130     0000.0c9f.f082   static   -         F      F    vPC Peer-Link(R)
+G  141     0000.0c9f.f08d   static   -         F      F    vPC Peer-Link(R)
+G  142     0000.0c9f.f08e   static   -         F      F    vPC Peer-Link(R)
+G  151     0000.0c9f.f097   static   -         F      F    vPC Peer-Link(R)
+G  181     0000.0c9f.f0b5   static   -         F      F    vPC Peer-Link(R)
+G  182     0000.0c9f.f0b6   static   -         F      F    vPC Peer-Link(R)
+G  183     0000.0c9f.f0b7   static   -         F      F    vPC Peer-Link(R)
+G  223     0000.0c9f.f0df   static   -         F      F    vPC Peer-Link(R)
+G  224     0000.0c9f.f0e0   static   -         F      F    vPC Peer-Link(R)
+G    -     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G   81     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G   82     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G   83     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G   85     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  130     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  141     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  142     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  151     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  181     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  182     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  183     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  223     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  224     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G  240     00f6.6311.146b   static   -         F      F    sup-eth1(R)
+G   81     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G   82     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G   83     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G   85     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  130     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  141     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  142     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  151     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  181     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  182     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  183     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  223     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  224     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  240     00f6.6311.1525   static   -         F      F    vPC Peer-Link(R)
+G  971     0e00.0ac8.fa32   static   -         F      F    sup-eth1(R)
+G  972     0e00.0ac8.fa3a   static   -         F      F    sup-eth1(R)
+G  980     0e00.0ac8.fa44   static   -         F      F    sup-eth1(R)
+G  981     0e00.0ac8.fa54   static   -         F      F    sup-eth1(R)

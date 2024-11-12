@@ -1,0 +1,4 @@
+
+int Gi0/0
+switchport trunk allowed vlan add 120 
+!

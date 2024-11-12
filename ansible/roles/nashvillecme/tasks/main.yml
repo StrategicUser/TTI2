@@ -1,0 +1,14 @@
+---
+# tasks file for YTI Nashville CME 
+- name: Obtain Login
+  include_vars: pass.yaml
+
+- name: Define YTI Nashville CME
+  set_fact:
+    provider:
+      host: "{{ inventory_hostname }}"
+      username: "{{ creds['username'] }}"
+      password: "{{ creds['password'] }}"
+      auth_pass: "{{ creds['auth_pass'] }}"
+
+- include: nashvillecme-config.yaml

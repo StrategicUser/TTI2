@@ -1,0 +1,7 @@
+---
+- hosts: etstac-core
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: etstac-core

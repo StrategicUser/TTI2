@@ -1,0 +1,17 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define att_spine2_sw1
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: att_spine2_sw1 Configuration Update
+    nxos_config:
+      timeout: 60
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "/home/strategic/TTI/ansible/roles/att_spine2_sw1/files/att_spine2_sw1-config.cfg"

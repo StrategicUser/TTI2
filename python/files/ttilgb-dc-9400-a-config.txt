@@ -1,0 +1,194 @@
+
+Building configuration...
+
+Current configuration : 4070 bytes
+!
+! Last configuration change at 15:26:37 UTC Mon Sep 28 2020 by cisco
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname ttilgb-dc-9400-a
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+username cisco privilege 15 password 0 cisco
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip domain-name tti.com
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+vlan 100
+ name TTI-User-Vlan
+!
+vlan 101
+ name TTI-Data-Vlan
+!
+vlan 130
+ name TTIServer
+!
+vlan 140
+ name TOS-Real-Server-Vlan
+!
+vlan 141
+ name TOS-Virtual-Server-Vlan
+!
+vlan 142
+ name Oracle-Vlan
+!
+vlan 144
+ name Xseries
+!
+vlan 151
+ name F5
+!
+vlan 181
+ name ADMIN_BUNKER_MGMT
+!
+vlan 182
+ name ADMIN_BUNKER_UCS_CIMC
+!
+vlan 183
+ name ADMIN_BUNKER_ESX_MGMT
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 10.255.4.205 255.255.0.0
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description to ttilgb-core-9500-a
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ description GigabitEthernet0/2
+ switchport access vlan 100
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ description to Client1
+ switchport access vlan 100
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ description to Client2
+ switchport access vlan 101
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface Vlan2
+ ip address 10.200.2.243 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 10.200.2.10
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ login local
+ transport input telnet ssh
+!
+!
+end

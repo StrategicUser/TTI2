@@ -1,0 +1,76 @@
+Cisco IOS and IOS XE Radius VRF Configuration:
+
+aaa new-model
+!
+!
+radius server winrad
+ address ipv4 10.200.130.32 auth-port 1645 acct-port 1646
+ key ttilgb.network.1020
+!
+aaa group server radius Windows
+ server name winrad
+ use-vrf Mgmt-vrf
+aaa authentication login default group Windows local
+aaa session-id common
+
+ip radius source-interface g0/0
+!
+line vty 0 4
+  login authentication default
+  privilege level 15
+
+
+
+Cisco IOS and IOS XE Radius Configuration:
+
+aaa new-model
+!
+no aaa authentication login default group tacacs+ local
+no aaa authentication enable default group tacacs+ enable
+no aaa authorization exec default group tacacs+ if-authenticated
+no aaa authorization commands 15 default group tacacs+ if-authenticated
+!
+aaa group server radius Windows
+ server name winrad
+aaa authentication login default group Windows local
+aaa session-id common
+!
+radius server winrad
+ address ipv4 172.16.145.100 auth-port 1645 acct-port 1646
+ key Cisco0
+!
+ip radius source-interface lo0
+!
+line vty 0 4
+  login authentication default
+  privilege level 15
+
+
+
+Nexus 9K Radius Configuration:
+
+radius-server key 0 Cisco
+radius-server host 172.16.145.100 authentication accounting 
+radius-server directed-request 
+ip radius source-interface loopback0
+!
+aaa group server radius Windows 
+    server 172.16.145.100 
+aaa authentication login default group Windows 
+!
+!
+!
+!
+Remove IOS Radius:
+!
+no aaa authentication login default group Windows local
+no aaa group server radius Windows 
+no radius server Winrad
+
+!
+Remove NXOS Radius:
+!
+no aaa authentication login default group Windows
+no radius-server host 172.16.145.100
+no radius-server key 0 Cisco
+no aaa group server radius Windows

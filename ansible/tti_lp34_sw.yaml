@@ -1,0 +1,7 @@
+---
+- hosts: tti_lp34_sw
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: tti_lp34_sw

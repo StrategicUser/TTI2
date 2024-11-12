@@ -1,0 +1,3 @@
+---
+# tasks file for TTI Switches
+- include: ttilgb_3560_pole_lc20_a.yaml

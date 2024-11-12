@@ -1,0 +1,40 @@
+e430.220b.541d
+description to PTZ_CAMERA_Broadway_3a 10.3.23.108
+switchport access vlan 23
+switchport mode access
+spanning-tree portfast edge
+!
+e430.220c.74b0
+description TO_CAMERA_Broadway_Crane_Shop 10.3.23.179
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.221e.8b81
+description TO_CAMERA_Crane_Shop_Parking_LB 10.3.23.180
+switchport access vlan 23
+switchport mode access
+spanning-tree portfast edge
+!
+e430.2229.24fd
+description TO_CAMERA_WEST_unknown_need_to_find_camera_ip
+switchport access vlan 23
+switchport mode access
+spanning-tree portfast edge
+!
+0004.f11a.fd04
+description TO_ACCESS_POINT_CISCO_1231_G
+switchport access vlan 10
+spanning-tree portfast edge
+!
+f04a.02af.f52e
+description TO_ACCESS_POINT_AP9_B_1562
+switchport access vlan 210
+switchport mode access
+spanning-tree portfast edge
+!
+f04a.02af.f580
+description TO_ACCESS_POINT_AP9_A_1562
+switchport access vlan 210
+switchport mode access
+spanning-tree portfast edge
+!

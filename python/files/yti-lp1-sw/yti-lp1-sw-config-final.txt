@@ -1,0 +1,16 @@
+0023.5e13.55c3
+switchport access vlan 10
+spanning-tree portfast edge
+!
+d8d4.3cdd.908e
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.220c.74b2
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.220c.74b3
+switchport access vlan 23
+spanning-tree portfast edge
+!

@@ -1,0 +1,7 @@
+---
+- hosts: sss-sg300-sw
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: sss-sg300-sw

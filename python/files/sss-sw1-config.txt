@@ -1,0 +1,1161 @@
+
+Building configuration...
+
+Current configuration : 31219 bytes
+!
+! Last configuration change at 22:27:52 PDT Wed May 11 2022 by dlakey
+! NVRAM config last updated at 22:27:59 PDT Wed May 11 2022 by dlakey
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service unsupported-transceiver
+!
+hostname sss-sw1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+!
+logging monitor informational
+enable secret 5 $1$X.Mh$G.WjxOXTW1zIhX6hzQ2Up0
+enable password cisco
+!
+username cisco privilege 15 password 0 cisco
+aaa new-model
+!
+!
+aaa group server radius ise-group
+ server name ise
+ server 172.16.145.90 acct-port 1813
+ server 172.16.145.90 auth-port 1812
+!
+aaa group server radius Windows
+ server name winrad
+!
+aaa authentication login default group Windows local
+aaa authentication dot1x default group ise-group
+aaa authorization exec default group Windows if-authenticated 
+aaa authorization network default group ise-group 
+aaa authorization network auth-list group ise-group 
+aaa authorization auth-proxy default group ise-group 
+aaa accounting update periodic 1440
+aaa accounting auth-proxy default start-stop group ise-group
+aaa accounting dot1x default start-stop group ise-group
+aaa accounting system default start-stop group ise-group
+!
+!
+!
+!
+!
+aaa server radius dynamic-author
+ client 172.16.145.90 server-key cisco
+ auth-type any
+!
+aaa session-id common
+clock timezone PST -8 0
+clock summer-time PDT recurring
+switch 2 provision ws-c3750x-24
+system mtu routing 1500
+!
+!
+!
+!
+!
+device-sensor filter-list cdp list cdp_list
+ tlv name device-name
+ tlv name address-type
+ tlv name capabilities-type
+ tlv name platform-type
+!
+device-sensor filter-list dhcp list dhcp_list
+ option name host-name
+ option name domain-name
+ option name default-ip-ttl
+ option name requested-address
+ option name parameter-request-list
+ option name class-identifier
+ option name client-identifier
+device-sensor filter-spec dhcp include list dhcp_list
+device-sensor filter-spec cdp include list cdp_list
+device-sensor accounting
+device-sensor notify all-changes
+ip routing
+!
+ip dhcp excluded-address 172.16.34.1 172.16.34.49
+ip dhcp excluded-address 172.16.34.101 172.16.34.254
+ip dhcp excluded-address 172.16.244.1 172.16.244.160
+ip dhcp excluded-address 172.16.60.1 172.16.60.150
+ip dhcp excluded-address 172.16.165.1 172.16.165.50
+ip dhcp excluded-address 172.16.35.1 172.16.35.20
+ip dhcp excluded-address 172.16.100.1 172.16.100.20
+ip dhcp excluded-address 172.16.101.1 172.16.101.20
+ip dhcp excluded-address 172.16.114.1 172.16.114.50
+ip dhcp excluded-address 172.16.145.1 172.16.145.150
+ip dhcp excluded-address 172.16.33.1 172.16.33.49
+ip dhcp excluded-address 192.168.3.1 192.168.3.100
+ip dhcp excluded-address 192.168.4.1 192.168.4.150
+ip dhcp excluded-address 192.168.13.1 192.168.13.100
+ip dhcp excluded-address 172.16.1.1 172.16.34.49
+ip dhcp excluded-address 172.16.155.1 172.16.155.49
+ip dhcp excluded-address 192.168.2.1 192.168.2.100
+ip dhcp excluded-address 192.168.0.1 192.168.0.100
+ip dhcp excluded-address 10.42.96.1 10.42.96.50
+ip dhcp excluded-address 10.42.9.1 10.42.9.49
+ip dhcp excluded-address 10.42.70.1 10.42.70.50
+ip dhcp excluded-address 172.23.241.1 172.23.241.49
+ip dhcp excluded-address 172.23.241.200 172.23.241.254
+ip dhcp excluded-address 172.16.10.200 172.16.10.254
+ip dhcp excluded-address 10.156.6.1 10.156.6.50
+ip dhcp excluded-address 10.200.224.1 10.200.224.50
+ip dhcp excluded-address 10.15.8.1 10.15.8.50
+ip dhcp excluded-address 10.3.96.1 10.3.96.100
+ip dhcp excluded-address 172.16.155.231 172.16.155.254
+ip dhcp excluded-address 10.3.100.1 10.3.100.100
+ip dhcp excluded-address 10.0.0.1 10.0.0.100
+ip dhcp excluded-address 192.168.8.1 192.168.8.50
+ip dhcp excluded-address 192.168.8.200 192.168.8.254
+ip dhcp excluded-address 192.168.17.200 192.168.17.254
+ip dhcp excluded-address 192.168.18.200 192.168.18.254
+ip dhcp excluded-address 192.168.10.200 192.168.10.254
+ip dhcp excluded-address 192.168.19.200 192.168.19.254
+ip dhcp excluded-address 192.168.20.200 192.168.20.254
+ip dhcp excluded-address 10.200.100.200 10.200.100.254
+ip dhcp excluded-address 192.168.22.200 192.168.22.254
+ip dhcp excluded-address 192.168.33.200 192.168.33.254
+ip dhcp excluded-address 192.168.7.200 192.168.7.254
+ip dhcp excluded-address 10.11.255.200 10.11.255.254
+ip dhcp excluded-address 10.10.3.200 10.10.3.254
+ip dhcp excluded-address 192.168.7.1 192.168.7.254
+ip dhcp excluded-address 10.200.210.200 10.200.210.254
+ip dhcp excluded-address 10.200.210.1 10.200.210.15
+ip dhcp excluded-address 10.3.210.1 10.3.210.50
+ip dhcp excluded-address 10.3.210.100 10.3.210.254
+!
+ip dhcp pool CM-Wireless
+ network 172.16.34.0 255.255.255.0
+ default-router 172.16.34.1 
+!
+ip dhcp pool LA-Wireless
+ network 172.16.10.0 255.255.255.0
+ default-router 172.16.10.254 
+!
+ip dhcp pool Voice
+ network 10.156.6.0 255.255.255.0
+ default-router 10.156.6.1 
+ option 150 ip 10.3.96.60 
+!
+ip dhcp pool Wireless-Data
+ network 172.16.100.0 255.255.255.0
+ default-router 172.16.100.1 
+ dns-server 172.16.145.10 8.8.8.8 
+!
+ip dhcp pool Wireless-Guest
+ network 172.16.101.0 255.255.255.0
+ default-router 172.16.101.1 
+ dns-server 172.16.145.10 8.8.8.8 
+!
+ip dhcp pool WAP
+ network 172.16.35.0 255.255.255.0
+ default-router 172.16.35.1 
+ option 43 hex f104.ac10.220a
+!
+ip dhcp pool PA-Wireless
+ network 172.16.114.0 255.255.254.0
+ default-router 172.16.114.1 
+!
+ip dhcp pool ComNet1
+ network 172.16.33.0 255.255.255.0
+ default-router 172.16.33.1 
+!
+ip dhcp pool ETS-WAP
+ network 192.168.3.0 255.255.255.0
+ default-router 192.168.3.254 
+ option 43 hex f104.ac10.220a
+!
+ip dhcp pool ETS-Wireless
+ default-router 192.168.8.254 
+ dns-server 8.8.8.8 
+ option 150 ip 172.16.145.60 
+!
+ip dhcp pool ETS-Test
+ network 192.168.13.0 255.255.255.0
+ default-router 192.168.13.1 
+!
+ip dhcp pool Flat1
+ network 172.16.1.0 255.255.255.0
+ default-router 172.16.1.1 
+!
+ip dhcp pool EMS-WAP
+ network 192.168.2.0 255.255.255.0
+ default-router 192.168.2.254 
+ option 43 hex f104.ac10.2215
+!
+ip dhcp pool oob
+ network 192.168.0.0 255.255.255.0
+ default-router 192.168.0.254 
+!
+ip dhcp pool PSDI-Wireless
+ network 10.42.70.0 255.255.255.0
+ default-router 10.42.70.1 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool IRV2-AP
+ network 10.42.9.0 255.255.255.0
+ default-router 10.42.9.1 
+ option 60 ascii ArubaAP
+ option 43 ip 10.40.6.40 
+!
+ip dhcp pool PSDI-Internal-Wireless
+ network 10.42.96.0 255.255.255.0
+ default-router 10.42.96.1 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool TCM-Voice
+ network 172.23.241.0 255.255.255.0
+ default-router 172.23.241.254 
+ option 150 ip 172.23.243.15 
+!
+ip dhcp pool Voice2
+ network 172.16.60.0 255.255.255.0
+ default-router 172.16.60.1 
+ option 150 ip 172.16.145.60 
+!
+ip dhcp pool TTI-WiFi
+ network 10.200.224.0 255.255.254.0
+ default-router 10.200.224.10 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool PHX-WiFi
+ network 10.15.8.0 255.255.252.0
+ default-router 10.15.8.1 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool YTI-Data
+ network 10.3.96.0 255.255.255.0
+ default-router 10.3.96.1 
+ dns-server 172.16.145.100 8.8.8.8 
+!
+ip dhcp pool SSS-Data
+ network 172.16.145.0 255.255.255.0
+ default-router 172.16.145.2 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool YTI-User
+ default-router 10.0.0.254 
+ dns-server 172.16.145.100 8.8.8.8 
+!
+ip dhcp pool YTI-User2
+ network 10.3.100.0 255.255.255.0
+ default-router 10.3.100.1 
+ dns-server 172.16.145.100 8.8.8.8 
+!
+ip dhcp pool TTI-Data1
+ network 192.168.17.0 255.255.255.0
+ default-router 192.168.17.254 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool TTI-Quaratine
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.254 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool TTI-Server1
+ network 192.168.18.0 255.255.255.0
+ default-router 192.168.18.254 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool TTI-Corp-Wifi
+ network 192.168.19.0 255.255.255.0
+ default-router 192.168.19.254 
+ dns-server 172.16.145.100 8.8.8.8 
+!
+ip dhcp pool TTI-Guest-Wifi
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.254 
+ dns-server 172.16.145.100 8.8.8.8 
+!
+ip dhcp pool TTI-User
+ network 10.200.100.0 255.255.255.0
+ default-router 10.200.100.254 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool TTTI-Voice
+ default-router 192.168.33.254 
+ option 150 ip 172.16.145.60 
+!
+ip dhcp pool TTI-Voice2
+ network 192.168.33.0 255.255.255.0
+ default-router 192.168.33.254 
+ option 150 ip 172.16.145.60 
+!
+ip dhcp pool ETS-WiFi
+ network 192.168.4.0 255.255.252.0
+ default-router 192.168.7.254 
+ dns-server 8.8.8.8 
+ option 150 ip 172.16.145.60 
+!
+ip dhcp pool LLR-Clients
+ network 10.10.3.0 255.255.255.0
+ default-router 10.10.3.254 
+ domain-name sssinc.com
+ dns-server 172.16.145.100 8.8.8.8 
+!
+ip dhcp pool TTI-AP
+ network 10.200.120.0 255.255.255.0
+ default-router 10.200.120.254 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool TTI-FM
+ network 10.200.210.0 255.255.255.0
+ default-router 10.200.210.10 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool YTI-WAP
+ network 10.3.210.0 255.255.255.0
+ default-router 10.3.210.1 
+ option 43 hex f104.0a0a.0205
+!
+!
+no ip domain-lookup
+ip domain-name sssinc.com
+ip name-server 172.16.145.100
+ip multicast-routing distributed
+ip device tracking probe delay 10
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+!
+!
+authentication critical recovery delay 1000
+epm logging
+mls qos map policed-dscp  0 10 18 24 46 to 8
+mls qos map cos-dscp 0 8 16 24 32 46 48 56
+mls qos srr-queue input bandwidth 70 30
+mls qos srr-queue input threshold 1 80 90
+mls qos srr-queue input priority-queue 2 bandwidth 30
+mls qos srr-queue input cos-map queue 1 threshold 2 3
+mls qos srr-queue input cos-map queue 1 threshold 3 6 7
+mls qos srr-queue input cos-map queue 2 threshold 1 4
+mls qos srr-queue input dscp-map queue 1 threshold 2 24
+mls qos srr-queue input dscp-map queue 1 threshold 3 48 49 50 51 52 53 54 55
+mls qos srr-queue input dscp-map queue 1 threshold 3 56 57 58 59 60 61 62 63
+mls qos srr-queue input dscp-map queue 2 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue input dscp-map queue 2 threshold 3 46 47
+mls qos srr-queue output cos-map queue 1 threshold 3 4 5
+mls qos srr-queue output cos-map queue 2 threshold 1 2
+mls qos srr-queue output cos-map queue 2 threshold 2 3
+mls qos srr-queue output cos-map queue 2 threshold 3 6 7
+mls qos srr-queue output cos-map queue 3 threshold 3 0
+mls qos srr-queue output cos-map queue 4 threshold 3 1
+mls qos srr-queue output dscp-map queue 1 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue output dscp-map queue 1 threshold 3 46 47
+mls qos srr-queue output dscp-map queue 2 threshold 1 16 17 18 19 20 21 22 23
+mls qos srr-queue output dscp-map queue 2 threshold 1 26 27 28 29 30 31 34 35
+mls qos srr-queue output dscp-map queue 2 threshold 1 36 37 38 39
+mls qos srr-queue output dscp-map queue 2 threshold 2 24
+mls qos srr-queue output dscp-map queue 2 threshold 3 48 49 50 51 52 53 54 55
+mls qos srr-queue output dscp-map queue 2 threshold 3 56 57 58 59 60 61 62 63
+mls qos srr-queue output dscp-map queue 3 threshold 3 0 1 2 3 4 5 6 7
+mls qos srr-queue output dscp-map queue 4 threshold 1 8 9 11 13 15
+mls qos srr-queue output dscp-map queue 4 threshold 2 10 12 14
+mls qos queue-set output 1 threshold 1 100 100 50 200
+mls qos queue-set output 1 threshold 2 125 125 100 400
+mls qos queue-set output 1 threshold 3 100 100 100 400
+mls qos queue-set output 1 threshold 4 60 150 50 200
+mls qos queue-set output 1 buffers 15 25 40 20
+mls qos
+!
+crypto pki trustpoint TP-self-signed-1208448512
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1208448512
+ revocation-check none
+ rsakeypair TP-self-signed-1208448512
+!
+!
+crypto pki certificate chain TP-self-signed-1208448512
+ certificate self-signed 01
+  30820247 308201B0 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31323038 34343835 3132301E 170D3933 30333031 30303530 
+  35355A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 32303834 
+  34383531 3230819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100BC5F 2E7A0D80 8FC00659 183DCBE0 14C5975C BD069E54 D32A72E2 90BBDCCF 
+  0B0D1E2E ABFB901A E6EA441A 5C6F6434 DA01C903 E0BE7DD9 9065489E AA129B7E 
+  DE63D6C5 367835BE 0EB02629 64687F7F 3B8521A7 DF124D06 79CFB5C6 3C0274B2 
+  3E30B154 F7C281C6 4A107A8B 706C08DF AAFEFEA2 18A2ED28 35D659FC 54374652 
+  D92B0203 010001A3 6F306D30 0F060355 1D130101 FF040530 030101FF 301A0603 
+  551D1104 13301182 0F737373 2D737731 2E737373 2E62697A 301F0603 551D2304 
+  18301680 14AE0A19 33B56C5A F541E030 FB1E71FD E1A93349 81301D06 03551D0E 
+  04160414 AE0A1933 B56C5AF5 41E030FB 1E71FDE1 A9334981 300D0609 2A864886 
+  F70D0101 04050003 81810012 F33934BC 88FEDD53 EF14A05C CF83DF55 005BE009 
+  9B6CAB70 0775F331 1697E269 EFBC66B6 90A1827C EE1F7456 18815DCF F3624B5B 
+  5B89F6B4 23701F90 08BE3B96 B51BC9CE 980C3EE8 FE459825 5CF8BE1E 7FCE784C 
+  B7A74A58 24BFFA79 C56A0478 8FF4BD7E 8B0491CD B8E5F293 99B52FA9 3B24D578 
+  6B017C1C 88657457 EBD5B3
+  	quit
+license boot level ipservices
+!
+!
+!
+dot1x system-auth-control
+dot1x critical eapol
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+auto qos srnd4
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name SSS-Office
+!
+vlan 3
+ name LLR-Servers
+!
+vlan 4
+ name YTI-User
+!
+vlan 10
+ name SSS-Vlan
+!
+vlan 11
+ name LLR-Clients
+!
+vlan 12
+ name Calabasas-Voice
+!
+vlan 15 
+!
+vlan 21
+ name YTI-Mmgt
+!
+vlan 23 
+!
+vlan 34
+ name Com2-Vlan2
+!
+vlan 35
+ name WAP-Vlan
+!
+vlan 40
+ name ETS-WLC
+!
+vlan 45
+ name Internet-Vlan
+!
+vlan 50
+ name Flat-1
+!
+vlan 51
+ name Flat
+!
+vlan 55
+ name SSS-Data
+!
+vlan 100
+ name LL-Management
+!
+vlan 114
+ name YTI-Voice
+!
+vlan 117
+ name Management
+!
+vlan 122
+ name CUCM-Vlan
+!
+vlan 150
+ name DMZ-Vlan
+!
+vlan 151
+ name TTI-VPN
+!
+vlan 200
+ name OOB
+!
+vlan 210
+ name FM-Vlan
+!
+vlan 211
+ name YTI-Yard
+!
+vlan 224
+ name TTI-WiFi-Vlan
+!
+vlan 241
+ name SSS-Services
+!
+vlan 242
+ name DMZ2
+!
+vlan 250
+ name eCone
+!
+vlan 402
+ name EMS-WAP
+!
+vlan 403
+ name ETS-WAP
+!
+vlan 404
+ name ETS-Yard
+!
+vlan 408
+ name YTI-Phocus
+!
+vlan 410
+ name Quaratine
+!
+vlan 417
+ name TTI-Data1
+!
+vlan 418
+ name TTI-Server1
+!
+vlan 419
+ name TTI-CORP
+!
+vlan 420
+ name Guest
+!
+vlan 422
+ name TTI-Voice
+!
+vlan 433
+ name TTI-Voice2
+!
+!
+class-map match-all AUTOQOS_VOIP_VIDEO_CLASS
+ match ip dscp af41 
+class-map match-all AUTOQOS_VOIP_DATA_CLASS
+ match ip dscp ef 
+class-map match-all AUTOQOS_DEFAULT_CLASS
+ match access-group name AUTOQOS-ACL-DEFAULT
+class-map match-all AUTOQOS_VOIP_SIGNAL_CLASS
+ match ip dscp cs3 
+!
+policy-map AUTOQOS-SRND4-CISCOPHONE-POLICY
+ class AUTOQOS_VOIP_DATA_CLASS
+  set dscp ef
+  police 128000 8000 exceed-action policed-dscp-transmit
+ class AUTOQOS_VOIP_VIDEO_CLASS
+  set dscp af41
+  police 10000000 8000 exceed-action policed-dscp-transmit
+ class AUTOQOS_VOIP_SIGNAL_CLASS
+  set dscp cs3
+  police 32000 8000 exceed-action policed-dscp-transmit
+ class AUTOQOS_DEFAULT_CLASS
+  set dscp default
+  police 10000000 8000 exceed-action policed-dscp-transmit
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.16.65.250 255.255.255.255
+!
+interface Loopback1
+ ip address 172.16.65.251 255.255.255.255
+!
+interface Loopback2
+ ip address 172.16.65.252 255.255.255.255
+!
+interface Loopback3
+ ip address 172.16.65.253 255.255.255.255
+!
+interface Loopback4
+ ip address 172.16.65.254 255.255.255.255
+!
+interface Loopback5
+ ip address 172.16.65.249 255.255.255.255
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+ no ip mroute-cache
+!
+interface GigabitEthernet2/0/1
+ description Alienware-Laptop-Port
+ switchport access vlan 45
+ switchport mode access
+ srr-queue bandwidth share 1 30 35 5
+ queue-set 2
+ priority-queue out 
+ auto qos trust 
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/0/2
+ switchport access vlan 45
+ switchport trunk allowed vlan 21,23,210
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface GigabitEthernet2/0/3
+ switchport access vlan 45
+!
+interface GigabitEthernet2/0/4
+ switchport access vlan 45
+!
+interface GigabitEthernet2/0/5
+ description Windows Laptop
+ switchport access vlan 417
+ switchport mode access
+ authentication event fail action next-method
+ authentication event server alive action reinitialize 
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ authentication violation restrict
+ mab
+ snmp trap mac-notification change added
+ snmp trap mac-notification change removed
+ dot1x pae authenticator
+ dot1x timeout tx-period 10
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/0/6
+ switchport access vlan 417
+!
+interface GigabitEthernet2/0/7
+ description Linux Raspberry PI
+ switchport access vlan 418
+ switchport mode access
+ ip access-group ACL-ALLOW in
+ authentication event fail action next-method
+ authentication event server alive action reinitialize 
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ authentication violation restrict
+ mab
+ snmp trap mac-notification change added
+ snmp trap mac-notification change removed
+ dot1x pae authenticator
+ dot1x timeout tx-period 10
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/0/8
+!
+interface GigabitEthernet2/0/9
+ description HP-Labtop
+ switchport access vlan 418
+ switchport mode access
+ ip access-group ACL-ALLOW in
+ authentication event fail action next-method
+ authentication event server alive action reinitialize 
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ authentication violation restrict
+ mab
+ snmp trap mac-notification change added
+ snmp trap mac-notification change removed
+ dot1x pae authenticator
+ dot1x timeout tx-period 10
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/0/10
+ switchport trunk allowed vlan 1,2,45,210
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/0/11
+ description Windows Laptop
+ switchport access vlan 417
+ switchport mode access
+ ip access-group ACL-ALLOW in
+ authentication event fail action next-method
+ authentication event server alive action reinitialize 
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ authentication violation restrict
+ mab
+ snmp trap mac-notification change added
+ snmp trap mac-notification change removed
+ dot1x pae authenticator
+ dot1x timeout tx-period 10
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/0/12
+ switchport access vlan 417
+ switchport mode access
+ ip access-group ACL-ALLOW in
+ authentication event fail action next-method
+ authentication event server alive action reinitialize 
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ authentication violation restrict
+ mab
+ snmp trap mac-notification change added
+ snmp trap mac-notification change removed
+ dot1x pae authenticator
+ dot1x timeout tx-period 10
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/0/13
+ description Link-to-Firewall-dk-sd1
+ switchport access vlan 45
+ switchport trunk native vlan 45
+ srr-queue bandwidth share 1 30 35 5
+ queue-set 2
+ priority-queue out 
+ mls qos trust cos
+ auto qos trust 
+!
+interface GigabitEthernet2/0/14
+ no switchport
+ ip address 10.200.250.130 255.255.255.252
+!
+interface GigabitEthernet2/0/15
+ description Surface
+ switchport access vlan 418
+ switchport mode access
+ switchport voice vlan 114
+ ip access-group ACL-ALLOW in
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out 
+ authentication event fail action next-method
+ authentication event server alive action reinitialize 
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ authentication violation restrict
+ mab
+ snmp trap mac-notification change added
+ snmp trap mac-notification change removed
+ mls qos trust device cisco-phone
+ mls qos trust cos
+ dot1x pae authenticator
+ dot1x timeout tx-period 10
+ auto qos voip cisco-phone 
+ spanning-tree portfast edge
+ service-policy input AUTOQOS-SRND4-CISCOPHONE-POLICY
+!
+interface GigabitEthernet2/0/16
+ switchport access vlan 417
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/0/17
+ switchport access vlan 15
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 15
+ switchport mode trunk
+!
+interface GigabitEthernet2/0/18
+ description Link-to-UCS220
+ switchport access vlan 45
+ switchport trunk allowed vlan 2,3,10,45,50,51,55,60,100,151,242
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ spanning-tree portfast edge trunk
+!
+interface GigabitEthernet2/0/19
+ switchport access vlan 45
+!
+interface GigabitEthernet2/0/20
+ switchport access vlan 151
+!
+interface GigabitEthernet2/0/21
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/0/22
+ description Link-to-WLC-EMS-Lap-WLC
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/0/23
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet2/0/24
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet2/1/1
+!
+interface GigabitEthernet2/1/2
+!
+interface GigabitEthernet2/1/3
+!
+interface GigabitEthernet2/1/4
+!
+interface TenGigabitEthernet2/1/1
+!
+interface TenGigabitEthernet2/1/2
+!
+interface Vlan1
+ ip address 10.10.2.1 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan2
+ ip address 10.0.0.1 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan3
+ ip address 10.10.3.254 255.255.255.0
+ ip pim sparse-dense-mode
+!
+interface Vlan4
+ ip address 10.3.100.1 255.255.255.0
+ ip pim sparse-dense-mode
+!
+interface Vlan10
+ ip address 172.16.10.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan11
+ ip address 10.11.255.254 255.255.0.0
+!
+interface Vlan12
+ ip address 10.156.6.1 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan15
+ ip address 192.168.15.254 255.255.255.0
+!
+interface Vlan21
+ ip address 10.3.21.1 255.255.255.0
+!
+interface Vlan34
+ ip address 172.16.34.1 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan35
+ ip address 172.16.35.1 255.255.255.0
+!
+interface Vlan40
+ ip address 172.23.235.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan45
+ ip address 172.16.145.2 255.255.255.0
+ ip pim sparse-dense-mode
+!
+interface Vlan50
+ ip address 172.16.2.2 255.255.255.0
+!
+interface Vlan51
+ ip address 172.16.1.2 255.255.255.0
+!
+interface Vlan55
+ ip address 172.16.155.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan100
+ no ip address
+!
+interface Vlan114
+ ip address 10.3.114.1 255.255.255.0
+ shutdown
+!
+interface Vlan117
+ ip address 10.3.117.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+ shutdown
+!
+interface Vlan150
+ no ip address
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan200
+ ip address 192.168.0.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan210
+ ip address 10.200.210.10 255.255.255.0
+!
+interface Vlan211
+ ip address 10.3.211.1 255.255.255.0
+!
+interface Vlan224
+ ip address 10.200.224.10 255.255.254.0
+!
+interface Vlan403
+ ip address 192.168.3.254 255.255.255.0
+!
+interface Vlan404
+ ip address 192.168.7.254 255.255.252.0
+!
+interface Vlan408
+ ip address 192.168.8.254 255.255.255.0
+ ip pim sparse-dense-mode
+!
+interface Vlan410
+ ip address 192.168.10.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan417
+ ip address 192.168.17.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan418
+ ip address 192.168.18.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan419
+ ip address 192.168.19.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan420
+ ip address 192.168.20.254 255.255.255.0
+ ip helper-address 172.16.145.90 
+ ip pim sparse-dense-mode
+!
+interface Vlan422
+ ip address 192.168.22.254 255.255.255.0
+!
+interface Vlan433
+ ip address 192.168.33.254 255.255.255.0
+!
+router ospf 1
+ network 10.0.0.0 0.0.0.255 area 0
+ network 10.3.21.0 0.0.0.255 area 0
+ network 10.3.114.0 0.0.0.255 area 0
+ network 10.3.117.0 0.0.0.255 area 0
+ network 10.3.210.0 0.0.0.255 area 0
+ network 10.3.211.0 0.0.0.255 area 0
+ network 10.10.1.0 0.0.0.255 area 0
+ network 10.10.2.0 0.0.0.255 area 0
+ network 10.10.3.0 0.0.0.255 area 0
+ network 10.10.120.0 0.0.0.255 area 0
+ network 10.11.0.0 0.0.255.255 area 0
+ network 10.156.4.0 0.0.0.255 area 0
+ network 10.156.6.0 0.0.0.255 area 0
+ network 10.200.100.0 0.0.0.255 area 0
+ network 10.200.210.0 0.0.0.255 area 1
+ network 10.200.240.0 0.0.0.255 area 0
+ network 10.200.241.0 0.0.0.255 area 0
+ network 10.200.250.128 0.0.0.3 area 0
+ network 172.16.1.0 0.0.0.255 area 0
+ network 172.16.33.0 0.0.0.255 area 0
+ network 172.16.34.0 0.0.0.255 area 0
+ network 172.16.35.0 0.0.0.255 area 0
+ network 172.16.60.0 0.0.0.255 area 0
+ network 172.16.65.249 0.0.0.0 area 0
+ network 172.16.65.250 0.0.0.0 area 0
+ network 172.16.65.251 0.0.0.0 area 0
+ network 172.16.65.252 0.0.0.0 area 0
+ network 172.16.65.253 0.0.0.0 area 0
+ network 172.16.65.254 0.0.0.0 area 0
+ network 172.16.100.0 0.0.0.255 area 0
+ network 172.16.101.0 0.0.0.255 area 0
+ network 172.16.114.0 0.0.1.255 area 0
+ network 172.16.145.0 0.0.0.255 area 0
+ network 172.16.146.0 0.0.0.3 area 0
+ network 172.16.150.0 0.0.0.255 area 0
+ network 172.16.155.0 0.0.0.255 area 0
+ network 172.16.165.0 0.0.0.255 area 0
+ network 172.16.240.0 0.0.7.255 area 0
+ network 172.23.235.0 0.0.0.255 area 0
+ network 192.168.2.0 0.0.0.255 area 0
+ network 192.168.8.0 0.0.0.255 area 0
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.15.0 0.0.0.255 area 0
+ network 192.168.17.0 0.0.0.255 area 0
+ network 192.168.18.0 0.0.0.255 area 0
+ network 192.168.19.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+ network 192.168.22.0 0.0.0.255 area 0
+ network 192.168.33.0 0.0.0.255 area 0
+!
+router bgp 525
+ bgp log-neighbor-changes
+ network 0.0.0.0
+ network 172.16.145.0 mask 255.255.255.0
+ network 192.168.10.0
+ network 192.168.17.0
+ network 192.168.18.0
+ network 192.168.19.0
+ network 192.168.20.0
+ network 192.168.22.0
+ network 192.168.33.0
+ neighbor 172.16.1.1 remote-as 701
+ neighbor 172.16.1.3 remote-as 701
+!
+ip forward-protocol nd
+!
+!
+ip http server
+ip http authentication local
+ip http secure-server
+ip http secure-active-session-modules none
+ip http active-session-modules none
+ip pim send-rp-discovery scope 16
+ip route 10.3.112.0 255.255.255.0 10.3.117.1
+ip route 10.3.115.0 255.255.255.0 10.3.117.1
+ip route 10.3.116.0 255.255.255.0 10.3.117.1
+ip route 10.3.118.0 255.255.255.0 10.3.117.1
+ip route 10.3.119.0 255.255.255.0 10.3.117.1
+ip route 10.23.0.0 255.255.0.0 172.16.1.10
+ip route 10.43.0.0 255.255.0.0 172.16.1.1
+ip route 10.50.0.0 255.255.0.0 172.16.1.10
+ip route 10.150.0.0 255.255.0.0 172.16.1.10
+ip route 10.175.1.0 255.255.255.0 172.16.1.3
+ip route 10.175.100.0 255.255.255.0 172.16.1.3
+ip route 10.175.101.0 255.255.255.0 172.16.1.3
+ip route 10.175.102.0 255.255.255.0 172.16.1.3
+ip route 10.250.1.0 255.255.255.0 10.60.1.5
+ip route 10.251.1.0 255.255.255.0 10.60.2.5
+ip route 12.50.100.0 255.255.255.0 172.16.1.10
+ip route 12.50.100.0 255.255.255.0 172.16.145.3
+ip route 12.250.46.0 255.255.255.0 Null0
+ip route 13.50.100.0 255.255.255.0 172.16.1.10
+ip route 14.50.100.0 255.255.255.0 172.16.1.10
+ip route 38.84.73.0 255.255.255.0 204.89.15.6
+ip route 172.16.1.0 255.255.255.0 172.16.145.3
+ip route 172.16.5.0 255.255.255.0 172.16.1.1
+ip route 172.16.7.0 255.255.255.0 172.16.2.10
+ip route 172.16.16.0 255.255.255.0 172.16.100.2
+ip route 172.16.17.0 255.255.255.0 172.16.100.2
+ip route 172.16.32.0 255.255.255.0 172.16.100.2
+ip route 172.16.33.0 255.255.255.0 172.16.100.2
+ip route 172.16.48.0 255.255.255.0 172.16.100.2
+ip route 172.16.49.0 255.255.255.0 172.16.100.2
+ip route 172.16.100.0 255.255.255.0 172.16.1.3
+ip route 172.16.110.0 255.255.255.0 172.16.2.76
+ip route 172.16.200.0 255.255.255.0 172.16.2.10
+ip route 192.168.1.0 255.255.255.0 100.9.240.18
+ip route 192.168.2.0 255.255.255.0 192.168.7.200
+ip route 200.14.7.0 255.255.255.0 172.16.1.77
+ip route 201.50.6.0 255.255.255.0 172.16.1.77
+ip route 216.5.93.0 255.255.255.0 172.16.145.254
+ip ssh source-interface Vlan45
+ip ssh version 2
+!
+ip access-list extended ACL-ALLOW
+ permit ip any any
+ip access-list extended ACL-DEFAULT
+ remark DHCP
+ permit udp any eq bootpc any eq bootps
+ remark DNS
+ permit udp any any eq domain
+ remark Ping
+ permit icmp any any
+ remark PXE / TFTP
+ permit udp any any eq tftp
+ remark Allow HTTP/S to ISE and WebAuth portal
+ permit tcp any host 172.16.145.90 eq www
+ permit tcp any host 172.16.145.90 eq 443
+ permit tcp any host 172.16.145.90 eq 8443
+ remark Drop all the rest
+ deny   ip any any log
+ip access-list extended ACL-WEBAUTH-REDIRECT
+ deny   ip any host 172.16.145.90
+ permit ip any any
+ip access-list extended AUTOQOS-ACL-DEFAULT
+ permit ip any any
+!
+ip radius source-interface Vlan45 
+ip sla enable reaction-alerts
+logging origin-id ip
+logging source-interface Vlan45
+logging host 172.16.145.238
+logging host 172.16.145.90 transport udp port 20514
+access-list 99 permit 10.2.0.8
+access-list 99 permit 10.1.0.10
+access-list 99 permit 10.2.0.9
+access-list 99 permit 10.1.0.9
+access-list 99 permit 10.1.0.8
+access-list 99 permit 10.1.0.7
+access-list 99 permit 10.2.0.7
+!
+!
+snmp-server community cisco RO
+snmp-server community cisco123 RW
+snmp-server community public RO cisco
+snmp-server trap-source Vlan45
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps mac-notification change move threshold
+!
+radius-server attribute 6 on-for-login-auth
+radius-server attribute 6 support-multiple
+radius-server attribute 8 include-in-access-req
+radius-server attribute 25 access-request include
+radius-server attribute 31 mac format ietf upper-case
+radius-server attribute 31 send nas-port-detail
+radius-server dead-criteria time 30 tries 3
+radius-server deadtime 10
+!
+radius server ise
+ address ipv4 172.16.145.90 auth-port 1812 acct-port 1813
+ key cisco
+!
+radius server winrad
+ address ipv4 172.16.145.100 auth-port 1645 acct-port 1646
+ key Cisco
+!
+!
+line con 0
+line vty 0 4
+ privilege level 15
+ length 0
+line vty 5 15
+!
+ntp server 172.16.145.1 prefer
+ntp server 172.16.145.2 prefer
+!
+end

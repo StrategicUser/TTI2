@@ -1,0 +1,537 @@
+6416.7f64.9ac1
+description X2671
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f64.966c
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+24be.0505.5015
+description X2866
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+5065.f346.4443
+description X2654
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+8cdc.d43d.ca54
+description X2728
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast trunk
+!
+b00c.d1df.2a72
+description X2739
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f64.089a
+description X2664
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0018.0a23.b0e2
+description Meraki_1stFlr
+switchport
+switchport access vlan 100
+switchport mode access
+spanning-tree portfast
+!
+6416.7f64.99b2
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f1c.1ccc
+description TOD
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f1c.1c46
+description X2752
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+logging event link-status
+no cdp enable
+spanning-tree portfast
+!
+6416.7f1c.1b63
+description X2884
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast trunk
+!
+6416.7f64.0809
+description SUE
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+ecb1.d75b.b515
+description X2670
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+d485.6412.b244
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast trunk
+!
+0004.f16a.c8f4
+description 6/30 LS2
+switchport
+switchport access vlan 223
+switchport mode access
+!
+ac17.c8a3.bcca
+description Meraki2FConf
+switchport
+switchport access vlan 100
+switchport mode access
+!
+6416.7f64.97e4
+description PHONE
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+6416.7f64.07de
+description X2769
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+3cd9.2ba1.f819
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast trunk
+!
+10e7.c624.f1b1
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast trunk
+!
+6416.7f1c.1c9f
+description X2710
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+ecb1.d744.c15d
+description TWA-X2742
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0004.f19f.8fb0
+switchport
+switchport access vlan 223
+switchport mode access
+!
+0004.f1ec.150a
+switchport
+switchport access vlan 223
+switchport mode access
+!
+0004.f19f.8f7c
+switchport
+switchport access vlan 223
+switchport mode access
+!
+6416.7f64.8eb4
+description X2672
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+!
+6416.7f05.f16b
+description 6/8 2nd flr conf phone
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+40b0.3446.614b
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+!
+6416.7f64.8b0b
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+0018.0a23.aa64
+description Meraki_TTILGBAdmin2Flr
+switchport
+switchport access vlan 100
+switchport voice vlan 123
+no cdp enable
+spanning-tree portfast
+!
+0004.f173.2790
+switchport
+switchport access vlan 223
+switchport mode access
+!
+8c1c.da50.51fd
+description EPS-GPS G4 at roof
+switchport
+switchport access vlan 223
+switchport voice vlan 123
+spanning-tree portfast
+!
+6416.7f1c.13fa
+description X2738
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+480f.cf30.abc9
+description X2862
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+2431.8477.62ea
+description ASA Sec
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 123
+!
+7c31.0e91.708e
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+!
+6416.7f64.9306
+description X2715
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+5ca6.2dd1.6100
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast
+!
+6416.7f64.06b1
+description X2679
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast trunk
+!
+5ca6.2d03.ab00
+description SPANPC_101.212
+switchport
+switchport access vlan 101
+switchport mode access
+spanning-tree portfast
+!
+f01f.afce.621e
+description DMZ server
+switchport
+switchport access vlan 240
+switchport mode access
+!
+6416.7f64.8e4a
+description X2668
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+!
+0018.0a23.a168
+description Meraki_TTILGBAdmin3Flr
+switchport
+switchport access vlan 100
+switchport mode access
+spanning-tree portfast
+!
+1458.d03d.ae04
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast trunk
+!
+6416.7f1c.13b4
+description X2741
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0004.f16a.c948
+description 6/39 LS19
+switchport
+switchport access vlan 223
+switchport mode access
+!
+0004.f16a.c8d0
+switchport
+switchport access vlan 223
+switchport mode access
+!
+3c57.3108.28ce
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+!
+6416.7f1c.1c38
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+38ea.a76a.15e6
+description TOWOFFICE-Printer
+switchport
+switchport access vlan 110
+switchport mode access
+spanning-tree portfast
+!
+0040.8ca6.2fa7
+description Connection to Pole LH08
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+6416.7f64.917f
+description X2872
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f65.1754
+description X2727
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+!
+6416.7f64.152e
+description X2618-T
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast trunk
+!
+0040.2b3c.38e2
+description HTS gate server
+switchport
+switchport access vlan 9
+switchport mode access
+switchport voice vlan 123
+!
+0027.01ff.e685
+description EPS-GPS at roof
+switchport
+switchport access vlan 223
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast
+!
+6c0b.8443.4516
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast trunk
+!
+6416.7f64.9c8c
+description X2726
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast trunk
+!
+6416.7f1c.1f86
+description X2603
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+2c41.387c.106e
+switchport
+switchport access vlan 51
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+ac17.c8a3.afe8
+description Meraki3FConference
+switchport
+switchport access vlan 100
+switchport mode access
+!
+0040.8ca6.2fae
+description Connection to Pole LH06
+switchport
+switchport access vlan 5
+switchport mode access
+spanning-tree portfast
+!
+6416.7f64.07f6
+description X2731
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+6416.7f03.eb43
+switchport
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+f430.b970.1be4
+description X2648
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+3c18.a041.bd54
+description Test Labtop Connection
+switchport
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+!
+0004.f16a.c868
+description LS31(LC15)
+switchport
+switchport access vlan 223
+switchport mode access
+!
+0019.85e0.1f05
+switchport
+switchport access vlan 223
+switchport mode access
+!
+6416.7f05.e5bd
+description X2628
+switchport
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+0004.f19f.8fd4
+switchport
+switchport access vlan 223
+switchport mode access
+!

@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb_itcc
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb_itcc

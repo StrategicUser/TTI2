@@ -1,0 +1,27 @@
+---
+- hosts: tti
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define Provider
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: Show Run
+    ios_command:
+      provider: "{{ provider }}"
+      authorize: yes
+      commands:
+        - terminal length 0
+        - show interface trunk
+    register: banner
+
+  - debug: var=banner.stdout_lines

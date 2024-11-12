@@ -1,0 +1,351 @@
+
+
+sss-3750-sw2#terminal length 0
+sss-3750-sw2#show run
+Building configuration...
+
+Current configuration : 7876 bytes
+!
+! Last configuration change at 17:26:47 UTC Mon May 24 1993 by admin
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname sss-3750-sw2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$vA1a$riVkcJVto0abDS4gwRReX1
+!
+username admin privilege 15 password 0 Strategic3!@#$
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+switch 1 provision ws-c3750v2-48ps
+system mtu routing 1500
+ip routing
+ip domain-name sss.com
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2873494144
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2873494144
+ revocation-check none
+ rsakeypair TP-self-signed-2873494144
+!
+!
+crypto pki certificate chain TP-self-signed-2873494144
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32383733 34393431 3434301E 170D3933 30333031 30303033 
+  30395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 38373334 
+  39343134 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100AA66 8315C546 5A4D3FBF 9B8D8A78 5585FD9A ECFB0C16 1BD0CD63 A1740A2B 
+  B5595B0C 87EDDB62 6B158176 9AD02FBD DF938735 9AA65208 F992F703 44A50DBD 
+  96D7E702 E64BF7EC 67C3C5EC 8F31C73A B6FB44EA 8A6A39DA FEA28923 5E6991F8 
+  30CA5D6D 19B272D1 F492A783 5331440C 700304B3 753E8DC0 67E26F4B 552AF657 
+  FEC30203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14279F94 2B527DE7 9FDD0A4B 3445421F 9D4DED6F A4301D06 
+  03551D0E 04160414 279F942B 527DE79F DD0A4B34 45421F9D 4DED6FA4 300D0609 
+  2A864886 F70D0101 05050003 81810010 A5FE0541 3B36DA58 4A8A78D1 473000AA 
+  1B6B1512 3A2828B3 F0980C51 E046EC88 B7BC9E2A 605238B9 7FD3CA3A 8922C996 
+  C7552B02 88DD06E1 121B5124 4B97AAFD F5DECE32 6541ECA3 408F3745 6CA936BD 
+  5B167D88 C615ED17 9E630A66 20192B15 C26AC0BF 71FF1CB4 00451BEE 7492EF93 
+  2C0C007F 2A74F9C8 FB205082 2D692A
+  	quit
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description Link to SSS-Nexus-Core
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/4
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/5
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/6
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/7
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/8
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/9
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/10
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/11
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/12
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/13
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/14
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/15
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/16
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/17
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/18
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/19
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/20
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/21
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/22
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/23
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/24
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/25
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/26
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/27
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/28
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/29
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/30
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/31
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/32
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/33
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/34
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/35
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/36
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/37
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/38
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/39
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/40
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/41
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/42
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/43
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/44
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/45
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/0/46
+ description to SSS-ASA-2 Outside Interface 10.200.241.2
+ switchport access vlan 241
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface FastEthernet1/0/47
+ description ARUBA AP
+ switchport access vlan 3
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface FastEthernet1/0/48
+ description to ASA
+ no switchport
+ ip address 10.200.150.1 255.255.255.252
+!
+interface GigabitEthernet1/0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-protocol lacp
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-protocol lacp
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface Vlan1
+ ip address dhcp
+!
+interface Vlan2
+ ip address 10.0.0.252 255.255.255.0
+!
+interface Vlan500
+ ip address 10.0.50.3 255.255.255.0
+!
+router ospf 1
+ redistribute static subnets
+ network 10.0.50.0 0.0.0.255 area 0
+ network 10.200.150.0 0.0.0.3 area 0
+ network 10.200.241.0 0.0.0.255 area 0
+!
+ip http server
+ip http secure-server
+!
+!
+ip route 0.0.0.0 0.0.0.0 10.0.10.1
+ip route 0.0.0.0 0.0.0.0 10.0.50.2
+ip route 0.0.0.0 0.0.0.0 10.0.0.1
+ip route 10.200.241.0 255.255.255.0 10.200.150.2
+!
+!
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ privilege level 15
+line vty 5 15
+!
+end
+
+sss-3750-sw2#

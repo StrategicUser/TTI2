@@ -1,0 +1,18 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define ETS Core Provider
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: ETS Core Config
+    ios_config:
+      timeout: 60
+      #lines: hostname Test1
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "~/ETS/roles/ets-core/files/ets-core.cfg"

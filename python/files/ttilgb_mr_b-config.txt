@@ -1,0 +1,596 @@
+
+
+TTLGB_MR_B#terminal length 0
+TTLGB_MR_B#show run
+Building configuration...
+
+Current configuration : 12481 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+!
+hostname TTLGB_MR_B
+!
+logging buffered 65536 debugging
+enable secret 5 $1$ZNnx$7Ndi7dtYX14LKcxOg/xX50
+!
+username Lake2Lake password 7 120D111E40070D0F2F
+aaa new-model
+aaa authentication login default group tacacs+ local
+aaa authentication enable default group tacacs+ enable
+aaa authorization exec default group tacacs+ if-authenticated 
+aaa authorization commands 15 default group tacacs+ if-authenticated 
+!
+aaa session-id common
+clock timezone PST -8
+clock summer-time PDT recurring
+system mtu routing 1500
+vtp domain TTI
+vtp mode transparent
+ip subnet-zero
+no ip domain-lookup
+!
+!
+mls qos
+!
+!
+no file verify auto
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 2,4-5,22,72,100-101,104,106,110,115,123-124 priority 61440
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name Management-Vlan
+!
+vlan 4
+ name Encoder-Decoder-Port-Vlan
+!
+vlan 5
+ name Encoder-Decoder-Port-Vlan2
+!
+vlan 22
+ name IP_readerServer_Vlan
+!
+vlan 72 
+!
+vlan 100
+ name TTI-Server-Vlan
+!
+vlan 101
+ name TTI-Data-Vlan
+!
+vlan 104
+ name IP_reader_Vlan
+!
+vlan 106 
+!
+vlan 110
+ name TTIData2
+!
+vlan 115
+ name WIRELESS
+!
+vlan 123
+ name Voice
+!
+vlan 124
+ name TTIXOVoice
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/1
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/4
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ switchport port-security maximum 8
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/6
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/7
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/8
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/10
+ description Meraki AP
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/11
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/12
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/13
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/14
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/15
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/16
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/17
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/18
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/19
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/20
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/21
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/22
+ description TOW-MR-PRINTER
+ switchport access vlan 101
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/23
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/24
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/25
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/26
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/27
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/28
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/29
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/30
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/31
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/32
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/33
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/34
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/35
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/36
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/37
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/38
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/39
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/40
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/41
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/42
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/43
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/44
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/45
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/46
+ description HOST
+ switchport access vlan 110
+ switchport mode access
+ switchport voice vlan 124
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/47
+ description TRUNK_MRA
+ switchport trunk encapsulation dot1q
+ mls qos trust dscp
+!
+interface GigabitEthernet0/48
+ description MR1STFLR-AP
+ switchport access vlan 115
+ switchport mode access
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface GigabitEthernet0/49
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/50
+!
+interface GigabitEthernet0/51
+!
+interface GigabitEthernet0/52
+!
+interface TenGigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ ip address 10.200.1.215 255.255.255.0
+!
+interface Vlan110
+ ip address dhcp
+!
+ip default-gateway 10.200.1.10
+ip classless
+ip http server
+!
+access-list 10 permit 10.200.1.100
+snmp-server community lake RO
+snmp-server community DPSNMPG3T! RO
+snmp-server location TTI Long Beach, CA
+snmp-server contact LakeSystems
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps tty
+snmp-server enable traps license
+snmp-server enable traps cluster
+snmp-server enable traps fru-ctrl
+snmp-server enable traps entity
+snmp-server enable traps cpu threshold
+snmp-server enable traps power-ethernet group 1
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps mac-notification
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps hsrp
+snmp-server enable traps rtr
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps vlan-membership
+snmp-server host 10.200.100.49 version 2c DPSNMPG3T! 
+snmp-server host 10.200.1.100 lake 
+tacacs-server host 10.200.101.211
+tacacs-server directed-request
+tacacs-server key 7 01021410550E125D
+radius-server source-ports 1645-1646
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ privilege level 15
+ password 7 071B35451C05180E12
+line vty 5 15
+!
+ntp clock-period 36025536
+ntp server 10.200.1.10
+end
+
+TTLGB_MR_B#

@@ -1,0 +1,26 @@
+a0cf.5b80.013d
+description Cisco IP Phone 7962
+switchport access vlan 4
+switchport mode trunk
+switchport voice vlan 12
+trust device cisco-phone
+auto qos voip cisco-phone
+spanning-tree portfast
+service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+0012.da92.233a
+switchport access vlan 45
+switchport mode access
+spanning-tree portfast
+!
+b827.eb17.6e53
+switchport access vlan 2
+auto qos trust dscp
+spanning-tree portfast
+service-policy input AutoQos-4.0-Trust-Dscp-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+700f.6a1d.a070
+switchport access vlan 35
+!

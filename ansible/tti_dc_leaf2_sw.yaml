@@ -1,0 +1,7 @@
+---
+- hosts: tti_dc_leaf2_sw
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: tti_dc_leaf2_sw

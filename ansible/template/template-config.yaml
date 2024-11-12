@@ -1,0 +1,17 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define template
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: template Configuration Update
+    ios_config:
+      timeout: 60
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "/home/strategic/TTI/ansible/roles/template/files/template-config.cfg"

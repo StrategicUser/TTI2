@@ -1,0 +1,7 @@
+---
+- hosts: sss-sw1
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: sss-sw1

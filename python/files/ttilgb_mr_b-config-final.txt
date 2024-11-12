@@ -1,0 +1,206 @@
+0023.2418.62b7
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+0023.241d.cad4
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+00c0.330b.4df6
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+1860.24a3.ec24
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+40a8.f03f.7c04
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+480f.cf5c.e946
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+480f.cf5c.e954
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+switchport port-security maximum 8
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+5065.f344.7dda
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+54ee.75cd.836f
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e6c.f841
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e72.c824
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e73.392b
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e73.398b
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e74.3941
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e7d.4c14
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e7d.4c18
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+dc4a.3e7d.4c1a
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+e454.e8c1.70ab
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+6416.7f64.83cd
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+6416.7f64.8765
+description HOST
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+6416.7f64.9610
+description TOW-MR-PRINTER
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+0018.0a23.a182
+description Meraki AP
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+mls qos trust dscp
+no cdp enable
+spanning-tree portfast
+!
+1cdf.0f95.6824
+description MR1STFLR-AP
+switchport access vlan 115
+switchport mode access
+mls qos trust dscp
+spanning-tree portfast
+!

@@ -1,0 +1,186 @@
+
+Building configuration...
+
+Current configuration : 4231 bytes
+!
+! Last configuration change at 13:28:49 PDT Thu May 26 2022 by admin
+! NVRAM config last updated at 13:28:51 PDT Thu May 26 2022 by admin
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname YTI_3560CX_LP9
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$oKpb$5jGl7NmEPTAbqNauAeG1p0
+!
+username admin privilege 15 secret 5 $1$pB8A$DpER.q4RSo2.aw1Og8HmV.
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone PST -8 0
+clock summer-time PDT recurring
+system mtu routing 1500
+!
+!
+!
+!
+!
+!
+ip domain-name yti.com
+vtp domain yti.com
+vtp mode transparent
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1402202624
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1402202624
+ revocation-check none
+ rsakeypair TP-self-signed-1402202624
+!
+!
+crypto pki certificate chain TP-self-signed-1402202624
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31343032 32303236 3234301E 170D3030 30323138 31333132 
+  32345A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 34303232 
+  30323632 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100A271 5FFA8114 2E2A91C2 09FE4741 891043E2 6026BBB7 78C53122 E2B9A23B 
+  E7D8AB85 C54C8791 F96CA825 56A874D9 1049E67B 5B00B896 9736D252 0C241097 
+  78A23917 9C08F968 9A9E311D 19D4DB56 C235E2C7 D00C4950 9454982C D505D158 
+  75747B72 7E6AA060 466B7886 6C89644B 256A16A1 8A46A29D 1FAA1108 7C1A907C 
+  F4290203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14535182 54D354E4 5CB85D49 B6B8FB1C 5F86F10F 65301D06 
+  03551D0E 04160414 53518254 D354E45C B85D49B6 B8FB1C5F 86F10F65 300D0609 
+  2A864886 F70D0101 05050003 8181009F 02AF0FEC 02A1C63C E8394348 A403C9E4 
+  1DC40FA0 58538C0E 7CA71F67 930B8CCF CFE32238 43C0D160 03FC07EA 69224BDC 
+  78140C14 9ED03EFB BB0D266E 975E8620 CCE48355 67EDB166 E92AD976 721BFF3C 
+  E78ECF7F D5C2F95C 9FBFBD62 D1A62EB9 E25EC7F3 CA9EB11A A4A0D8D5 ED07012A 
+  A13F5419 F562B8B1 E03ADF74 302055
+  	quit
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 10,21,23,210 
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/1
+ description TO_ACCESS_POINT_AP9_A_1562
+ switchport access vlan 210
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/2
+ switchport access vlan 210
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/3
+ description TO_CAMERA_Broadway_Crane_Shop 10.3.23.179
+ switchport access vlan 23
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/4
+ description TO_CAMERA_Crane_Shop_Parking_LB 10.3.23.180
+ switchport access vlan 23
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/5
+ description TO_CAMERA_WEST_unknown_need_to_find_camera_ip
+ switchport access vlan 23
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/6
+ description to PTZ_CAMERA_Broadway_3a 10.3.23.108
+ switchport access vlan 23
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/7
+ description TO_ACCESS_POINT_CISCO_1231_G
+ switchport access vlan 10
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/8
+ description TO_ACCESS_POINT_AP9_B_1562
+ switchport access vlan 210
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/9
+ switchport trunk native vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/10
+ switchport trunk allowed vlan 1,10,21,23,210
+ switchport mode trunk
+!
+interface GigabitEthernet0/11
+ switchport mode trunk
+!
+interface GigabitEthernet0/12
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan21
+ ip address 10.3.21.169 255.255.255.0
+!
+ip default-gateway 10.3.21.1
+ip forward-protocol nd
+ip http server
+ip http secure-server
+!
+!
+!
+!
+snmp-server community ForeScout_SNMP RO
+!
+!
+!
+line con 0
+line vty 0 4
+ privilege level 15
+line vty 5 15
+ privilege level 15
+!
+ntp server 10.3.21.5
+!
+end

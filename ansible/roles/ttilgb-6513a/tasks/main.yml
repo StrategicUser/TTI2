@@ -1,0 +1,14 @@
+---
+# tasks file for TTI Access Switch
+- name: Obtain Login
+  include_vars: pass.yaml
+
+- name: Define TTI Access Switch
+  set_fact:
+    provider:
+      host: "{{ inventory_hostname }}"
+      username: "{{ creds['username'] }}"
+      password: "{{ creds['password'] }}"
+      auth_pass: "{{ creds['auth_pass'] }}"
+
+- include: ttilgb-6513a-config.yaml

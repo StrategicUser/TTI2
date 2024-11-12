@@ -1,0 +1,780 @@
+ETSLA-Core-SW#sh mac address
+Unicast Entries
+ vlan     mac address     type        protocols               port
+---------+---------------+--------+---------------------+-------------------------
+   1      0056.2b0f.aef8   dynamic ip,ipx,assigned,other Port-channel140            
+   1      0cf5.a4c6.25ec   dynamic ip,ipx,assigned,other Port-channel140            
+   1      5006.ab23.df97   dynamic ip,ipx,assigned,other Port-channel42             
+   1      5006.ab23.df98   dynamic ip,ipx,assigned,other Port-channel42             
+   1      5006.ab23.e197   dynamic ip,ipx,assigned,other Port-channel43             
+   1      5006.ab23.e198   dynamic ip,ipx,assigned,other Port-channel43             
+   1      5006.ab37.4b98   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+   1      5006.ab5a.4897   dynamic ip,ipx,assigned,other Port-channel20             
+   1      5006.ab5a.4898   dynamic ip,ipx,assigned,other Port-channel20             
+   1      5006.ab5a.5617   dynamic ip,ipx,assigned,other Port-channel30             
+   1      5006.ab5a.5618   dynamic ip,ipx,assigned,other Port-channel30             
+   1      5006.ab5a.5897   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+   1      5006.ab5a.7297   dynamic ip,ipx,assigned,other Port-channel30             
+   1      5006.ab5a.7298   dynamic ip,ipx,assigned,other Port-channel30             
+   1      5006.ab88.1497   dynamic ip,ipx,assigned,other Port-channel30             
+   1      5006.ab88.1498   dynamic ip,ipx,assigned,other Port-channel30             
+   1      5006.ab98.8604   dynamic ip,ipx,assigned,other GigabitEthernet2/2/47      
+   1      5006.ab98.8a18   dynamic ip,ipx,assigned,other Port-channel10             
+   1      5006.ab98.8c97   dynamic ip,ipx,assigned,other Port-channel20             
+   1      5006.ab98.8c98   dynamic ip,ipx,assigned,other Port-channel20             
+   1      5006.ab98.9417   dynamic ip,ipx,assigned,other Port-channel20             
+   1      5006.ab98.9418   dynamic ip,ipx,assigned,other Port-channel20             
+   1      5006.abda.8b97   dynamic ip,ipx,assigned,other Port-channel40             
+   1      5006.abda.8b98   dynamic ip,ipx,assigned,other Port-channel40             
+   1      5006.abda.9897   dynamic ip,ipx,assigned,other Port-channel41             
+   1      5006.abda.9898   dynamic ip,ipx,assigned,other Port-channel41             
+   1      5006.abda.9b97   dynamic ip,ipx,assigned,other Port-channel41             
+   1      5006.abda.9b98   dynamic ip,ipx,assigned,other Port-channel41             
+   1      5006.abde.0417   dynamic ip,ipx,assigned,other Port-channel42             
+   1      5006.abde.0418   dynamic ip,ipx,assigned,other Port-channel42             
+   1      5006.abe0.a417   dynamic ip,ipx,assigned,other Port-channel44             
+   1      5006.abe0.a418   dynamic ip,ipx,assigned,other Port-channel44             
+   1      ac7e.8a90.9647   dynamic ip,ipx,assigned,other Port-channel140            
+   1      b000.b4b7.e5ee   dynamic ip,ipx,assigned,other Port-channel140            
+   1      b4a8.b9cb.7ea5   dynamic ip,ipx,assigned,other Port-channel140            
+   1      c444.a07b.6f2a   dynamic ip,ipx,assigned,other Port-channel140            
+   1      ece1.a9c6.f7ef   dynamic ip,ipx,assigned,other Port-channel140            
+  10      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+  10      000e.e20b.a7f2   dynamic ip,ipx,assigned,other Port-channel10             
+  10      0019.0f25.0542   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      0050.b67c.3163   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      0802.8ed4.1ee0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  10      14b3.1f23.01a5   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      1860.24c4.f84b   dynamic ip,ipx,assigned,other Port-channel20             
+  10      3005.5c76.0200   dynamic ip,ipx,assigned,other Port-channel30             
+  10      484d.7eef.7169   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  10      484d.7eef.ed4d   dynamic ip,ipx,assigned,other Port-channel20             
+  10      484d.7eef.eecd   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      484d.7eef.ef4f   dynamic ip,ipx,assigned,other Port-channel30             
+  10      5006.ab37.4bc6   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  10      5006.ab5a.48c6   dynamic ip,ipx,assigned,other Port-channel20             
+  10      5006.ab5a.58c6   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      5006.ab5a.72c6   dynamic ip,ipx,assigned,other Port-channel30             
+  10      5006.ab98.8a46   dynamic ip,ipx,assigned,other Port-channel10             
+  10      506a.03c0.5366   dynamic ip,ipx,assigned,other Port-channel30             
+  10      5cb9.01eb.2eb9   dynamic ip,ipx,assigned,other Port-channel30             
+  10      5cb9.01ec.a416   dynamic ip,ipx,assigned,other Port-channel30             
+  10      6012.8bd0.a6a9   dynamic ip,ipx,assigned,other Port-channel30             
+  10      6012.8bd1.3801   dynamic ip,ipx,assigned,other Port-channel10             
+  10      6400.6a6a.7751   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  10      6400.6a6a.92f0   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  10      6400.6a6a.95d2   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.9a27   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.a605   dynamic ip,ipx,assigned,other Port-channel10             
+  10      6400.6a6a.a7fd   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.e222   dynamic ip,ipx,assigned,other Port-channel30             
+  10      6400.6a6a.ee2f   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f156   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  10      6400.6a6a.f1a9   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f224   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f46c   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f478   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f47e   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  10      6400.6a6a.f4ff   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f51e   dynamic ip,ipx,assigned,other Port-channel30             
+  10      6400.6a6a.f58c   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f595   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f59c   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6a.f5a4   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      6400.6a6a.f5f5   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6b.065f   dynamic ip,ipx,assigned,other Port-channel10             
+  10      6400.6a6b.0744   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6b.2a05   dynamic ip,ipx,assigned,other Port-channel30             
+  10      6400.6a6b.2aae   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6b.2bfd   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6b.2c39   dynamic ip,ipx,assigned,other Port-channel30             
+  10      6400.6a6b.2c93   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a6b.2d8e   dynamic ip,ipx,assigned,other Port-channel10             
+  10      6400.6a78.cc71   dynamic ip,ipx,assigned,other Port-channel20             
+  10      6400.6a78.d277   dynamic ip,ipx,assigned,other Port-channel10             
+  10      6400.6a78.d2bc   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      6400.6a79.281b   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      6400.6a79.5bf8   dynamic ip,ipx,assigned,other Port-channel10             
+  10      6c4b.9019.3ae7   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  10      6c4b.9019.3b8f   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  10      705a.0fa6.2c1a   dynamic ip,ipx,assigned,other Port-channel20
+   10      80ce.62e7.3ba3   dynamic ip,ipx,assigned,other Port-channel30             
+  10      90b1.1c8a.e2ca   dynamic ip,ipx,assigned,other Port-channel20             
+  10      9457.a512.4ef7   dynamic ip,ipx,assigned,other Port-channel20             
+  10      9457.a512.5e94   dynamic ip,ipx,assigned,other Port-channel30             
+  10      9457.a514.b4ba   dynamic ip,ipx,assigned,other Port-channel20             
+  10      9457.a514.c461   dynamic ip,ipx,assigned,other Port-channel20             
+  10      9457.a514.d499   dynamic ip,ipx,assigned,other Port-channel10             
+  10      9457.a514.d4a9   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  10      9cb6.541b.9969   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  10      b4b6.861d.b908   dynamic ip,ipx,assigned,other Port-channel30             
+  10      c413.e24b.9680   dynamic ip,ipx,assigned,other Port-channel30             
+  10      c81f.66b2.53d6   dynamic ip,ipx,assigned,other Port-channel30             
+  10      d4c9.efff.08a4   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  10      d849.2fc2.c38b   dynamic ip,ipx,assigned,other Port-channel20             
+  10      d849.2fc2.c3e1   dynamic ip,ipx,assigned,other Port-channel20             
+  10      ec1a.5905.2dbb   dynamic ip,ipx,assigned,other Port-channel10             
+  10      f48e.38ff.fe35   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  10      fc3f.db4d.36b7   dynamic ip,ipx,assigned,other Port-channel10             
+  20      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+  20      9c57.adf4.b976   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.b9c2   dynamic ip,ipx,assigned,other Port-channel51             
+  20      9c57.adf4.b9d0   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.b9d7   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.b9d8   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.b9f5   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.b9fe   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf4.ba2d   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.ba45   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  20      9c57.adf4.ba5a   dynamic ip,ipx,assigned,other Port-channel51             
+  20      9c57.adf4.ba90   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf4.ba91   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf4.ba9a   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.bb20   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.bb22   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf4.bb41   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.bb8d   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.bbe9   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf4.bc52   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.bd62   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.e9c0   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.e9d2   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.e9d8   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.e9db   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.e9e8   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf4.e9ea   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.e9ee   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.ea00   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.ea0a   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.ea0e   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.ea16   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.ea27   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.ea30   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  20      9c57.adf4.ecc7   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.ece4   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf4.ed08   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.ed15   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.ee15   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf4.ee1e   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.eecb   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.ef49   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.ef87   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.efe9   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.f02e   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf4.f035   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf4.f083   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.f084   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf4.f097   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf5.540c   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf5.5417   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf5.55e1   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf5.55e3   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf5.55e6   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf5.5616   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf5.561e   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf5.561f   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf5.5621   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf5.56e4   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf5.572c   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf5.5732   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf5.5733   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf5.5745   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf5.5747   dynamic ip,ipx,assigned,other Port-channel50             
+  20      9c57.adf5.574c   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf5.5751   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf5.5752   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf5.5768   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf5.576d   dynamic ip,ipx,assigned,other GigabitEthernet2/2/1       
+  20      9c57.adf5.5774   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf5.577e   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf5.5785   dynamic ip,ipx,assigned,other Port-channel10             
+  20      9c57.adf5.5786   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  20      9c57.adf5.5790   dynamic ip,ipx,assigned,other Port-channel20             
+  20      9c57.adf5.5794   dynamic ip,ipx,assigned,other Port-channel30             
+  20      9c57.adf5.5796   dynamic ip,ipx,assigned,other GigabitEthernet2/1/8       
+  20      b4a8.b9e8.a8a7   dynamic ip,ipx,assigned,other GigabitEthernet1/2/3       
+  30      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+  40      0000.0c07.ac00    static ip,ipx,assigned,other Switch                     
+  40      0000.5e00.0101   dynamic ip,ipx,assigned,other GigabitEthernet1/2/25      
+  40      0000.5e00.0102   dynamic ip,ipx,assigned,other GigabitEthernet2/2/25
+  40      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+  40      000a.49c2.ad86   dynamic ip,ipx,assigned,other Port-channel41             
+  40      000a.49c6.c486   dynamic ip,ipx,assigned,other Port-channel42             
+  40      000a.f77e.d0fc   dynamic ip,ipx,assigned,other Port-channel41             
+  40      000c.290a.4449   dynamic ip,ipx,assigned,other Port-channel41             
+  40      000c.2927.5811   dynamic ip,ipx,assigned,other GigabitEthernet2/2/23      
+  40      000c.292e.aae0   dynamic ip,ipx,assigned,other GigabitEthernet2/2/27      
+  40      000c.295d.108b   dynamic ip,ipx,assigned,other GigabitEthernet2/2/27      
+  40      000c.2960.7769   dynamic ip,ipx,assigned,other GigabitEthernet2/2/23      
+  40      000c.2971.9c1c   dynamic ip,ipx,assigned,other GigabitEthernet1/2/23      
+  40      000c.297b.dfee   dynamic ip,ipx,assigned,other GigabitEthernet1/2/23      
+  40      000c.2997.b637   dynamic ip,ipx,assigned,other GigabitEthernet1/2/23      
+  40      000c.29b9.6e76   dynamic ip,ipx,assigned,other GigabitEthernet2/2/23      
+  40      000c.29e0.6862   dynamic ip,ipx,assigned,other Port-channel101            
+  40      000c.29e5.23fe   dynamic ip,ipx,assigned,other Port-channel41             
+  40      0014.ee09.178a   dynamic ip,ipx,assigned,other Port-channel43             
+  40      0027.042e.6b9c   dynamic ip,ipx,assigned,other GigabitEthernet2/2/46      
+  40      0060.4828.bafd   dynamic ip,ipx,assigned,other Port-channel41             
+  40      0060.4828.bf17   dynamic ip,ipx,assigned,other Port-channel41             
+  40      0090.a9ed.bf0c   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      00d7.8f0b.1782   dynamic ip,ipx,assigned,other GigabitEthernet2/2/25      
+  40      1418.7727.b5d4   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7727.c55a   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7733.ac9d   dynamic ip,ipx,assigned,other Port-channel41             
+  40      1418.7733.b6d2   dynamic ip,ipx,assigned,other Port-channel42             
+  40      1418.7733.b6e2   dynamic ip,ipx,assigned,other Port-channel42             
+  40      1418.7733.e386   dynamic ip,ipx,assigned,other Port-channel41             
+  40      1418.7733.e387   dynamic ip,ipx,assigned,other Port-channel42             
+  40      1418.7733.ed96   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7733.fda5   dynamic ip,ipx,assigned,other Port-channel40             
+  40      1418.7733.fda6   dynamic ip,ipx,assigned,other Port-channel41             
+  40      1418.7733.fefe   dynamic ip,ipx,assigned,other Port-channel42             
+  40      1418.7734.0153   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7734.06a4   dynamic ip,ipx,assigned,other Port-channel44             
+  40      1418.7734.0cff   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7734.0e63   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7734.0e64   dynamic ip,ipx,assigned,other Port-channel42             
+  40      1418.7734.12f5   dynamic ip,ipx,assigned,other Port-channel44             
+  40      1418.7734.1335   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7734.177a   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7734.177b   dynamic ip,ipx,assigned,other Port-channel42             
+  40      1418.7734.37d2   dynamic ip,ipx,assigned,other Port-channel40             
+  40      1418.7734.3ce0   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7734.3ce1   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1418.7734.3d46   dynamic ip,ipx,assigned,other Port-channel42             
+  40      1418.7734.3d47   dynamic ip,ipx,assigned,other Port-channel41             
+  40      1418.7746.ae35   dynamic ip,ipx,assigned,other Port-channel40             
+  40      1418.7747.19ae   dynamic ip,ipx,assigned,other Port-channel43             
+  40      1c98.ec1d.3d00   dynamic ip,ipx,assigned,other GigabitEthernet2/2/27      
+  40      245e.be27.27fc   dynamic ip,ipx,assigned,other Port-channel100            
+  40      24e9.b3d2.af8a   dynamic ip,ipx,assigned,other GigabitEthernet1/2/25      
+  40      308d.99fe.c31e   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c34e   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c4ea   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c57a   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c58a   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c5a6   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c5be   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c5c6   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c5d6   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c5de   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c5f2   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c5fa   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c632   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c656   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c66a   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c6ce   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c6d6   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.c6f2   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c776   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      308d.99fe.c7ba   dynamic ip,ipx,assigned,other GigabitEthernet2/2/35      
+  40      308d.99fe.eada   dynamic ip,ipx,assigned,other GigabitEthernet1/2/35      
+  40      5006.ab23.dfe4   dynamic ip,ipx,assigned,other Port-channel42             
+  40      5006.ab23.e1e4   dynamic ip,ipx,assigned,other Port-channel43             
+  40      5006.ab98.8664   dynamic ip,ipx,assigned,other GigabitEthernet2/2/47      
+  40      5006.abda.8be4   dynamic ip,ipx,assigned,other Port-channel40             
+  40      5006.abda.98e4   dynamic ip,ipx,assigned,other Port-channel41             
+  40      5006.abdf.8664   dynamic ip,ipx,assigned,other Port-channel141            
+  40      5006.abe0.a464   dynamic ip,ipx,assigned,other Port-channel44             
+  40      5006.abe1.7ae4   dynamic ip,ipx,assigned,other Port-channel142            
+  40      5006.abf4.2a64   dynamic ip,ipx,assigned,other Port-channel143            
+  40      5006.abf4.a6e4   dynamic ip,ipx,assigned,other Port-channel140            
+  40      50eb.1ae0.5c87   dynamic ip,ipx,assigned,other Port-channel41             
+  40      50eb.1ae0.7f07   dynamic ip,ipx,assigned,other Port-channel42             
+  40      6400.6a6a.f5a9   dynamic ip,ipx,assigned,other GigabitEthernet2/2/47      
+  40      6400.6a6b.0861   dynamic ip,ipx,assigned,other GigabitEthernet2/2/47      
+  40      6805.ca13.ebc0   dynamic ip,ipx,assigned,other GigabitEthernet1/2/27      
+  40      70e4.22e5.d11e   dynamic ip,ipx,assigned,other GigabitEthernet2/2/45      
+  40      744b.e901.2088   dynamic ip,ipx,assigned,other GigabitEthernet2/2/45      
+  40      a036.9f6a.22d2   dynamic ip,ipx,assigned,other Port-channel42             
+  40      a036.9f6a.22d8   dynamic ip,ipx,assigned,other Port-channel41             
+  40      a036.9f6a.234e   dynamic ip,ipx,assigned,other Port-channel42             
+  40      a036.9f6b.852e   dynamic ip,ipx,assigned,other Port-channel41             
+  40      a093.51f2.f77e   dynamic ip,ipx,assigned,other GigabitEthernet2/2/36      
+  40      a46c.2a0f.e18f   dynamic ip,ipx,assigned,other GigabitEthernet1/1/5       
+  40      a89d.2104.8eaf   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+  40      e865.499e.a784   dynamic ip,ipx,assigned,other GigabitEthernet2/2/22      
+  40      e865.499e.a788   dynamic ip,ipx,assigned,other GigabitEthernet2/2/23      
+  40      e865.499e.a962   dynamic ip,ipx,assigned,other GigabitEthernet1/2/22      
+  40      e865.499e.a966   dynamic ip,ipx,assigned,other GigabitEthernet1/2/23      
+  40      ecbd.1d40.ec80   dynamic ip,ipx,assigned,other GigabitEthernet1/2/21      
+  40      f403.4306.b68b   dynamic ip,ipx,assigned,other Port-channel43             
+  70      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+  70      0060.4828.bdc1   dynamic ip,ipx,assigned,other Port-channel41             
+  91      0027.042e.6b9b   dynamic ip,ipx,assigned,other GigabitEthernet2/2/48      
+  91      70e4.22e5.d11f   dynamic ip,ipx,assigned,other GigabitEthernet2/2/20      
+  91      a093.51f2.f77d   dynamic ip,ipx,assigned,other GigabitEthernet2/2/41      
+  91      d867.d9d4.5001   dynamic ip,ipx,assigned,other GigabitEthernet2/2/12      
+ 401      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 401      000b.ab95.cb0b   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab95.ccd2   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab98.1f8a   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab98.1fad   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab98.1fcc   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab98.1fe7   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab98.1fec   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab98.2001   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab98.2005   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.1672   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.1675   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab99.167d   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab99.16cd   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.16d1   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.16eb   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.16fb   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.16ff   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab99.17b4   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.17e4   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000b.ab99.17e6   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.1872   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000b.ab99.1a04   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000e.e20b.a7f1   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000e.e20b.a804   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000e.e20b.a80e   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000e.e20b.a814   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000e.e20b.a869   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000e.e20b.a871   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000e.e20b.a87c   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000e.e20b.a888   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000e.e20b.e062   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      000e.e20b.e063   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000e.e20b.e064   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      000e.e20b.e065   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.7798   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.77ca   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.783d   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      001a.070e.7840   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      001a.070e.7845   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.7858   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      001a.070e.7874   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      001a.070e.788b   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.78a0   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.78a1   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.78a7   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.78ac   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.78ae   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      001a.070e.78bf   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      001a.070e.78c7   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.78c9   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      001a.070e.78ca   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      001a.070e.78ce   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      0040.8cf6.ac66   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      0040.8cf6.b015   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      0040.8cf6.b019   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      0040.8cf6.b01f   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      0040.8cf6.bc28   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      0040.8cf6.c70b   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      0040.8cf6.dd65   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      0040.8cf6.dd6f   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      00c0.4e1c.11cd   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      00c0.f21f.5bbb   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      00d0.c9f6.5270   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      1839.1900.2ff3   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      1839.1900.300b   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      accc.8e37.46e3   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      accc.8e37.46e5   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      accc.8e74.d69d   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 401      b000.b402.88e5   dynamic ip,ipx,assigned,other GigabitEthernet1/2/37      
+ 401      b000.b402.986a   dynamic ip,ipx,assigned,other GigabitEthernet2/2/37      
+ 402      0007.3220.b7ed   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0007.3221.04c9   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0007.3221.055b   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0007.3224.844d   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0007.3224.c49b   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 402      0009.9100.4292   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0009.9100.4293   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0009.9101.9b75   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0009.9103.e5ff   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0009.9103.f809   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0015.f28c.afa1   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0015.f2de.3380   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      001c.c03e.fc1c   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0020.4a0b.e5e2   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0020.4a21.a282   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0020.4a21.a286   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90e8.db0d   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90e8.db0f   dynamic ip,ipx,assigned,other Port-channel140
+  402      0025.90e8.de30   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90e8.de33   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ea.6341   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ea.6758   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ea.6759   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ea.6888   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ea.6889   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ea.68b8   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ea.68b9   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ec.ab9c   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ec.abae   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ec.ace4   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90ed.4584   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0025.90f0.6b99   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0056.2b0f.aef8   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0090.fb4b.0ee1   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0090.fb4b.d4a9   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0090.fb4b.d4ab   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0090.fb5a.56e2   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0090.fb5a.56e4   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      00c0.b772.0879   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      00c0.b78b.c5aa   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      00c0.b78b.c5ac   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0800.1900.e7de   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0800.1900.ed0b   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      0cf5.a4c6.25ec   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      20bb.c07b.5e5d   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      b000.b4b7.e5ee   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      b4a8.b9cb.7ea5   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      c444.a07b.6f2a   dynamic ip,ipx,assigned,other Port-channel140            
+ 402      ece1.a9c6.f7ef   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      0000.0c07.ac00    static ip,ipx,assigned,other Switch                     
+ 403      0004.f1eb.d66a   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      0004.f1eb.d672   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d69a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6b2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6ba   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6ce   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      0004.f1eb.d6d2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6d6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6da   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      0004.f1eb.d6de   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6e6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6ee   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6f2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d6f6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d702   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      0004.f1eb.d706   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      0004.f1eb.d70e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d712   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d71a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d71e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d726   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d72a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d72e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d736   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d742   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      0004.f1eb.d76a   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      0004.f1eb.d76e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d77a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d78a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d78e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d906   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d91a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d92e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.d93e   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      0004.f1eb.e426   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1eb.e436   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      0004.f1ec.275a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2c66   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      0004.f1ec.2c72   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2dbe   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2dc2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2dca   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2dce   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2dd2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2dd6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2dde   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2de6   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      0004.f1ec.2dea   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      0004.f1ec.2dee   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2df2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2e06   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2e0e   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      0004.f1ec.2e12   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      0004.f1ec.2e16   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2e1a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0004.f1ec.2e2a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 403      00c1.649b.b700   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      00c1.649b.e798   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      00c1.649b.f080   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      00f6.63d8.df3c   dynamic ip,ipx,assigned,other Port-channel51             
+ 403      00f6.63d8.e045   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      188b.9dfc.0cf4   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      2c5a.0fa0.620c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      40a6.e8d3.16fb   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      40a6.e8d3.21ae   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      40a6.e8d3.22f8   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      40a6.e8d3.2366   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      40a6.e8d3.2371   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      40a6.e8d3.390d   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      70e4.22ce.ef3a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.0b38   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.0b90   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.0ce0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.0e1c   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      70e4.22cf.0ef0   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      70e4.22cf.0fa0   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      70e4.22cf.12b0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.12f6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.1aba   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.1bf4   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.1c3e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      70e4.22cf.3ab6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      802a.a8aa.2177   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      802a.a8aa.217b   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      802a.a8aa.220f   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      802a.a8aa.2333   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f41c   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      84b8.02ac.f48c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f492   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f598   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f5c2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f5c8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f638   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f69a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f930   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f932   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      84b8.02ac.f940   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f98e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f9ac   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f9ba   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f9e2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f9ec   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.f9f4   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.fa0e   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      84b8.02ac.fa1c   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      84b8.02ac.fa2a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.fa86   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      84b8.02ac.fa96   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ac.ff4a   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      84b8.02ad.09ac   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ad.09ae   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ad.09e8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ad.0a28   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      84b8.02ad.0a78   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      9c57.adf4.5414   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      ac7e.8a90.9647   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      ac7e.8a90.a3d0   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      ac7e.8a90.adfe   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      accc.8e74.d6a1   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      c067.af38.eec8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.4ea8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.4f5e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.5612   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      fc5b.3991.58b6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.5964   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.6fd0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7aa2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7ab0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7ab2   dynamic ip,ipx,assigned,other Port-channel140            
+ 403      fc5b.3991.7ac8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7ad6   dynamic ip,ipx,assigned,other Port-channel143            
+ 403      fc5b.3991.7b00   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b0e   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      fc5b.3991.7b38   dynamic ip,ipx,assigned,other Port-channel141            
+ 403      fc5b.3991.7b48   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b4e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b54   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b56   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b58   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b5c   dynamic ip,ipx,assigned,other Port-channel142            
+ 403      fc5b.3991.7b62   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b6c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7b6e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 403      fc5b.3991.7bee   dynamic ip,ipx,assigned,other GigabitEthernet2/1/7       
+ 404      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 404      0010.40a4.9042   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0010.40a4.9138   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0010.40a4.91f5   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0010.40b9.4619   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.2320.0b78   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.2320.146f   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f4.72a5   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f4.7332   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f4.73e7   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f4.73fb   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f4.7411   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f4.74d1   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f4.8029   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.85f4   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.860c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.8617   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.8628   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.86d7   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.874b   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.878d   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.8bb8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.8d0b   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.8d2b   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.8d3c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0017.23f8.8ea5   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.ee33   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.ee52   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.eea0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.ef13   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.fdfc   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.fe09   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.fe30   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f24.fe46   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f25.0580   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f25.db55   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f26.01b5   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f26.029d   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f26.1a4f   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f26.1efc   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f26.24c0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0019.0f26.24df   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5ec1   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5ed1   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5edb   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5ee0   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5ee1   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5f02   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5fde   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.5fe9   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.619a   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.619b   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.61e6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.61e7   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.6461   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.6482   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.6484   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.65aa   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.65b5   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.65b7   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.65b9   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.8b63   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.8b64   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      0026.0501.8b75   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0c.e536   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0c.f2d8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.009e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.05aa   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.0874   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.0984   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.0a94   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.1a1e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.2414   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.29a8   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.29ca   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.3aca   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      046c.9d0d.3ca6   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1540   dynamic ip,ipx,assigned,other GigabitEthernet1/2/39      
+ 404      5435.df00.156c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1693   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.16ab   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.16ad   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1703   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1748   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1749   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.175b   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1785   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.17f2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.17fa   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1805   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1807   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.181e   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1c58   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1d0c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1dd7   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1de2   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      5435.df00.1dfd   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      9c57.ad44.5d4c   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      9c57.ad44.a808   dynamic ip,ipx,assigned,other GigabitEthernet2/1/5       
+ 404      c056.27e8.aecb   dynamic ip,ipx,assigned,other Port-channel140            
+ 428      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 501      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 502      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 502      40a6.e8d3.1f67   dynamic ip,ipx,assigned,other Port-channel51             
+ 502      5cb9.01ec.a414   dynamic ip,ipx,assigned,other Port-channel51             
+ 502      6400.6a6a.96f2   dynamic ip,ipx,assigned,other Port-channel51             
+ 502      9c57.adf4.bba0   dynamic ip,ipx,assigned,other Port-channel51             
+ 503      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+ 504      0008.e3ff.ff20    static ip,ipx,assigned,other Switch                     
+
+Multicast Entries
+ vlan     mac address     type    ports
+---------+---------------+-------+--------------------------------------------
+   1      0100.0ccc.ccce   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+                                  Po143
+   1      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+  10      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+  11      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+                                  Po143
+  20      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+  30      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+  40      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi1/2/21,Gi1/2/22,Gi1/2/23
+                                  Gi1/2/24,Gi1/2/25,Gi1/2/27,Gi1/2/35,Gi2/1/5
+                                  Gi2/1/8,Gi2/2/1,Gi2/2/22,Gi2/2/23,Gi2/2/24
+                                  Gi2/2/25,Gi2/2/27,Gi2/2/35,Gi2/2/36,Gi2/2/45
+                                  Gi2/2/46,Gi2/2/47,Switch,Po10,Po20,Po30
+                                  Po40,Po41,Po42,Po43,Po44,Po50,Po51,Po100
+                                  Po101,Po140,Po141,Po142,Po143
+  70      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+  80      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+                                  Po143
+  90      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+                                  Po143
+  91      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/12,Gi2/2/20,Gi2/2/41,Gi2/2/44,Gi2/2/47
+                                  Gi2/2/48,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+                                  Po143
+  92      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+                                  Po143
+ 215      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Po10,Po20,Po30,Po40,Po41,Po42
+                                  Po43,Po44,Po50,Po51,Po101,Po140,Po141,Po142
+                                  Po143
+ 401      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi1/2/37,Gi2/1/5,Gi2/1/8
+                                  Gi2/2/1,Gi2/2/37,Gi2/2/47,Switch,Po10,Po20
+                                  Po30,Po40,Po41,Po42,Po43,Po44,Po50,Po51
+                                  Po101,Po140,Po141,Po142,Po143
+ 402      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+ 403      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/7,Gi2/1/8
+                                  Gi2/2/1,Gi2/2/47,Switch,Po10,Po20,Po30
+                                  Po40,Po41,Po42,Po43,Po44,Po50,Po51,Po101
+                                  Po140,Po141,Po142,Po143
+ 404      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi1/2/39,Gi2/1/5,Gi2/1/8
+                                  Gi2/2/1,Gi2/2/47,Switch,Po10,Po20,Po30
+                                  Po40,Po41,Po42,Po43,Po44,Po50,Po51,Po101
+                                  Po140,Po141,Po142,Po143
+ 428      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+ 501      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+ 502      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+ 503      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+ 504      ffff.ffff.ffff   system Gi1/1/5,Gi1/2/3,Gi2/1/5,Gi2/1/8,Gi2/2/1
+                                  Gi2/2/47,Switch,Po10,Po20,Po30,Po40,Po41
+                                  Po42,Po43,Po44,Po50,Po51,Po101,Po140,Po141
+                                  Po142,Po143
+
+

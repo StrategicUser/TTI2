@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb_core_6509_a
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb_core_6509_a

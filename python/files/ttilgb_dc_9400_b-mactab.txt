@@ -1,0 +1,9 @@
+
+
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+ 223    0004.f19f.8fd4    DYNAMIC     Po41
+Total Mac Addresses for this criterion: 1

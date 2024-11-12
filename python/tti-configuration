@@ -1,0 +1,10 @@
+#!/bin/bash
+# TTI Update Configuration Script
+echo "Run TTI Telnet Script!!!"
+python tti-telnet-network-config.py
+
+echo "Run TTI Netmiko SSH Script!!!"
+
+python3 tti-network-config.py
+
+echo "TTI Core Network Update Completed!!!"

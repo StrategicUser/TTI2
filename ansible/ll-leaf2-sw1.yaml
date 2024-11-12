@@ -1,0 +1,7 @@
+---
+- hosts: ll-leaf2-sw1
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ll-leaf2-sw1

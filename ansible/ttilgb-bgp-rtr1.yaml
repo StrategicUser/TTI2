@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb-bgp-rtr1
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb-bgp-rtr1

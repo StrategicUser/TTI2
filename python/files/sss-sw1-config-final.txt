@@ -1,0 +1,102 @@
+000c.294a.2e51
+switchport access vlan 45
+switchport trunk allowed vlan 2,3,10,45,50,51,55,60,100
+switchport trunk encapsulation dot1q
+switchport mode trunk
+spanning-tree portfast edge trunk
+!
+001f.9e02.ecb3
+description Link-to-Firewall-dk-sd1
+switchport access vlan 45
+switchport trunk native vlan 45
+srr-queue bandwidth share 1 30 35 5
+queue-set 2
+priority-queue out
+mls qos trust cos
+auto qos trust
+!
+98e7.4363.7a36
+description Alienware-Laptop-Port
+switchport access vlan 45
+switchport mode access
+srr-queue bandwidth share 1 30 35 5
+queue-set 2
+priority-queue out
+auto qos trust
+spanning-tree portfast edge
+!
+5006.04cb.6fa0
+description Link-to-WLC-EMS-Lap-WLC
+switchport trunk encapsulation dot1q
+switchport mode trunk
+!
+3c18.a041.bd54
+description HP-Labtop
+switchport access vlan 4
+switchport mode access
+ip access-group ACL-ALLOW in
+authentication event fail action next-method
+authentication event server alive action reinitialize
+authentication host-mode multi-auth
+authentication order dot1x mab
+authentication priority dot1x mab
+authentication port-control auto
+authentication periodic
+authentication timer reauthenticate server
+authentication violation restrict
+mab
+snmp trap mac-notification change added
+snmp trap mac-notification change removed
+dot1x pae authenticator
+dot1x timeout tx-period 10
+spanning-tree portfast edge
+!
+0800.2721.fb61
+description Surface
+switchport access vlan 418
+switchport mode access
+switchport voice vlan 114
+ip access-group ACL-ALLOW in
+srr-queue bandwidth share 1 30 35 5
+priority-queue out
+authentication event fail action next-method
+authentication event server alive action reinitialize
+authentication host-mode multi-auth
+authentication order dot1x mab
+authentication priority dot1x mab
+authentication port-control auto
+authentication periodic
+authentication timer reauthenticate server
+authentication violation restrict
+mab
+snmp trap mac-notification change added
+snmp trap mac-notification change removed
+mls qos trust device cisco-phone
+mls qos trust cos
+dot1x pae authenticator
+dot1x timeout tx-period 10
+auto qos voip cisco-phone
+spanning-tree portfast edge
+service-policy input AUTOQOS-SRND4-CISCOPHONE-POLICY
+!
+b827.eb17.6e53
+description Linux Raspberry PI
+switchport access vlan 418
+switchport mode access
+ip access-group ACL-ALLOW in
+authentication event fail action next-method
+authentication event server alive action reinitialize
+authentication host-mode multi-auth
+authentication order dot1x mab
+authentication priority dot1x mab
+authentication port-control auto
+authentication periodic
+authentication timer reauthenticate server
+authentication violation restrict
+mab
+snmp trap mac-notification change added
+snmp trap mac-notification change removed
+dot1x pae authenticator
+dot1x timeout tx-period 10
+spanning-tree portfast edge
+!

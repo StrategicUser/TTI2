@@ -1,0 +1,7 @@
+---
+- hosts: template
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: template

@@ -1,0 +1,6 @@
+vlan 125
+name Kalmar-Vlan
+
+int Gi0/0
+switchport trunk allowed vlan add 120 
+!

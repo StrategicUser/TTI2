@@ -1,0 +1,7 @@
+---
+- hosts: ll-core-sw1
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ll-core-sw1

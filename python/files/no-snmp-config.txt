@@ -1,0 +1,8 @@
+no snmp-server community public RO cisco
+no snmp-server community ytiread RO
+no snmp-server community ytienable RW
+no snmp-server trap-source Vlan45
+no snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+no snmp-server enable traps mac-notification change move threshold
+
+

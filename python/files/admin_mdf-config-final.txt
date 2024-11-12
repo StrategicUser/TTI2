@@ -1,0 +1,414 @@
+0000.0000.0100
+description Direct Checkpoint LAN
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0100
+description direct Checkpoint2 management
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0100
+description Direct Checkpoint 1 DMZ
+switchport access vlan 192
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0100
+description Checkpoint 1 WAN
+switchport access vlan 777
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0100
+description Direct Checkpoint heartbeat
+switchport access vlan 800
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0101
+description Direct Checkpoint LAN
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0101
+description direct Checkpoint1 management
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0101
+description Direct Checkpoint 2 DMZ
+switchport access vlan 192
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0101
+description Direct Checkpoint 2 WAN
+switchport access vlan 777
+switchport mode access
+switchport nonegotiate
+!
+0000.0000.0101
+description Checkpoint Heartbeat 2
+switchport access vlan 800
+switchport mode access
+switchport nonegotiate
+!
+0000.0c07.ac01
+description Direct AT&T router
+switchport access vlan 777
+switchport mode access
+switchport nonegotiate
+!
+0023.5e25.5745
+description Sflow forwarding
+switchport mode access
+switchport nonegotiate
+!
+0026.cb76.3599
+description (MPLS yti-la-gwsw02 Port 23)
+switchport trunk native vlan 2
+switchport trunk allowed vlan 1,2,26,200,998,999
+switchport mode trunk
+switchport nonegotiate
+!
+0004.f1ec.0e3e
+description LS45 Comnet - 10.3.21.173 (Brocade port 7/6)
+switchport trunk native vlan 10
+switchport trunk allowed vlan 10-12,14,21,23
+switchport mode trunk
+switchport nonegotiate
+duplex full
+!
+0020.4adb.3e21
+description C6-7 Nexus 01 management
+switchport access vlan 16
+switchport mode access
+switchport nonegotiate
+!
+ecb1.d775.c900
+description C3-4 MijackApp LAN
+switchport access vlan 16
+!
+f01f.afd1.108b
+description ytip-mj-app.IP 10.3.16.10
+switchport access vlan 16
+switchport mode access
+switchport nonegotiate
+!
+0010.e0b5.728e
+description (Brocade port 6/10)
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+0010.e0b5.7292
+description (Brocade port 6/17)
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+0010.e0bc.c7f0
+description (Brocade port 6/2)
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+0010.e0bc.c7f4
+description (Brocade port 6/16)
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+0040.9d97.a3aa
+description C6-1 USB key server 1
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+1402.ec32.a248
+description C3-1 YTI-Utility Server LAN
+switchport access vlan 20
+!
+2c76.8a54.3373
+description C2-3 YTI-SolarWinds LAN
+switchport access vlan 20
+!
+2c76.8a54.5b63
+description C2-5 YTI-SolarSQL LAN
+switchport access vlan 20
+!
+b8ca.3af7.2dc1
+description C3-9 YTI-Storage1 - LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+eceb.b899.6548
+description C10-9 YTIP-OCRGateO3 LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+logging event link-status
+spanning-tree guard root
+ip nbar protocol-discovery
+!
+eceb.b899.c26c
+description C10-3 YTIP-OCRGateI2 LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+ip nbar protocol-discovery
+!
+eceb.b899.d2a4
+description C10-5 YTIP-OCRGateO1 LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+ip nbar protocol-discovery
+!
+eceb.b899.d2f0
+description C10-1 YTIP-OCRGateI1 LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+ip nbar protocol-discovery
+!
+eceb.b899.e25c
+description C10-7 YTIP-OCRGateO2 LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+ip nbar protocol-discovery
+!
+ecf4.bbde.bdbe
+description C2-1 YTI-Utility LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+f40f.1b4c.a461
+description Direct YTII_MQ-server
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+f8bc.1242.2508
+description C4-3 HyperV2 LAN
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+!
+000e.fe01.1e28
+description NTP server
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+00e0.d81c.2898
+description (Brocade port 6/15)
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+245e.be42.1fd8
+description YTI-Storage3 10.3.21.26
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+245e.be42.2034
+description (Brocade port 6/1)
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+245e.be42.20a4
+description YTI-Storage4 10.3.21.27
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+6cab.05ec.cec0
+description Cisco AP 1815 - IT office
+switchport access vlan 21
+switchport mode access
+switchport nonegotiate
+!
+78bc.1af9.96f8
+description TO SSS FIREWALL INSIDE 10.3.21.13
+switchport access vlan 21
+switchport mode access
+!
+ec38.736c.81d1
+description QuayChain LAN port
+switchport access vlan 21
+!
+002a.6ac8.92a1
+description C7-9 UCS1 NetApp 1 management
+switchport access vlan 22
+!
+002a.6ae4.b921
+switchport access vlan 22
+!
+002a.6ae4.baa1
+switchport access vlan 22
+!
+002a.6ae5.8dc1
+description C7-10 UCS1 NetApp 2 management
+switchport access vlan 22
+!
+002a.6aeb.4be1
+description YTI-Nexus_02 Port Mgmt0
+switchport access vlan 22
+!
+002a.6aef.ba41
+description YTI-Nexus_01 Port Mgmt0
+switchport access vlan 22
+!
+002a.6af2.e281
+description C7-8 UCS1 Nexxus 2 management
+switchport access vlan 22
+!
+002a.6af2.e2e1
+description C7-7 UCS1 Nexxus 1 management
+switchport access vlan 22
+!
+00a0.9875.eaab
+description YTINETAPP01 e0M
+switchport access vlan 22
+!
+00a0.9875.f539
+description C7-11 UCS1 Fabric 1 management
+switchport access vlan 22
+switchport mode access
+switchport nonegotiate
+!
+00a0.9875.f613
+description C7-12 UCS1 Fabric 2 management
+switchport access vlan 22
+!
+00a0.9875.f723
+description YTINETAPP02 e0M
+switchport access vlan 22
+!
+5442.49a1.06c6
+description C1-13 Camera 2nd floor Admin
+switchport access vlan 23
+switchport mode access
+switchport nonegotiate
+!
+0023.5e25.5746
+switchport access vlan 26
+switchport mode access
+switchport nonegotiate
+switchport voice vlan 96
+trust device cisco-phone
+spanning-tree portfast
+service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+00ca.e540.8305
+description C2-14 - IT office
+switchport access vlan 26
+switchport mode access
+switchport nonegotiate
+switchport voice vlan 96
+trust device cisco-phone
+auto qos voip cisco-phone
+spanning-tree portfast
+service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+00ca.e541.e2d1
+description To Kevin Huynh
+switchport access vlan 26
+switchport trunk native vlan 26
+switchport mode trunk
+switchport nonegotiate
+switchport voice vlan 96
+trust device cisco-phone
+auto qos voip cisco-phone
+spanning-tree portfast
+service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+00cc.fc4a.c694
+switchport access vlan 26
+switchport mode access
+switchport voice vlan 96
+trust device cisco-phone
+auto qos voip cisco-phone
+spanning-tree portfast
+service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+00cc.fc4b.3076
+switchport access vlan 26
+switchport trunk native vlan 26
+switchport mode trunk
+switchport nonegotiate
+switchport voice vlan 96
+trust device cisco-phone
+auto qos voip cisco-phone
+spanning-tree portfast
+service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+1402.ec32.a249
+description C3-1 YTI-Utility PC LAN
+switchport access vlan 26
+!
+d8cb.8a86.dd94
+description C2-19 IT Office wall TV
+switchport access vlan 26
+switchport mode access
+switchport nonegotiate
+!
+ecb1.d775.bc31
+description C2-13 - IT office
+switchport access vlan 26
+switchport mode access
+switchport nonegotiate
+switchport voice vlan 96
+trust device cisco-phone
+auto qos voip cisco-phone
+spanning-tree portfast
+service-policy input AutoQos-4.0-CiscoPhone-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+0021.b74d.f84d
+description C2-19 IT Lexmark printer
+switchport access vlan 28
+switchport mode access
+switchport nonegotiate
+!
+5897.bd42.7d60
+description Cisco Voice Gateway
+switchport access vlan 96
+auto qos trust
+service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+service-policy output AutoQos-4.0-Output-Policy
+!
+70e4.22b2.3ef8
+switchport access vlan 96
+!
+0023.5e25.5744
+description Direct ASA VPN gateway
+switchport access vlan 777
+switchport mode access
+switchport nonegotiate
+!
+78bc.1af9.96f7
+description TO SSS FIREWALL OUTSIDE 12.129.159.133
+switchport access vlan 777
+switchport mode access
+!
+f40f.1b4c.a460
+description Direct Cisco 1941 Ge0/0
+switchport access vlan 777
+switchport mode access
+switchport nonegotiate
+!

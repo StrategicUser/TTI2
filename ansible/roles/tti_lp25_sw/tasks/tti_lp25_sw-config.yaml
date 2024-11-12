@@ -1,0 +1,17 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define tti_lp25_sw
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: tti_lp25_sw Configuration Update
+    ios_config:
+      timeout: 60
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "/home/strategic/TTI/ansible/roles/tti_lp25_sw/files/tti_lp25_sw-config.cfg"

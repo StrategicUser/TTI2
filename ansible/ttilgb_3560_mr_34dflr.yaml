@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb_3560_mr_34dflr
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb_3560_mr_34dflr

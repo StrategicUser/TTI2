@@ -1,0 +1,10 @@
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+TTI_Core_9500_A.sssinc.com
+                    Eth1/1         132    R S I                   Gig0/2        
+
+Total entries displayed: 1

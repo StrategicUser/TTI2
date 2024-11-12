@@ -1,0 +1,58 @@
+ip device tracking
+ip device tracking probe delay 10
+!
+!
+ip http server
+ip http secure-server
+ip http active-session-modules none
+ip http secure-active-session-modules none
+!
+ip radius source-interface lo0
+ip sla enable reaction-alerts
+logging origin-id ip
+logging source-interface lo0
+logging host 172.16.145.90 transport udp port 20514
+!
+!
+snmp-server community cisco RO
+snmp-server community cisco123 RW
+snmp-server community public RO cisco
+snmp-server trap-source lo0
+!
+radius-server attribute 6 on-for-login-auth
+radius-server attribute 6 support-multiple
+radius-server attribute 8 include-in-access-req
+radius-server attribute 25 access-request include
+radius-server attribute 31 mac format ietf upper-case
+radius-server attribute 31 send nas-port-detail
+radius-server dead-criteria time 30 tries 3
+radius-server deadtime 10
+
+!
+! ISE Device Sensor Configuration
+device-sensor filter-list dhcp list dhcp_list
+ option name host-name
+ option name domain-name
+ option name default-ip-ttl
+ option name requested-address
+ option name parameter-request-list
+ option name class-identifier
+ option name client-identifier
+!
+device-sensor filter-list cdp list cdp_list
+ tlv name device-name
+ tlv name address-type
+ tlv name capabilities-type
+ tlv name platform-type
+!
+device-sensor filter-spec dhcp include list dhcp_list
+device-sensor filter-spec cdp include list cdp_list
+device-sensor accounting
+device-sensor notify all-changes
+!
+!
+radius server ise
+ address ipv4 172.16.145.90 auth-port 1812 acct-port 1813
+ key Strategic3!@#$
+!         
+!

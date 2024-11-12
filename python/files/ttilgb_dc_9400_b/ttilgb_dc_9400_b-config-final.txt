@@ -1,0 +1,438 @@
+6416.7fdb.ad70
+switchport access vlan 100
+switchport mode access
+spanning-tree portfast
+!
+6451.063c.6b46
+description Polycom VVX411
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.4429
+description X2846
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.468f
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+no cdp enable
+spanning-tree portfast
+!
+805e.0c50.47f3
+description X2833
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+805e.0c50.4ae3
+description X2705
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+805e.0c50.4d03
+description X2677
+switchport access vlan 100
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+ac17.c8a3.afe8
+description Meraki3FConference
+switchport access vlan 100
+switchport mode access
+!
+0018.8503.c729
+description Camera
+switchport access vlan 4
+switchport mode access
+power inline auto max 16800
+!
+0018.8503.c23f
+description Camera
+switchport access vlan 5
+switchport mode access
+power inline auto max 16800
+!
+0018.8503.c494
+description Camera
+switchport access vlan 5
+switchport mode access
+power inline auto max 16800
+!
+0018.8503.c55c
+description Camera
+switchport access vlan 5
+switchport mode access
+power inline auto max 16800
+!
+0018.8503.c64f
+description Camera
+switchport access vlan 5
+switchport mode access
+power inline auto max 16800
+!
+0018.8503.c66e
+description Camera
+switchport access vlan 5
+switchport mode access
+power inline auto max 16800
+!
+0018.8503.c670
+description Camera
+switchport access vlan 5
+switchport mode access
+power inline auto max 16800
+!
+0018.8503.c6b4
+description Camera
+switchport access vlan 5
+switchport mode access
+power inline auto max 16800
+!
+805e.0c44.b1cc
+description JinH.Kim[OCU]
+switchport access vlan 51
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+10e7.c624.f1b1
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast
+!
+18db.f20a.e592
+description Leroy TEST Port
+switchport trunk native vlan 101
+switchport mode trunk
+switchport voice vlan 124
+!
+3cd9.2ba1.f819
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+power inline auto max 16800
+spanning-tree portfast trunk
+!
+4821.0b2d.4344
+description KK-2ndflr-Dshbrd
+switchport access vlan 101
+switchport mode access
+power inline auto max 16800
+!
+54ee.75cd.8639
+description X2740
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+6c0b.8443.4516
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+power inline auto max 16800
+spanning-tree portfast trunk
+!
+805e.0c44.bce7
+description X2670
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.4235
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.42e3
+switchport access vlan 101
+switchport mode access
+!
+805e.0c50.4435
+description X2603
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+805e.0c50.4465
+description X2727
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.4ab1
+description X2728
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+805e.0c50.4cbf
+description X2672
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+d485.6413.3c8a
+description RICBAR-Office
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast
+!
+f430.b970.1be4
+description X2648
+switchport access vlan 101
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+no cdp enable
+spanning-tree portfast
+!
+000f.e502.6c51
+switchport access vlan 104
+switchport mode access
+power inline auto max 16800
+!
+0010.4035.c001
+switchport access vlan 110
+switchport mode access
+spanning-tree portfast
+!
+0040.9db1.cc0d
+description 4/53 LP01
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+1860.24a5.6210
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+40b0.3426.b080
+description NickKim PRINTER
+switchport access vlan 110
+!
+54ee.759b.4e6e
+description jenniferJenning
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+6416.7f9f.118a
+description 2ndFloorPC-Cnf
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+no cdp enable
+spanning-tree portfast
+!
+805e.0c43.b548
+description X2847
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+no cdp enable
+spanning-tree portfast
+!
+805e.0c43.b848
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+805e.0c45.0825
+description X2733
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+805e.0c50.3f71
+description DAN BERGMAN_2760
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+805e.0c50.481d
+description 333 Green
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+spanning-tree portfast
+!
+805e.0c50.4887
+description X703
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+805e.0c50.48f9
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.4975
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.4ab5
+description X2831
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+spanning-tree portfast
+!
+805e.0c50.4c2d
+description X2752
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+805e.0c60.f5b3
+description X2710
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast
+!
+805e.c0de.da3d
+description X2884
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+no cdp enable
+spanning-tree portfast trunk
+!
+a0d3.c182.d0b9
+description KEYONGPC
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 121
+power inline auto max 16800
+spanning-tree portfast
+!
+b00c.d1df.2a72
+description X2739
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 124
+power inline auto max 16800
+no cdp enable
+spanning-tree portfast
+!
+d485.6413.6ce1
+description Nick offie
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 121
+power inline auto max 16800
+spanning-tree portfast
+!
+f0b5.d1dc.43aa
+switchport access vlan 110
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast
+!
+cc5a.5396.26c0
+switchport access vlan 124
+switchport mode access
+power inline auto max 16800
+no cdp enable
+spanning-tree portfast
+!
+0008.e105.b9c8
+description LAKing Device
+switchport access vlan 201
+power inline auto max 16800
+!
+0008.e106.098b
+description LAKing Device
+switchport access vlan 201
+power inline auto max 16800
+!
+0008.e106.09f5
+description LAKing Device
+switchport access vlan 201
+switchport mode access
+power inline auto max 16800
+spanning-tree portfast
+!
+0008.e106.0a06
+description LAKing Device
+switchport access vlan 201
+switchport mode access
+power inline auto max 16800
+!
+0008.e106.8764
+switchport access vlan 201
+power inline auto max 16800
+!
+0008.e107.7a6f
+switchport access vlan 201
+power inline auto max 16800
+!
+0008.e107.7dfe
+description TOWER10_DSK
+switchport access vlan 201
+switchport mode access
+switchport voice vlan 123
+spanning-tree portfast
+!
+0026.0502.e671
+description EPS-GPS G4 at roof
+switchport access vlan 223
+switchport mode access
+power inline auto max 16800
+spanning-tree portfast
+!

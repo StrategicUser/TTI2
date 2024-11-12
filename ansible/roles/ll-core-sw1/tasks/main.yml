@@ -1,0 +1,19 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define ll-core-sw1
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: ll-core-sw1 Configuration Update
+    ios_config:
+      timeout: 60
+      provider: "{{ provider }}"
+      authorize: yes
+      commands:
+        - hostname Test
+      #src: "/home/strategic/TTI/ansible/roles/ll-core-sw1/files/ll-core-sw1-config.cfg"

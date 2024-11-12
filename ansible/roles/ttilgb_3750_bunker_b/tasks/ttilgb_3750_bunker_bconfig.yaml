@@ -1,0 +1,17 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define ttilgb_3750_bunker_b
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: ttilgb_3750_bunker_b Configuration Update
+    ios_config:
+      timeout: 60
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "/home/strategic/TTI/ansible/roles/ttilgb_3750_bunker_b/files/ttilgb_3750_bunker_b-config.cfg"

@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb_dc_9300_b
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb_dc_9300_b

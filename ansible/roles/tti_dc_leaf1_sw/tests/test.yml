@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - /home/strategic/TTI/ansible/roles/tti_dc_leaf1_sw

@@ -1,0 +1,4 @@
+a0:cf:5b:80:01:3d	Link-to-7962-IP-Phone	vlan12
+2c:31:24:6a:c4:aa 	Link-to-8841-IP-Phone	vlan12
+88:1f:a1:2d:a4:63	Link-to-Location-Sensor2-14b	vlan4
+a8:b1:d4:1f:bc:ac	Link-to-9865-IP-Phone	vlan12

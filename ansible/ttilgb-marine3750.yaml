@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb-marine3750
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb-marine3750

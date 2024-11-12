@@ -1,0 +1,7 @@
+---
+- hosts: ttilgb-dc-9400-a
+  gather_facts: no
+  connection: local
+    
+  roles:
+    - role: ttilgb-dc-9400-a

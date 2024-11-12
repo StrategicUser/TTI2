@@ -1,0 +1,16 @@
+0004.f11a.fd4c
+switchport access vlan 10
+spanning-tree portfast edge
+!
+e430.220c.6878
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.221e.8b60
+switchport access vlan 23
+spanning-tree portfast edge
+!
+e430.221e.8b84
+switchport access vlan 23
+spanning-tree portfast edge
+!

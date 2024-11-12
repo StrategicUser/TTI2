@@ -1,0 +1,1470 @@
+
+!
+! Last configuration change at 13:11:39 CCT Wed Nov 7 2018 by sadmin
+! NVRAM config last updated at 13:11:42 CCT Wed Nov 7 2018 by sadmin
+!
+version 15.2
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+service password-encryption
+service compress-config
+!
+hostname ETSLA-Core-SW
+!
+boot-start-marker
+boot system flash bootflash:cat4500es8-universalk9.SPA.03.07.02.E.152-3.E2.bin
+boot-end-marker
+!
+!
+vrf definition mgmtVrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$0N66$X8ckYGNbw5WH//BynC6dj0
+!
+username Sadmin privilege 15 password 7 09695A1A4B0916190E
+username ddtw privilege 15 password 7 03075802035E731F1A
+username jackyhou privilege 15 password 7 140307535E557B7A76
+username sy5 privilege 15 password 7 12130C444B5F1F1D7F
+username gcglobal password 7 0105090D580E155F7814
+username etsadmin privilege 15 password 7 045E1F1503201D1C5A
+username dlakey privilege 15 password 7 04681F140E354949001A5656324848
+username Strategic-RO secret 5 $1$Kn3.$dfbV/qUk4qnE0k0H4MZ6s.
+no aaa new-model
+clock timezone CCT -8 0
+!
+switch virtual domain 200
+ switch mode virtual
+ switch 1 priority 110
+ switch 2 priority 90
+ mac-address use-virtual
+!
+!
+!
+!
+!
+!
+!
+ip vrf Liin-vrf
+!
+no ip domain-lookup
+ip dhcp conflict resolution interval 1440
+ip dhcp excluded-address 172.23.226.201 172.23.226.254
+ip dhcp excluded-address 192.168.3.250 192.168.3.254
+ip dhcp excluded-address 172.23.230.254 172.23.230.255
+ip dhcp excluded-address 192.168.3.1 192.168.3.220
+ip dhcp excluded-address 172.23.224.201 172.23.224.254
+ip dhcp excluded-address 172.23.225.201 172.23.225.254
+ip dhcp excluded-address 172.23.228.60 172.23.228.62
+ip dhcp excluded-address 172.23.228.124 172.23.228.126
+ip dhcp excluded-address 172.23.228.188 172.23.228.190
+ip dhcp excluded-address 172.23.230.243 172.23.230.253
+ip dhcp excluded-address 172.23.230.233 172.23.230.253
+ip dhcp excluded-address 172.23.230.223 172.23.230.253
+!
+ip dhcp pool net226
+ network 172.23.226.0 255.255.255.0
+ default-router 172.23.226.254 
+ dns-server 172.23.227.7 172.23.227.8 
+!
+ip dhcp pool ETS-WAP
+ network 192.168.3.0 255.255.255.0
+ default-router 192.168.3.254 
+ option 43 hex f104.ac17.e30f
+ option 150 ip 172.23.227.213 172.23.227.217 
+ dns-server 172.23.227.7 172.30.168.199 
+!
+ip dhcp pool net230
+ network 172.23.230.0 255.255.255.0
+ default-router 172.23.230.254 
+ dns-server 172.23.227.7 172.30.168.199 
+!
+ip dhcp pool net225
+ network 172.23.225.0 255.255.255.0
+ default-router 172.23.225.254 
+ dns-server 172.23.227.7 172.30.168.199 
+ domain-name lapbx.everport.com
+ option 150 ip 172.23.227.213 172.23.227.217 
+!
+ip dhcp pool net224
+ network 172.23.224.0 255.255.255.0
+ default-router 172.23.224.253 
+ dns-server 172.23.227.7 172.23.227.8 
+ domain-name lapbx.everport.com
+ option 150 ip 172.23.227.213 172.23.227.217 
+ lease 3
+!
+ip dhcp pool net228_0
+ network 172.23.228.0 255.255.255.192
+ default-router 172.23.228.62 
+ dns-server 172.23.227.7 172.23.227.8 
+ lease 30
+!
+ip dhcp pool net228_64
+ network 172.23.228.64 255.255.255.192
+ default-router 172.23.228.126 
+ dns-server 172.23.227.7 172.23.227.8 
+!
+ip dhcp pool net228_128
+ network 172.23.228.128 255.255.255.192
+ default-router 172.23.228.190 
+ dns-server 172.23.227.7 172.23.227.8 
+!
+!
+vtp mode transparent
+!
+!
+flow record r1
+ match ipv4 source address
+ match ipv4 destination address
+ collect counter bytes long
+ collect counter packets long
+ collect timestamp sys-uptime first
+ collect timestamp sys-uptime last
+!
+!
+flow record etsla-ms-nf1-in
+ description Managed Services IPv4 Flow
+ match ipv4 tos
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 destination address
+ match transport source-port
+ match transport destination-port
+ match interface input
+ match interface output
+ collect transport tcp flags
+ collect counter bytes long
+ collect counter packets long
+!
+!
+flow record etsla-ms-nf1-out
+ description Managed Services IPv4 Flow
+ match ipv4 tos
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 destination address
+ match transport source-port
+ match transport destination-port
+ match interface output
+ collect transport tcp flags
+ collect interface input
+ collect counter bytes long
+ collect counter packets long
+!
+!
+flow exporter e1
+ destination 172.23.227.103
+ source Vlan40
+ transport udp 9996
+!
+!
+flow exporter etsla-ms-export1
+ description Managed Services Exporter 1
+ destination 10.2.0.5
+ source Vlan40
+ output-features
+ transport udp 2055
+ template data timeout 90
+!
+!
+flow monitor m1
+ exporter e1
+ cache timeout inactive 30
+ cache timeout active 60
+ cache entries 1000
+ record r1
+!
+!
+flow monitor ms-monitor1-in
+ description IPv4 Monitor
+ exporter etsla-ms-export1
+ cache timeout inactive 10
+ cache timeout active 60
+ record etsla-ms-nf1-in
+!
+!
+flow monitor ms-monitor1-out
+ description IPv4 Monitor
+ exporter etsla-ms-export1
+ cache timeout inactive 10
+ cache timeout active 60
+ record etsla-ms-nf1-out
+!
+!
+crypto pki trustpoint TP-self-signed-193554
+ enrollment selfsigned
+ revocation-check crl
+ rsakeypair TP-self-signed-193554
+!
+!
+crypto pki certificate chain TP-self-signed-193554
+ certificate self-signed 01
+  30820223 3082018C A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  2D312B30 29060355 04031322 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31393335 3534301E 170D3135 31313132 31353436 31365A17 
+  0D323030 31303130 30303030 305A302D 312B3029 06035504 03132249 4F532D53 
+  656C662D 5369676E 65642D43 65727469 66696361 74652D31 39333535 3430819F 
+  300D0609 2A864886 F70D0101 01050003 818D0030 81890281 81009354 19D47B0A 
+  CBFF2B82 8994F337 41F47811 6370A89A D9E83188 A63E94DE F9DDFA2C 79FCFCEB 
+  F994A6F7 79E1648B 2135A3F3 61316608 35C1AC32 9A68ED2E 99C42CEC 710479D3 
+  82DFF4CA D0C7BD90 1453884A 89282DA7 909057D7 9C50EF8C D803A1BF CB6CF6A4 
+  4D86B790 BDF9C00C CA434C54 25B928AB 5549B3E1 640C71DC D3F30203 010001A3 
+  53305130 0F060355 1D130101 FF040530 030101FF 301F0603 551D2304 18301680 
+  1409D945 9D156E11 2123B3F5 63107A47 96FDC742 8B301D06 03551D0E 04160414 
+  09D9459D 156E1121 23B3F563 107A4796 FDC7428B 300D0609 2A864886 F70D0101 
+  05050003 81810090 42B3B47F 970E3838 6751565D EF2F42B1 65AF5F69 70A0E76A 
+  4544C9F9 E7EEBA36 A39C500C A232AC97 D0AE4AB5 F03BA670 441A8022 512D1658 
+  269D4A63 AECFC2B8 B2736028 4981237B 841FA38B 52D9B9C8 E5FE1B2E 35D940A2 
+  EB6A75FE F91A37CD 94DB7512 F5F3E94D 52848403 ACF9D6EB 50D926DD AAA75B7B 
+  F56AA8DE 2CADB8
+  	quit
+power redundancy-mode redundant
+!
+mac access-list extended VSL-BPDU
+ permit any 0180.c200.0000 0000.0000.0003
+mac access-list extended VSL-CDP
+ permit any host 0100.0ccc.cccc
+mac access-list extended VSL-DOT1x
+ permit any any 0x888E
+mac access-list extended VSL-GARP
+ permit any host 0180.c200.0020
+mac access-list extended VSL-LLDP
+ permit any host 0180.c200.000e
+mac access-list extended VSL-SSTP
+ permit any host 0100.0ccc.cccd
+port-channel load-balance src-dst-port
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-1005 priority 0
+!
+redundancy
+ mode sso
+!
+vlan internal allocation policy ascending
+!
+vlan 10
+ name User
+!
+vlan 20
+ name VoIP
+!
+vlan 30
+ name User WiFi
+!
+vlan 40
+ name Server
+!
+vlan 70
+ name DG
+!
+vlan 80
+ name BK
+!
+vlan 90
+ name Internet
+!
+vlan 91
+ name Internet 50M
+!
+vlan 92
+ name Internet 20M GC
+!
+vlan 401
+ name Yard-1 APS
+!
+vlan 402
+ name Yard-2 Crane
+!
+vlan 403
+ name Yard-3 AP, LOS
+!
+vlan 404
+ name Yard-4 Cal,C819,WiFi
+!
+vlan 501
+ name Yard Bldg, PCMC
+!
+vlan 502
+ name Yard Bldg, M&R
+!
+vlan 503
+ name Yard Bldg,MarineTow
+!
+vlan 504
+ name Yard Bldg-4
+!
+!
+class-map match-any VSL-MGMT-PACKETS
+ match access-group name VSL-MGMT
+class-map match-all AutoQos-4.0-Scavenger-Classify
+ match access-group name AutoQos-4.0-ACL-Scavenger
+class-map match-any VSL-DATA-PACKETS
+ match any 
+class-map match-all AutoQos-4.0-Signaling-Classify
+ match access-group name AutoQos-4.0-ACL-Signaling
+class-map match-any VSL-L2-CONTROL-PACKETS
+ match access-group name VSL-DOT1x
+ match access-group name VSL-BPDU
+ match access-group name VSL-CDP
+ match access-group name VSL-LLDP
+ match access-group name VSL-SSTP
+ match access-group name VSL-GARP
+class-map match-any AutoQos-4.0-Priority-Queue
+ match cos  5 
+ match dscp ef 
+ match dscp cs5 
+ match dscp cs4 
+class-map match-any VSL-L3-CONTROL-PACKETS
+ match access-group name VSL-IPV4-ROUTING
+ match access-group name VSL-BFD
+ match access-group name VSL-DHCP-CLIENT-TO-SERVER
+ match access-group name VSL-DHCP-SERVER-TO-CLIENT
+ match access-group name VSL-DHCP-SERVER-TO-SERVER
+ match access-group name VSL-IPV6-ROUTING
+class-map match-all AutoQos-4.0-VoIP-Data-Cos
+ match cos  5 
+class-map match-any AutoQos-4.0-Multimedia-Stream-Queue
+ match dscp af31 
+ match dscp af32 
+ match dscp af33 
+class-map match-any VSL-MULTIMEDIA-TRAFFIC
+ match dscp af41 
+ match dscp af42 
+ match dscp af43 
+ match dscp af31 
+ match dscp af32 
+ match dscp af33 
+ match dscp af21 
+ match dscp af22 
+ match dscp af23 
+class-map match-all AutoQos-4.0-VoIP-Signal-Cos
+ match cos  3 
+class-map match-any AutoQos-4.0-Multimedia-Conf-Queue
+ match cos  4 
+ match dscp af41 
+ match dscp af42 
+ match dscp af43 
+ match access-group name AutoQos-4.0-ACL-Multimedia-Conf
+class-map match-all AutoQos-4.0-Default-Classify
+ match access-group name AutoQos-4.0-ACL-Default
+class-map match-any AutoQos-4.0-Bulk-Data-Queue
+ match cos  1 
+ match dscp af11 
+ match dscp af12 
+ match dscp af13 
+ match access-group name AutoQos-4.0-ACL-Bulk-Data
+class-map match-all AutoQos-4.0-Transaction-Classify
+ match access-group name AutoQos-4.0-ACL-Transactional-Data
+class-map match-any VSL-VOICE-VIDEO-TRAFFIC
+ match dscp ef 
+ match dscp cs4 
+ match dscp cs5 
+class-map match-any AutoQos-4.0-Scavenger-Queue
+ match dscp cs1 
+ match cos  1 
+ match access-group name AutoQos-4.0-ACL-Scavenger
+class-map match-any AutoQos-4.0-Control-Mgmt-Queue
+ match cos  3 
+ match dscp cs7 
+ match dscp cs6 
+ match dscp cs3 
+ match dscp cs2 
+ match access-group name AutoQos-4.0-ACL-Signaling
+class-map match-all AutoQos-4.0-Bulk-Data-Classify
+ match access-group name AutoQos-4.0-ACL-Bulk-Data
+class-map match-any AutoQos-4.0-Trans-Data-Queue
+ match cos  2 
+ match dscp af21 
+ match dscp af22 
+ match dscp af23 
+ match access-group name AutoQos-4.0-ACL-Transactional-Data
+class-map match-any AutoQos-4.0-VoIP-Data
+ match dscp ef 
+ match cos  5 
+class-map match-any VSL-SIGNALING-NETWORK-MGMT
+ match dscp cs2 
+ match dscp cs3 
+ match dscp cs6 
+ match dscp cs7 
+class-map match-all AutoQos-4.0-Multimedia-Conf-Classify
+ match access-group name AutoQos-4.0-ACL-Multimedia-Conf
+class-map match-any AutoQos-4.0-VoIP-Signal
+ match dscp cs3 
+ match cos  3 
+!
+policy-map AutoQos-4.0-Output-Policy
+ class AutoQos-4.0-Scavenger-Queue
+  bandwidth remaining percent 1 
+ class AutoQos-4.0-Priority-Queue
+  priority
+  police cir percent 30 bc 33 ms
+ class AutoQos-4.0-Control-Mgmt-Queue
+  bandwidth remaining percent 10 
+ class AutoQos-4.0-Multimedia-Conf-Queue
+  bandwidth remaining percent 10 
+ class AutoQos-4.0-Multimedia-Stream-Queue
+  bandwidth remaining percent 10 
+ class AutoQos-4.0-Trans-Data-Queue
+  bandwidth remaining percent 10 
+    dbl
+ class AutoQos-4.0-Bulk-Data-Queue
+  bandwidth remaining percent 4 
+    dbl
+ class class-default
+  bandwidth remaining percent 25 
+    dbl
+policy-map VSL-Queuing-Policy
+ class VSL-MGMT-PACKETS
+  bandwidth percent 5 
+ class VSL-L2-CONTROL-PACKETS
+  bandwidth percent 5 
+ class VSL-L3-CONTROL-PACKETS
+  bandwidth percent 5 
+ class VSL-VOICE-VIDEO-TRAFFIC
+  bandwidth percent 30 
+ class VSL-SIGNALING-NETWORK-MGMT
+  bandwidth percent 10 
+ class VSL-MULTIMEDIA-TRAFFIC
+  bandwidth percent 20 
+ class VSL-DATA-PACKETS
+  bandwidth percent 20 
+ class class-default
+  bandwidth percent 5 
+policy-map AutoQos-4.0-Cisco-Phone-Input-Policy
+ class AutoQos-4.0-VoIP-Data-Cos
+  set dscp ef
+  police cir 128000 bc 8000
+   exceed-action set-dscp-transmit cs1
+   exceed-action set-cos-transmit 1
+ class AutoQos-4.0-VoIP-Signal-Cos
+  set dscp cs3
+  police cir 32000 bc 8000
+   exceed-action set-dscp-transmit cs1
+   exceed-action set-cos-transmit 1
+ class class-default
+  set dscp default
+  set cos 0
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel10
+ description to-PoE-Switch-123-Po40
+ switchport
+ switchport mode trunk
+!
+interface Port-channel20
+ description to-PoE-Switch-456-Po40
+ switchport
+ switchport mode trunk
+!
+interface Port-channel30
+ description to-PoE-Switch-789-Po40
+ switchport
+ switchport mode trunk
+!
+interface Port-channel40
+ description to-LA321
+ switchport
+ switchport mode trunk
+!
+interface Port-channel41
+ description to-LA421-Po40
+ switchport
+ switchport mode trunk
+!
+interface Port-channel42
+ description to-LA521-Po40
+ switchport
+ switchport mode trunk
+!
+interface Port-channel43
+ description to-LB121-Po40
+ switchport
+ switchport mode trunk
+!
+interface Port-channel44
+ description to-LB321-Po40
+ switchport
+ switchport mode trunk
+!
+interface Port-channel50
+ description +++ reserved for PCMC +++
+ switchport
+ switchport mode trunk
+!
+interface Port-channel51
+ description +++ reserved for PCMC +++
+ switchport
+ switchport mode trunk
+!
+interface Port-channel140
+ description to-SFP-SW1-Po1
+ switchport
+ switchport mode trunk
+!
+interface Port-channel141
+ description to-SFP-SW2-Po1
+ switchport
+ switchport mode trunk
+!
+interface Port-channel142
+ description to-SFP-SW3-Po1
+ switchport
+ switchport access vlan 403
+ switchport mode trunk
+!
+interface Port-channel143
+ description to-SFP-SW4-Po1
+ switchport
+ switchport access vlan 403
+ switchport mode trunk
+!
+interface Port-channel200
+ description To-VSS-Link-Switch1
+ switchport
+ switch virtual link 1
+!
+interface Port-channel210
+ description To-VSS-Link-Switch2
+ switchport
+ switch virtual link 2
+!
+interface FastEthernet1
+ description +++ Unused +++
+ vrf forwarding mgmtVrf
+ no ip address
+ speed auto
+ duplex auto
+!
+interface GigabitEthernet1/1/1
+ description to-SFP-SW1-Gi1/1/1
+ switchport mode trunk
+ channel-group 140 mode on
+!
+interface GigabitEthernet1/1/2
+ description to-SFP-SW2-Gi1/1/1
+ switchport mode trunk
+ channel-group 141 mode on
+!
+interface GigabitEthernet1/1/3
+ description to-SFP-SW3-Gi1/1/1
+ switchport access vlan 403
+ switchport mode trunk
+ channel-group 142 mode on
+!
+interface GigabitEthernet1/1/4
+ description to-SFP-SW4-Gi1/1/1
+ switchport access vlan 403
+ switchport mode trunk
+ channel-group 143 mode on
+!
+interface GigabitEthernet1/1/5
+ description Secondary Wireless Controller Port
+ switchport mode trunk
+!
+interface GigabitEthernet1/1/6
+ description +++ Unused +++
+ switchport mode access
+!
+interface GigabitEthernet1/1/7
+ description +++ Unused +++
+ switchport mode access
+!
+interface GigabitEthernet1/1/8
+ description +++ Unused +++
+ switchport mode access
+!
+interface GigabitEthernet1/1/9
+ description to-Marine-Switch-Gi2/1/2
+ switchport mode trunk
+ channel-group 50 mode on
+!
+interface GigabitEthernet1/1/10
+ description to-Marine-Switch-Gi1/1/1
+ switchport mode trunk
+ channel-group 50 mode on
+!
+interface GigabitEthernet1/1/11
+ description to-MnR-Switch-Gi1/1/1
+ switchport mode trunk
+ channel-group 51 mode on
+!
+interface GigabitEthernet1/1/12
+ description to-MnR-Switch-Gi2/1/1
+ switchport mode trunk
+ channel-group 51 mode on
+!
+interface GigabitEthernet1/2/1
+ description to-PoE-Switch123-Gi1/0/23
+ switchport mode trunk
+ channel-group 10 mode on
+!
+interface GigabitEthernet1/2/2
+ description to-PoE-Switch123-Gi2/0/23
+ switchport mode trunk
+ channel-group 10 mode on
+!
+interface GigabitEthernet1/2/3
+ description to-PoE-Switch123-Gi3/0/23
+ switchport mode trunk
+ channel-group 10 mode on
+!
+interface GigabitEthernet1/2/4
+ description to-1F-Ampro-AT&T-T1*2
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+!
+interface GigabitEthernet1/2/5
+ description to-PoE-Switch-456 Gi1/0/23
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet1/2/6
+ description to-PoE-Switch-456 Gi2/0/23
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet1/2/7
+ description to-PoE-Switch-456 Gi3/0/23
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet1/2/8
+ description Reserved-For-Vlan20
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/2/9
+ description to-PoE-Switch-789-Gi1/0/23
+ switchport mode trunk
+ channel-group 30 mode on
+!
+interface GigabitEthernet1/2/10
+ description to-PoE-Switch-789-Gi2/0/23
+ switchport mode trunk
+ channel-group 30 mode on
+!
+interface GigabitEthernet1/2/11
+ description to-PoE-Switch-789-Gi3/0/23
+ switchport mode trunk
+ channel-group 30 mode on
+!
+interface GigabitEthernet1/2/12
+ description to-ASA-MG
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/2/13
+ description to-LA321-Gi1/0/23
+ switchport mode trunk
+ channel-group 40 mode on
+!
+interface GigabitEthernet1/2/14
+ description to-LA421-Gi1/0/23
+ switchport mode trunk
+ channel-group 41 mode on
+!
+interface GigabitEthernet1/2/15
+ description to-LA421-Gi2/0/23
+ switchport mode trunk
+ channel-group 41 mode on
+!
+interface GigabitEthernet1/2/16
+ description to-LA521-Gi2/0/23
+ switchport mode trunk
+ channel-group 42 mode on
+!
+interface GigabitEthernet1/2/17
+ description to-LA521-Gi1/0/23
+ switchport mode trunk
+ channel-group 42 mode on
+!
+interface GigabitEthernet1/2/18
+ description to-LB121-Gi1/0/23
+ switchport mode trunk
+ channel-group 43 mode on
+!
+interface GigabitEthernet1/2/19
+ description to-LB321-Gi1/0/23
+ switchport mode trunk
+ channel-group 44 mode on
+!
+interface GigabitEthernet1/2/20
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/21
+ description to-VGW
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/22
+ description to-CUCM_A4
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/23
+ description to-CUCM_A4
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/24
+ description to-CUCM_A4
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/25
+ description to-AT&T_20M
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/26
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/27
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/28
+ description +++ reserved for vlan40 +++
+ switchport mode trunk
+!
+interface GigabitEthernet1/2/29
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/30
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/31
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/32
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/33
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/34
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/35
+ description To-APS-V40
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/36
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/2/37
+ description To-APS-V401
+ switchport access vlan 401
+ switchport mode access
+!
+interface GigabitEthernet1/2/38
+ description +++ reserved for vlan 401 +++
+ switchport access vlan 401
+ switchport mode access
+!
+interface GigabitEthernet1/2/39
+ description to-Kalmar-base-station
+ switchport access vlan 404
+ switchport mode access
+!
+interface GigabitEthernet1/2/40
+ description To-Vlan10
+ switchport mode trunk
+!
+interface GigabitEthernet1/2/41
+ description +++ Unused +++
+!
+interface GigabitEthernet1/2/42
+ description +++ Unused +++
+!
+interface GigabitEthernet1/2/43
+ description +++ Unused +++
+!
+interface GigabitEthernet1/2/44
+ description +++ Unused +++
+!
+interface GigabitEthernet1/2/45
+ description --- reserved for Internet
+ switchport access vlan 90
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet1/2/46
+ description --- reserved for Internet
+ switchport access vlan 90
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet1/2/47
+ description --- reserved for Testing-Room
+ switchport access vlan 90
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface GigabitEthernet1/2/48
+ description --- reserved for Internet
+ switchport access vlan 90
+ switchport mode access
+!
+interface TenGigabitEthernet1/3/1
+ description VSS-Between-Te1/3/1
+ no lldp transmit
+ no lldp receive
+ channel-group 200 mode on
+ service-policy output VSL-Queuing-Policy
+!
+interface TenGigabitEthernet1/3/2
+ description VSS-Between-Te1/3/2
+ no lldp transmit
+ no lldp receive
+ channel-group 200 mode on
+ service-policy output VSL-Queuing-Policy
+!
+interface TenGigabitEthernet1/3/3
+ description +++ Unused +++
+!
+interface TenGigabitEthernet1/3/4
+ description +++ Unused +++
+!
+interface TenGigabitEthernet1/3/5
+ description +++ Unused +++
+!
+interface TenGigabitEthernet1/3/6
+ description +++ Unused +++
+!
+interface TenGigabitEthernet1/3/7
+ description +++ Unused +++
+!
+interface TenGigabitEthernet1/3/8
+ description +++ Unused +++
+!
+interface GigabitEthernet2/1/1
+ description to-SFP-SW1-Gi1/1/2
+ switchport mode trunk
+ channel-group 140 mode on
+!
+interface GigabitEthernet2/1/2
+ description to-SFP-SW2-Gi1/1/2
+ switchport mode trunk
+ channel-group 141 mode on
+!
+interface GigabitEthernet2/1/3
+ description to-SFP-SW3-Gi1/1/2
+ switchport access vlan 403
+ switchport mode trunk
+ channel-group 142 mode on
+!
+interface GigabitEthernet2/1/4
+ description to-SFP-SW4-Gi1/1/2
+ switchport access vlan 403
+ switchport mode trunk
+ channel-group 143 mode on
+!
+interface GigabitEthernet2/1/5
+ description Primary Wireless Controller Port
+ switchport mode trunk
+!
+interface GigabitEthernet2/1/6
+ description +++ Unused +++
+ switchport mode access
+!
+interface GigabitEthernet2/1/7
+ description to-Main-Gate
+ switchport access vlan 403
+ switchport mode access
+!
+interface GigabitEthernet2/1/8
+ description To SSS Trailer Switch
+ switchport mode trunk
+!
+interface GigabitEthernet2/1/9
+ description to-Marine-Switch-Gi2/1/1
+ switchport mode trunk
+ channel-group 50 mode on
+!
+interface GigabitEthernet2/1/10
+ description to-Marine-Switch-Gi1/1/2
+ switchport mode trunk
+ channel-group 50 mode on
+!
+interface GigabitEthernet2/1/11
+ description to-MnR-Switch-Gi1/1/2
+ switchport mode trunk
+ channel-group 51 mode on
+!
+interface GigabitEthernet2/1/12
+ description to-MnR-Switch-Gi2/1/2
+ switchport mode trunk
+ channel-group 51 mode on
+!
+interface GigabitEthernet2/2/1
+ description to-PoE-Switch123-Gi1/0/24
+ switchport mode trunk
+ channel-group 10 mode on
+!
+interface GigabitEthernet2/2/2
+ description to-PoE-Switch123-Gi2/0/24
+ switchport mode trunk
+ channel-group 10 mode on
+!
+interface GigabitEthernet2/2/3
+ description to-PoE-Switch123-Gi3/0/24
+ switchport mode trunk
+ channel-group 10 mode on
+!
+interface GigabitEthernet2/2/4
+ description +++ reserved for PoE-Switch-123 +++
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet2/2/5
+ description to-PoE-Switch-456 Gi1/0/24
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet2/2/6
+ description to-PoE-Switch-456 Gi2/0/24
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet2/2/7
+ description to-PoE-Switch-456 Gi3/0/24
+ switchport mode trunk
+ channel-group 20 mode on
+!
+interface GigabitEthernet2/2/8
+ description Reserved-For-Vlan20
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet2/2/9
+ description to-PoE-Switch-789-Gi1/0/24
+ switchport mode trunk
+ channel-group 30 mode on
+!
+interface GigabitEthernet2/2/10
+ description to-PoE-Switch-789-Gi2/0/24
+ switchport mode trunk
+ channel-group 30 mode on
+!
+interface GigabitEthernet2/2/11
+ description to-PoE-Switch-789-Gi3/0/24
+ switchport mode trunk
+ channel-group 30 mode on
+!
+interface GigabitEthernet2/2/12
+ description ATT 50M Vlan 91
+ switchport access vlan 91
+ switchport mode access
+!
+interface GigabitEthernet2/2/13
+ description to-LA321-Gi1/0/24
+ switchport mode trunk
+ channel-group 40 mode on
+!
+interface GigabitEthernet2/2/14
+ description to-LA421-Gi1/0/24
+ switchport mode trunk
+ channel-group 41 mode on
+!
+interface GigabitEthernet2/2/15
+ description to-LA421-Gi2/0/24
+ switchport mode trunk
+ channel-group 41 mode on
+!
+interface GigabitEthernet2/2/16
+ description to-LA521-Gi2/0/24
+ switchport mode trunk
+ channel-group 42 mode on
+!
+interface GigabitEthernet2/2/17
+ description to-LA521-Gi1/0/24
+ switchport mode trunk
+ channel-group 42 mode on
+!
+interface GigabitEthernet2/2/18
+ description to-LB121-Gi1/0/24
+ switchport mode trunk
+ channel-group 43 mode on
+!
+interface GigabitEthernet2/2/19
+ description to-LB321-Gi1/0/24
+ switchport mode trunk
+ channel-group 44 mode on
+!
+interface GigabitEthernet2/2/20
+ description ATT 50M Vlan 91
+ switchport access vlan 91
+ switchport mode access
+!
+interface GigabitEthernet2/2/21
+ description to-ASA-G1(LAN)
+ switchport access vlan 40
+ switchport mode access
+ ip flow monitor m1 layer2-switched input
+!
+interface GigabitEthernet2/2/22
+ description to-CUCM_A5
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/23
+ description to-CUCM_A5
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/24
+ description to-CUCM_A5
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/25
+ description to-AT&T_20M
+ switchport access vlan 40
+ switchport mode access
+ ip flow monitor ms-monitor1-in input
+!
+interface GigabitEthernet2/2/26
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/27
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/28
+ switchport mode access
+!
+interface GigabitEthernet2/2/29
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/30
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/31
+ description +++ reserved for vlan40 +++
+ switchport access vlan 403
+ switchport mode access
+!
+interface GigabitEthernet2/2/32
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/33
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/34
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/35
+ description To-APS-V40
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/36
+ description +++ reserved for vlan40 +++
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/37
+ description To-APS-V401
+ switchport access vlan 401
+ switchport mode access
+!
+interface GigabitEthernet2/2/38
+ description +++ Unused +++
+ switchport access vlan 401
+ switchport mode access
+!
+interface GigabitEthernet2/2/39
+ description To-Vlan10
+ switchport mode access
+!
+interface GigabitEthernet2/2/40
+ description To-Vlan10
+ switchport mode access
+!
+interface GigabitEthernet2/2/41
+ description ATT 50M Vlan 91
+ switchport access vlan 91
+ switchport mode access
+!
+interface GigabitEthernet2/2/42
+ description ATT 50M Vlan
+ switchport access vlan 91
+ switchport mode access
+!
+interface GigabitEthernet2/2/43
+ description Internet 20M GC-R
+ switchport access vlan 92
+ switchport mode access
+!
+interface GigabitEthernet2/2/44
+ description to ATT IDF 50M Internet
+ switchport access vlan 91
+ switchport mode access
+!
+interface GigabitEthernet2/2/45
+ description TO BARRACUDA LAN INTERFACE
+ switchport access vlan 40
+ switchport mode access
+ duplex full
+!
+interface GigabitEthernet2/2/46
+ description TO ANIRA LAN INTERFACE
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet2/2/47
+ description to-Testing-Room 
+ switchport access vlan 90
+ switchport mode trunk
+!
+interface GigabitEthernet2/2/48
+ description To Anira Wan
+ switchport access vlan 91
+ switchport mode access
+!
+interface TenGigabitEthernet2/3/1
+ description VSS-Between-Te1/3/2
+ no lldp transmit
+ no lldp receive
+ channel-group 210 mode on
+ service-policy output VSL-Queuing-Policy
+!
+interface TenGigabitEthernet2/3/2
+ description VSS-Between-Te1/3/2
+ no lldp transmit
+ no lldp receive
+ channel-group 210 mode on
+ service-policy output VSL-Queuing-Policy
+!
+interface TenGigabitEthernet2/3/3
+ description +++ Unused +++
+!
+interface TenGigabitEthernet2/3/4
+ description +++ Unused +++
+!
+interface TenGigabitEthernet2/3/5
+ description +++ Unused +++
+!
+interface TenGigabitEthernet2/3/6
+ description +++ Unused +++
+!
+interface TenGigabitEthernet2/3/7
+ description +++ Unused +++
+!
+interface TenGigabitEthernet2/3/8
+ description +++ Unused +++
+!
+interface Vlan1
+ description +++ Unused +++
+ no ip address
+!
+interface Vlan10
+ description For-Users
+ ip address 172.23.224.253 255.255.255.0
+!
+interface Vlan20
+ description For-VoIP
+ ip address 172.23.225.254 255.255.255.0
+!
+interface Vlan30
+ description For-WiFi-users
+ ip address 172.23.226.254 255.255.255.0
+!
+interface Vlan40
+ description For-Server-Use
+ ip address 172.23.227.254 255.255.255.0
+ standby 0 ip 172.23.227.1
+!
+interface Vlan70
+ description For-DG-Use
+ ip address 172.23.229.254 255.255.255.0
+!
+interface Vlan91
+ no ip address
+ shutdown
+!
+interface Vlan401
+ description For-Yard-Use-APS
+ ip address 192.168.1.254 255.255.254.0
+ no ip redirects
+!
+interface Vlan402
+ description For-Yard-Use
+ ip address 192.168.2.254 255.255.255.0
+!
+interface Vlan403
+ description For-Yard-Use
+ ip address 192.168.3.254 255.255.255.0
+ standby 0 ip 192.168.3.1
+!
+interface Vlan404
+ description For-Yard-Use
+ ip address 172.23.230.254 255.255.255.0 secondary
+ ip address 192.168.7.254 255.255.252.0
+ no ip redirects
+!
+interface Vlan501
+ description For-Yard-Bldg-Use
+ ip address 172.23.228.62 255.255.255.192
+!
+interface Vlan502
+ description For-Yard-Bldg-Use
+ ip address 172.23.228.126 255.255.255.192
+!
+interface Vlan503
+ description For-Yard-Bldg-Use
+ ip address 172.23.228.190 255.255.255.192
+!
+interface Vlan504
+ description For-Yard-Bldg-Use
+ ip address 172.23.228.254 255.255.255.192
+!
+ip forward-protocol nd
+ip http server
+ip http secure-server
+ip route 0.0.0.0 0.0.0.0 172.23.227.240
+ip route 10.2.0.0 255.255.0.0 172.23.227.241
+ip route 10.10.5.0 255.255.255.0 192.168.3.253
+ip route 10.10.20.0 255.255.255.0 192.168.3.253
+ip route 10.10.30.0 255.255.255.0 192.168.3.253
+ip route 10.10.40.0 255.255.255.0 192.168.3.253
+ip route 10.16.215.0 255.255.255.0 192.168.3.253
+ip route 10.100.175.0 255.255.255.224 192.168.3.253
+ip route 10.101.221.0 255.255.255.0 172.23.227.249
+ip route 10.168.0.0 255.255.248.0 172.23.227.248
+ip route 172.16.0.0 255.255.0.0 172.23.227.248
+ip route 172.21.88.0 255.255.255.0 172.23.227.249
+ip route 172.23.0.0 255.255.0.0 172.23.227.249
+ip route 172.30.0.0 255.255.0.0 172.23.227.249
+ip route 172.30.168.64 255.255.255.255 172.23.227.248
+ip route 172.30.169.120 255.255.255.255 172.23.227.248
+ip route 172.30.169.127 255.255.255.255 172.23.227.249
+!
+ip access-list extended AutoQos-4.0-ACL-Bulk-Data
+ permit tcp any any eq ftp
+ permit tcp any any eq ftp-data
+ permit tcp any any eq 22
+ permit tcp any any eq smtp
+ permit tcp any any eq 465
+ permit tcp any any eq 143
+ permit tcp any any eq 993
+ permit tcp any any eq pop3
+ permit tcp any any eq 995
+ permit tcp any any eq 1914
+ip access-list extended AutoQos-4.0-ACL-Default
+ permit ip any any
+ip access-list extended AutoQos-4.0-ACL-Multimedia-Conf
+ permit udp any any range 16384 32767
+ip access-list extended AutoQos-4.0-ACL-Scavenger
+ permit tcp any any eq 1214
+ permit udp any any eq 1214
+ permit tcp any any range 2300 2400
+ permit udp any any range 2300 2400
+ permit tcp any any eq 3689
+ permit udp any any eq 3689
+ permit tcp any any range 6881 6999
+ permit tcp any any eq 11999
+ permit tcp any any range 28800 29100
+ip access-list extended AutoQos-4.0-ACL-Signaling
+ permit tcp any any range 2000 2002
+ permit tcp any any range 5060 5061
+ permit udp any any range 5060 5061
+ip access-list extended AutoQos-4.0-ACL-Transactional-Data
+ permit tcp any any eq 443
+ permit tcp any any eq 1521
+ permit udp any any eq 1521
+ permit tcp any any eq 1526
+ permit udp any any eq 1526
+ permit tcp any any eq 1575
+ permit udp any any eq 1575
+ permit tcp any any eq 1630
+ permit udp any any eq 1630
+ip access-list extended VSL-BFD
+ permit udp any any eq 3784
+ip access-list extended VSL-DHCP-CLIENT-TO-SERVER
+ permit udp any eq bootpc any eq bootps
+ip access-list extended VSL-DHCP-SERVER-TO-CLIENT
+ permit udp any eq bootps any eq bootpc
+ip access-list extended VSL-DHCP-SERVER-TO-SERVER
+ permit udp any eq bootps any eq bootps
+ip access-list extended VSL-IPV4-ROUTING
+ permit ip any 224.0.0.0 0.0.0.255
+!
+access-list 99 permit 10.2.0.5
+access-list 99 permit 172.23.227.103
+access-list 99 permit 172.16.168.168
+access-list 177 permit ip host 172.23.227.210 any
+!
+snmp-server community EMCGlobalNet0168 RW 99
+snmp-server community etspublic RO 99
+snmp-server community Strategic@ETS RO 99
+snmp-server trap link ietf
+snmp-server trap-source Vlan40
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps flowmon
+snmp-server enable traps transceiver all
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps tty
+snmp-server enable traps rf
+snmp-server enable traps memory
+snmp-server enable traps cpu threshold
+snmp-server enable traps eigrp
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps flex-links status
+snmp-server enable traps fru-ctrl
+snmp-server enable traps entity
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps ether-oam
+snmp-server enable traps aaa_server
+snmp-server enable traps flash insertion removal
+snmp-server enable traps power-ethernet police
+snmp-server enable traps rep
+snmp-server enable traps vswitch dual-active vsl
+snmp-server enable traps udld link-fail-rpt status-change
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps entity-diag boot-up-fail hm-test-recover hm-thresh-reached scheduled-test-fail
+snmp-server enable traps port-security
+snmp-server enable traps ethernet evc status create delete
+snmp-server enable traps energywise
+snmp-server enable traps local-auth
+snmp-server enable traps ipsla
+snmp-server enable traps vstack
+snmp-server enable traps trustsec-sxp conn-srcaddr-err msg-parse-err conn-config-err binding-err conn-up conn-down binding-expn-fail oper-nodeid-change binding-conflict
+snmp-server enable traps trustsec-server radius-server provision-secret
+snmp-server enable traps trustsec authz-file-error cache-file-error keystore-file-error keystore-sync-fail random-number-fail src-entropy-fail
+snmp-server enable traps trustsec-interface unauthorized sap-fail authc-fail supplicant-fail authz-fail
+snmp-server enable traps trustsec-policy peer-policy-updated authz-sgacl-fail
+snmp-server enable traps bfd
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps event-manager
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps ospfv3 state-change
+snmp-server enable traps ospfv3 errors
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps ike policy add
+snmp-server enable traps ike policy delete
+snmp-server enable traps ike tunnel start
+snmp-server enable traps ike tunnel stop
+snmp-server enable traps ipsec cryptomap add
+snmp-server enable traps ipsec cryptomap delete
+snmp-server enable traps ipsec cryptomap attach
+snmp-server enable traps ipsec cryptomap detach
+snmp-server enable traps ipsec tunnel start
+snmp-server enable traps ipsec tunnel stop
+snmp-server enable traps ipsec too-many-sas
+snmp-server enable traps errdisable
+snmp-server enable traps ethernet cfm alarm
+snmp-server enable traps vlan-membership
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+snmp-server host 172.16.168.168 EMCGlocalNet0168 
+snmp-server host 172.23.227.8 EMCGlocalNet0168 
+!
+ipv6 access-list VSL-IPV6-ROUTING
+ permit ipv6 any FF02::/124
+!
+!
+line con 0
+ privilege level 15
+ password 7 050E121C2D4D1F5B4A
+ stopbits 1
+line vty 0 4
+ privilege level 15
+ password 7 050E121C2D4D1F5B4A
+ login local
+!
+!
+module provision switch 1
+ chassis-type 68 base-mac ECBD.1D3F.5FC0
+ slot 1 slot-type 406 base-mac E4AA.5D51.C378
+ slot 2 slot-type 399 base-mac ECBD.1D94.9E3C
+ slot 3 slot-type 404 base-mac ECBD.1D3F.5FC0
+ !
+module provision switch 2
+ chassis-type 68 base-mac 5C83.8FE5.D900
+ slot 1 slot-type 406 base-mac ECBD.1D6C.126C
+ slot 2 slot-type 399 base-mac ECBD.1D94.B75C
+ slot 3 slot-type 404 base-mac 5C83.8FE5.D900
+ 
+!
+
+ ntp server 172.23.227.7
+ !
+end

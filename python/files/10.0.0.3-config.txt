@@ -1,0 +1,11 @@
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+tti-spine1.tti.com(9C76THHSR8R)
+                    Eth1/1         151    R S s     N9K-C9300v    Eth1/3        
+tti-edge1.tti.com   Eth1/4         176    R B                     Gig0/0        
+
+Total entries displayed: 2
